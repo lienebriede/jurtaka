@@ -17,6 +17,9 @@ As a **New Site User** I can **open a post** so that **I can read the full post 
 
 As a **New Site User** I can **see only the first few lines of the posts** so that **I can quickly scan the posts to decide which wants I want to read**. <span style="color: #CF0060">should have</span> [issue #12](https://github.com/lienebriede/jurtaka/issues/12)
 
+As a **New Site User** I can **register an account** so that **I can interact with the forum**. <span style="color: #B60205">must have</span> [issue #13](https://github.com/lienebriede/jurtaka/issues/13)
+
+
 ## Site Structure
     
 ### Site maps
