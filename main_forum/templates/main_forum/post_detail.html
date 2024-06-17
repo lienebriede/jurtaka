@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Individual post display -->
+<div>
+    <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
+    <p>{{post.created_on}}</p>
+    <p><strong>{{ post.title }}</strong></p>
+    <p>{{ post.post_content | safe }}</p>
+</div>
+{% endblock %}

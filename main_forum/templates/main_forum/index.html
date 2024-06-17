@@ -3,12 +3,15 @@
 {% block content %}
 
 {% for post in posts %}
-<div>
-    <h2>{{ post.title }}</h2>
-    <p>by {{ post.author }}</p>
-    <p>{{ post.created_on }}</p>
-    <div>{{ post.post_content | safe }}</div>
-</div>
+<!-- Link to an individual post display-->
+<a href="{% url 'post_detail' post.slug %}" class="post-link">
+    <div>
+        <h2>{{ post.title }}</h2>
+        <p>by {{ post.author }}</p>
+        <p>{{ post.created_on }}</p>
+        <div>{{ post.post_content | safe }}</div>
+    </div>
+</a>
 {% endfor %}
 
 <!-- Pagination -->

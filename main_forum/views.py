@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Post
 from django.core.paginator import Paginator
@@ -22,3 +22,16 @@ def post_list(request):
     }
 
     return render(request, "main_forum/index.html", context)
+
+def post_detail(request, slug):
+    """
+    Display an individual post
+    """
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
+
+    return render(
+        request,
+        "main_forum/post_detail.html",
+        {"post": post},
+    )
