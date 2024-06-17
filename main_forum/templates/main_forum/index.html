@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <title>Posts</title>
-</head>
+{% block content %}
 
-<body>
-    {% for post in posts %}
-    <div>
-        <h2>{{ post.title }}</h2>
-        <p>by {{ post.author }}</p>
-        <p>{{ post.created_on }}</p>
-        <div>{{ post.post_content | safe }}</div>
-    </div>
-    {% endfor %}
-</body>
+{% for post in posts %}
+<div>
+    <h2>{{ post.title }}</h2>
+    <p>by {{ post.author }}</p>
+    <p>{{ post.created_on }}</p>
+    <div>{{ post.post_content | safe }}</div>
+</div>
+{% endfor %}
 
-</html>
+{% endblock %}
