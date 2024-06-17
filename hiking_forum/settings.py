@@ -31,7 +31,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-lienebriede-jurtaka-fsjtch2utun.ws.codeinstitute-ide.net',
-    'localhost'
+    'localhost',
+    '.herokuapp.com',
 ]
 
 
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main_forum',
-    '.herokuapp.com',
 ]
 
 MIDDLEWARE = [
