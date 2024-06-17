@@ -1,0 +1,85 @@
+/* Google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+/* Colors ----------------------------------------------------------------> */
+
+:root {
+    --white: #ffffff;
+    --font-color: #3a3b3c;
+    --dark-grey: #374955;
+    --yellow: #f9f871;
+}
+
+
+/* General styles --------------------------------------------------------> */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 100px;
+    background: url("../images/background_wave.png");
+    background-size: cover;
+    background-repeat: repeat;
+    font-family: "Lato", sans-serif;
+    color: var(--font-color);
+}
+
+/* Navbar -----------------------------------------------------------------> */
+
+.navbar {
+    background-color: var(--dark-grey);
+}
+
+.nav-link {
+    color: var(--white);
+}
+
+/* Main -------------------------------------------------------------------> */
+
+.post-link {
+    text-decoration: none;
+}
+
+.container-p-detail {
+    background-color: var(--white) !important;
+    border-radius: 20px;
+}
+
+/* Pagination -------------------------------------------------------------> */
+
+.pagination>li>a {
+    background-color: var(--white);
+    color: var(--font-color);
+}
+
+.page-link {
+    color: var(--font-color) !important;
+}
+
+.page-item.active .page-link {
+    background-color: var(--font-color) !important;
+    color: var(--white) !important;
+    border-color: var(--font-color) !important;
+}
+
+/* Footer -----------------------------------------------------------------> */
+
+.footer {
+    background-color: var(--yellow);
+}
+
+i {
+    font-size: 150%;
+}
+
+.copy {
+    font-size: 100%;
+}
+
+a {
+    color: inherit;
+}
