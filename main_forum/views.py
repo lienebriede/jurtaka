@@ -4,9 +4,9 @@ from .models import Post
 
 def post_list(request):
     """
-    Display all the posts
+    Display all the posts (latest first)
     """
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-created_on')
     context = {
         'posts': queryset
     }
