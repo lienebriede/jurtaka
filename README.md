@@ -5,8 +5,9 @@
 
 ### User Stories
 
-As a **Site Admin** I can **create, read, update and delete data** so that **I can manage the content of the forum site**    <span style="color: #B60205">must have</span> [issue #7](https://github.com/lienebriede/jurtaka/issues/7) 
+As a **Site Admin** I can **create, read, update and delete data** so that **I can manage the content of the forum site** <span style="color: #B60205">must have</span> [issue #7](https://github.com/lienebriede/jurtaka/issues/7) 
 
+As a **New Site User** I can **view a list of posts** so that **I can read the forum** <span style="color: #B60205">must have</span> [issue #8](https://github.com/lienebriede/jurtaka/issues/8)
 
 ## Site Structure
     
