@@ -20,6 +20,12 @@ class Post(models.Model):
     
     def __str__(self):
         return f"{self.title} by {self.author}"
+    
+    # returns only two first lines of post text
+    def get_content_preview(self):
+        words = self.post_content.split()  
+        first_20_words = words[:20]  
+        return ' '.join(first_20_words)
 
 class Like(models.Model):
     """
