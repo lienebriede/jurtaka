@@ -3,10 +3,17 @@
 {% block content %}
 
 <!-- Individual post display -->
-<div>
-    <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
-    <p>{{post.created_on}}</p>
-    <p><strong>{{ post.title }}</strong></p>
-    <p>{{ post.post_content | safe }}</p>
+<div class="container container-p-detail pt-4">
+    <!-- Go back arrow -->
+    <a href="{% url 'home' %}" aria-label="go back home" class="ps-4">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    <div class="row m-3">
+        <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
+        <p>{{post.created_on}}</p>
+        <p><strong>{{ post.title }}</strong></p>
+        <p>{{ post.post_content | safe }}</p>
+        <hr>
+    </div>
 </div>
 {% endblock %}
