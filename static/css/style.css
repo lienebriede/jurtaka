@@ -9,6 +9,8 @@
     --font-color: #3a3b3c;
     --dark-grey: #374955;
     --yellow: #f9f871;
+    --pink: #de245c;
+    --pink-hover: #bc093f;
 }
 
 
@@ -44,9 +46,35 @@ body {
     text-decoration: none;
 }
 
-.container-p-detail {
+.container-p-detail,
+.container-login {
     background-color: var(--white) !important;
     border-radius: 20px;
+}
+
+.btn-primary {
+    background-color: var(--pink) !important;
+    border-color: var(--pink);
+}
+
+.btn-primary:hover {
+    background-color: var(--pink-hover) !important;
+    border-color: var(--pink-hover);
+}
+
+/* Login, logout, signup ---------------------------------------------------> */
+
+.signup-link {
+    color: var(--pink);
+    text-decoration: none;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+.pink-text {
+    color: var(--pink);
 }
 
 /* Pagination -------------------------------------------------------------> */
