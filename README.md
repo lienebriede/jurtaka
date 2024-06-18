@@ -19,6 +19,13 @@ As a **New Site User** I can **see only the first few lines of the posts** so th
 
 As a **New Site User** I can **register an account** so that **I can interact with the forum**. <span style="color: #B60205">must have</span> [issue #13](https://github.com/lienebriede/jurtaka/issues/13)
 
+As a **New Site User** I can **read comments on posts** so that **I can see the feedback of the forum community**. <span style="color: #B60205">must have</span> [issue #14](https://github.com/lienebriede/jurtaka/issues/14)
+
+As a **New Site User** I can **see how many comments are left on a post** so that **I know how popular a post is**. <span style="color: #CF0060">should have</span> [issue #15](https://github.com/lienebriede/jurtaka/issues/15)
+
+As a **Registered Site User** I can **comment on posts** so that **I can engage with the author and the forum community**. <span style="color: #B60205">must have</span> [issue #16](https://github.com/lienebriede/jurtaka/issues/16)
+
+
 
 ## Site Structure
     
