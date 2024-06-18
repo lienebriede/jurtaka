@@ -8,6 +8,7 @@
     --white: #ffffff;
     --font-color: #3a3b3c;
     --dark-grey: #374955;
+    --light-grey: #f4f7f7b9;
     --yellow: #f9f871;
     --pink: #de245c;
     --pink-hover: #bc093f;
@@ -60,6 +61,19 @@ body {
 .btn-primary:hover {
     background-color: var(--pink-hover) !important;
     border-color: var(--pink-hover);
+}
+
+/* Comments ----------------------------------------------------------------> */
+
+.comment-container {
+    background-color: var(--light-grey) !important;
+    border-radius: 10px !important;
+    border-color: var(--light-grey) !important;
+}
+
+.fa-comment {
+    font-size: 18px;
+    color: var(--font-color);
 }
 
 /* Login, logout, signup ---------------------------------------------------> */
