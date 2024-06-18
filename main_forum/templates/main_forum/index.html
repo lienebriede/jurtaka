@@ -16,6 +16,12 @@
             <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
             </p>
         </a>
+        <div class="row mb-2">
+            <!-- Comment count -->
+            <div class="col-5 col-md-2 col-lg-1">
+                <span><i class="fa-regular fa-comment"></i> {{ post.comment_count | safe }}</span>
+            </div>
+        </div>
     </div>
 </div>
 <hr>

@@ -9,6 +9,11 @@ def post_list(request):
     """
     queryset = Post.objects.all().order_by('-created_on')
 
+    # Adds comment count to each post
+    for post in queryset:
+        post.comment_count = post.comments.count()
+
+        
     paginator = Paginator(queryset, 5) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
