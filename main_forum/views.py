@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 def post_list(request):
     """
@@ -60,5 +60,33 @@ def post_detail(request, slug):
         "comments": comments,
         "comment_count": comment_count,
         "comment_form": comment_form,
+        },
+    )
+
+def post_create(request):
+    """
+    Display a form to create a post
+    """
+
+    post_form = PostForm() 
+
+    if request.method == "POST":
+        post_form = PostForm(request.POST)
+        if post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.author = request.user
+            post.save()
+            post_form.save_m2m()
+            messages.success(
+                request,
+                "Thanks for posting! Your post will be visible shortly."
+            )
+            return redirect('home')
+
+    return render(
+        request, 
+        "main_forum/post_create.html",
+        {
+            'post_form': post_form,
         },
     )

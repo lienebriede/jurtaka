@@ -6,7 +6,9 @@
     <!-- Create a post section -->
     {% if user.is_authenticated %}
     <div class="row add-post-container border mx-3 mb-5">
-        <p>Add a post!</p>
+        <a href=" {% url 'post_create' %}" class="text-decoration-none">
+            <p>Add a post!</p>
+        </a>
     </div>
     {% endif %}
 

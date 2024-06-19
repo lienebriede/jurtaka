@@ -61,6 +61,11 @@ body {
     height: 100px;
 }
 
+.container-new-post {
+    background-color: white !important;
+    border-radius: 20px;
+}
+
 .btn-primary {
     background-color: var(--pink) !important;
     border-color: var(--pink);
