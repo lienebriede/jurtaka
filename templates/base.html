@@ -58,6 +58,22 @@
         </div>
     </nav>
 
+    <!-- Django message display -->
+    {% if messages %}
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     <main class="flex-grow-1 d-flex flex-column container-lg">
         {% block content %}
         {% endblock %}
