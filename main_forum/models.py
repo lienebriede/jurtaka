@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 # Variable for post status
 STATUS = ((0, "Pending"), (1, "Approved"), (2, "Deleted") )
@@ -26,6 +27,12 @@ class Post(models.Model):
         words = self.post_content.split()  
         first_20_words = words[:20]  
         return ' '.join(first_20_words)
+
+    # generates a slug automatically (needed when users add a post )
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 class Like(models.Model):
     """
