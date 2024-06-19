@@ -54,9 +54,11 @@ body {
     border-radius: 20px;
 }
 
-.container-login-message {
-    background-color: var(--yellow) !important;
-    border-radius: 10px;
+.add-post-container {
+    background-color: var(--white) !important;
+    border-radius: 10px !important;
+    border-color: var(--dark-grey);
+    height: 100px;
 }
 
 .btn-primary {

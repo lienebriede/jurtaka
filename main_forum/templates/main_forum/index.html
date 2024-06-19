@@ -2,24 +2,33 @@
 
 {% block content %}
 
-<!-- Post list display -->
-{% for post in posts %}
-<div class="row m-3">
-    <div class="col-6 col-md-4">
-        <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
-        <p>{{post.created_on}}</p>
+<div class="container-fluid">
+    <!-- Create a post section -->
+    {% if user.is_authenticated %}
+    <div class="row add-post-container border mx-3 mb-5">
+        <p>Add a post!</p>
     </div>
-    <div class="col-6 col-md-8">
-        <!-- Link to an individual post display-->
-        <a href="{% url 'post_detail' post.slug %}" class="post-link">
-            <p><strong>{{ post.title }}</strong></p>
-            <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
-            </p>
-        </a>
-        <div class="row mb-2">
-            <!-- Comment count -->
-            <div class="col-5 col-md-2 col-lg-1">
-                <span><i class="fa-regular fa-comment"></i> {{ post.comment_count | safe }}</span>
+    {% endif %}
+
+    <!-- Post list display -->
+    {% for post in posts %}
+    <div class="row m-3">
+        <div class="col-6 col-md-4">
+            <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
+            <p>{{post.created_on}}</p>
+        </div>
+        <div class="col-6 col-md-8">
+            <!-- Link to an individual post display-->
+            <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                <p><strong>{{ post.title }}</strong></p>
+                <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
+                </p>
+            </a>
+            <div class="row mb-2">
+                <!-- Comment count -->
+                <div class="col-5 col-md-2 col-lg-1">
+                    <span><i class="fa-regular fa-comment"></i> {{ post.comment_count | safe }}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -70,15 +79,15 @@
 <!-- Login message -->
 {% block login_message %}
 
-<div class="row ms-3 me-3 pt-3 mb-5 container-login-message">
+<div class="row ms-3 me-3 pt-3">
     {% if user.is_authenticated %}
-    <p>Welcome to Jurtaka Hiking Forum! You are logged in as
-        <span class="pink-text">{{ user }}</span>
+    <p><strong>Welcome to Jurtaka Hiking Forum! You are logged in as
+            <span class="pink-text">{{ user }}</span></strong>
     </p>
     {% else %}
-    <p>Welcome to Jurtaka Hiking Forum! You are not logged in. Please <a class="link signup-link"
-            href="{% url 'account_login' %}">log in
-        </a>to post and comment!</p>
+    <p><strong>Welcome to Jurtaka Hiking Forum! You are not logged in. Please <a class="link signup-link"
+                href="{% url 'account_login' %}">log in
+            </a>to post and comment!</p></strong>
     {% endif %}
 </div>
 
