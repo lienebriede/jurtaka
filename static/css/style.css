@@ -65,10 +65,17 @@ body {
 
 /* Comments ----------------------------------------------------------------> */
 
-.comment-container {
+.comment-container,
+.form-control {
     background-color: var(--light-grey) !important;
     border-radius: 10px !important;
     border-color: var(--light-grey) !important;
+}
+
+.custom-placeholder::placeholder {
+    vertical-align: top;
+    padding-top: 5px;
+    /* Adjust this value as needed */
 }
 
 .fa-comment {
