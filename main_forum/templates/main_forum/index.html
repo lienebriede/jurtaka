@@ -66,3 +66,20 @@
 {% endif %}
 
 {% endblock %}
+
+<!-- Login message -->
+{% block login_message %}
+
+<div class="row ms-3 me-3 pt-3 mb-5 container-login-message">
+    {% if user.is_authenticated %}
+    <p>Welcome to Jurtaka Hiking Forum! You are logged in as
+        <span class="pink-text">{{ user }}</span>
+    </p>
+    {% else %}
+    <p>Welcome to Jurtaka Hiking Forum! You are not logged in. Please <a class="link signup-link"
+            href="{% url 'account_login' %}">log in
+        </a>to post and comment!</p>
+    {% endif %}
+</div>
+
+{% endblock %}

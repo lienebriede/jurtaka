@@ -75,6 +75,9 @@
     {% endif %}
 
     <main class="flex-grow-1 d-flex flex-column container-lg">
+        {% block login_message %}
+        {% endblock %}
+
         {% block content %}
         {% endblock %}
     </main>

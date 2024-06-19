@@ -10,6 +10,7 @@
     --dark-grey: #374955;
     --light-grey: #f4f7f7b9;
     --yellow: #f9f871;
+    --trans-yellow: #f9f971c0;
     --pink: #de245c;
     --pink-hover: #bc093f;
 }
@@ -51,6 +52,11 @@ body {
 .container-login {
     background-color: var(--white) !important;
     border-radius: 20px;
+}
+
+.container-login-message {
+    background-color: var(--yellow) !important;
+    border-radius: 10px;
 }
 
 .btn-primary {
