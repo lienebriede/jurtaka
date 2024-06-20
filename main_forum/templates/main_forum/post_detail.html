@@ -27,7 +27,7 @@
     </div>
     <!-- Edit button and link to edit posts -->
     {% if user.is_authenticated and post.author == user %}
-    <a href="{% url 'post_edit' post.slug %}" class="btn btn-edit">Edit my post</a>
+    <a href="{% url 'post_edit' slug=post.slug post_id=post.id %}" class="btn btn-edit">Edit my post</a>
     {% endif %}
     <!-- Add comment -->
     <div class="row m-3">

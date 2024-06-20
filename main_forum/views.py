@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.admin.views.decorators import staff_member_required
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
 
@@ -92,20 +93,23 @@ def post_create(request):
         },
     )
 
-def post_edit(request, slug):
+def post_edit(request, slug, post_id):
     """
     View to edit posts
     """
     
-    post = get_object_or_404(Post, slug=slug)
+    post = get_object_or_404(Post, slug=slug, id=post_id)
+    print(f"Post slug: {post.slug}")
     
     if request.method == "POST":
         post_form = PostForm(request.POST, instance=post)
 
         if post_form.is_valid() and post.author == request.user:
-            post_form.save()
-            messages.add_message(request, messages.SUCCESS, 'Your post is updated!')
-            return redirect('post_detail', slug=slug)
+            post = post_form.save(commit=False)
+            post.status = 3
+            post.save()
+            messages.add_message(request, messages.SUCCESS, 'Your post update is awaiting approval!')
+            return redirect('post_detail', slug=post.slug)
         else:
             messages.add_message(request, messages.ERROR, 'There was an error updating your post!')
     
@@ -118,5 +122,31 @@ def post_edit(request, slug):
         {
             'post_form': post_form, 
             'post': post
+        },
+    )
+
+@staff_member_required
+def approve_posts(request):
+    """
+    View to approve edited posts
+    """
+
+    pending_posts = Post.objects.filter(status=3)
+
+    if request.method == "POST":
+        post_id = request.POST.get('post_id')
+        post = get_object_or_404(Post, id=post_id)
+        
+        # Updates original post content with the edited content
+        post.original_post_content = post.post_content
+        post.status = 1
+        post.save()
+        messages.add_message(request, messages.SUCCESS, f'Your updated post "{post.title}" is approved!')
+
+    return render(
+        request, 
+        "main_forum/approve_posts.html",
+        {
+            'pending_posts': pending_posts
         },
     )

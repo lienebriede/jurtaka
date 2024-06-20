@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 # Variable for post status
-STATUS = ((0, "Pending"), (1, "Approved"), (2, "Deleted") )
+STATUS = ((0, "Pending"), (1, "Approved"), (2, "Deleted"), (3, "Update Pending"))
 
 class Post(models.Model):
     """
