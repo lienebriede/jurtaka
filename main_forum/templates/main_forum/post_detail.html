@@ -26,22 +26,28 @@
         </div>
     </div>
     <!-- Edit button and link to edit posts -->
-    {% if user.is_authenticated and post.author == user %}
+    {% if user.is_authenticated and post.author == user and post.status != 3 %}
     <a href="{% url 'post_edit' slug=post.slug post_id=post.id %}" class="btn btn-edit">Edit my post</a>
     {% endif %}
     <!-- Add comment -->
+
+    {% if user.is_authenticated %}
+    {% if post.status != 3 %}
     <div class="row m-3">
-        {% if user.is_authenticated %}
         <form id="commentForm" method="post" class="form-inline">
             {% csrf_token %}
             {{ comment_form | crispy }}
             <button id="submitButton" type="submit" class="btn btn-primary">Add</button>
         </form>
-        {% else %}
-        <p><strong>You are not logged in. Please <a class="link signup-link" href="{% url 'account_login' %}">log in
-                </a>to comment!</strong></p>
-        {% endif %}
     </div>
+    {% else %}
+    <p><strong>Your post will be updated shortly!</strong></p>
+    {% endif %}
+    {% else %}
+    <p><strong>You are not logged in. Please <a class="link signup-link" href="{% url 'account_login' %}">log in
+            </a>to comment!</strong></p>
+    {% endif %}
+
     <!-- Comments -->
     <div class="row m-3">
         {% for comment in comments %}

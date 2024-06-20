@@ -100,7 +100,6 @@ def post_edit(request, slug, post_id):
     """
     
     post = get_object_or_404(Post, slug=slug, id=post_id)
-    print(f"Post slug: {post.slug}")
     
     if request.method == "POST":
         post_form = PostForm(request.POST, instance=post)
