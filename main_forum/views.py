@@ -7,7 +7,7 @@ from .forms import CommentForm, PostForm
 
 def post_list(request):
     """
-    Display all the posts (latest first)
+    View to display all the posts (latest first)
     """
     queryset = Post.objects.filter(status=1).order_by('-created_on')
 
@@ -32,7 +32,7 @@ def post_list(request):
 
 def post_detail(request, slug):
     """
-    Display an individual post
+    View to display an individual post
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -66,7 +66,7 @@ def post_detail(request, slug):
 
 def post_create(request):
     """
-    Display a form to create a post
+    View to display a form for creating posts
     """
 
     post_form = PostForm() 
@@ -89,5 +89,34 @@ def post_create(request):
         "main_forum/post_create.html",
         {
             'post_form': post_form,
+        },
+    )
+
+def post_edit(request, slug):
+    """
+    View to edit posts
+    """
+    
+    post = get_object_or_404(Post, slug=slug)
+    
+    if request.method == "POST":
+        post_form = PostForm(request.POST, instance=post)
+
+        if post_form.is_valid() and post.author == request.user:
+            post_form.save()
+            messages.add_message(request, messages.SUCCESS, 'Your post is updated!')
+            return redirect('post_detail', slug=slug)
+        else:
+            messages.add_message(request, messages.ERROR, 'There was an error updating your post!')
+    
+    else:
+        post_form = PostForm(instance=post)
+    
+    return render(
+        request, 
+        "main_forum/edit_post.html", 
+        {
+            'post_form': post_form, 
+            'post': post
         },
     )
