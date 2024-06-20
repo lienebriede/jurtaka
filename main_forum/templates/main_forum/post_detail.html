@@ -30,7 +30,6 @@
     <a href="{% url 'post_edit' slug=post.slug post_id=post.id %}" class="btn btn-edit">Edit my post</a>
     {% endif %}
     <!-- Add comment -->
-
     {% if user.is_authenticated %}
     {% if post.status != 3 %}
     <div class="row m-3">

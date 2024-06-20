@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
@@ -69,7 +69,6 @@ def post_create(request):
     """
     View to display a form for creating posts
     """
-
     post_form = PostForm() 
 
     if request.method == "POST":
@@ -98,7 +97,6 @@ def post_edit(request, slug, post_id):
     """
     View to edit posts
     """
-    
     post = get_object_or_404(Post, slug=slug, id=post_id)
     
     if request.method == "POST":
@@ -130,7 +128,6 @@ def approve_posts(request):
     """
     View to approve edited posts
     """
-
     pending_posts = Post.objects.filter(status=3)
 
     if request.method == "POST":
@@ -150,3 +147,16 @@ def approve_posts(request):
             'pending_posts': pending_posts
         },
     )
+
+def post_delete(request, slug, post_id):
+    """
+    View to delete posts
+    """
+    post = get_object_or_404(Post, slug=slug, id=post_id)
+    
+    if request.method == "POST" and post.author == request.user:
+        post.delete()
+        messages.success(request, 'Your post has been deleted successfully!')
+        return redirect('home')
+    
+    return redirect('post_detail', slug=post.slug)
