@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 <div class="container">
     <h2>Edit Post</h2>
@@ -8,9 +10,11 @@
         {{ post_form.as_p }}
         <button type="submit" class="btn btn-primary" id="submitButton">Update my post</button>
     </form>
-    <form method="post" action="{% url 'post_delete' slug=post.slug post_id=post.id %}" style="display: inline;">
+    <!-- Delete button with JavaScript confirmation -->
+    <form id="deleteForm" method="post" action="{% url 'post_delete' slug=post.slug post_id=post.id %}"
+        style="display: inline;">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
     </form>
 </div>
 {% endblock %}

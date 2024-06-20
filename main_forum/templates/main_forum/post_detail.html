@@ -40,11 +40,15 @@
         </form>
     </div>
     {% else %}
-    <p><strong>Your post will be updated shortly!</strong></p>
+    <div class="row m-3">
+        <p>Your post will be updated shortly!</p>
+    </div>
     {% endif %}
     {% else %}
-    <p><strong>You are not logged in. Please <a class="link signup-link" href="{% url 'account_login' %}">log in
-            </a>to comment!</strong></p>
+    <div class="row m-3">
+        <p><strong>You are not logged in. Please <a class="link signup-link" href="{% url 'account_login' %}">log in
+                </a>to comment!</strong></p>
+    </div>
     {% endif %}
 
     <!-- Comments -->
