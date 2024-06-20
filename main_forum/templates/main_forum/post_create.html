@@ -8,7 +8,11 @@
     <form method="post" class="mt-4">
         {% csrf_token %}
         {{ post_form.as_p | safe }}
-        <div class="pt-5 pb-3"><button class="btn btn-primary center" type="submit">Add</button>
+        <div class="row d-flex justify-content-center">
+            <div class="col-10 col-lg-6 pt-3 pb-3">
+                <button class="btn btn-primary btn-block w-100" type="submit">Submit</button>
+            </div>
+        </div>
     </form>
 </div>
 

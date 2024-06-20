@@ -25,10 +25,26 @@
             <hr>
         </div>
     </div>
-    <!-- Edit button and link to edit posts -->
-    {% if user.is_authenticated and post.author == user and post.status != 3 %}
-    <a href="{% url 'post_edit' slug=post.slug post_id=post.id %}" class="btn btn-edit">Edit my post</a>
-    {% endif %}
+    <!-- Buttons for editing post for post author only -->
+    <div class="row m-3 pb-5 justify-content-center">
+        <div class="col-10 col-lg-6 mb-2 mb-lg-0">
+            <!-- Edit button and link to edit posts -->
+            {% if user.is_authenticated and post.author == user and post.status != 3 %}
+            <a href="{% url 'post_edit' slug=post.slug post_id=post.id %}"
+                class="btn btn-secondary btn-block w-100">Edit
+                post</a>
+        </div>
+        <div class="col-10 col-lg-6">
+            <!-- Delete button with JavaScript confirmation -->
+            <form id="deleteForm" method="post" action="{% url 'post_delete' slug=post.slug post_id=post.id %}"
+                style="display: inline;">
+                {% csrf_token %}
+                <button type="button" class="btn btn-danger btn-block w-100" onclick="confirmDelete()">Delete
+                    Post</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
     <!-- Add comment -->
     {% if user.is_authenticated %}
     {% if post.status != 3 %}
@@ -36,12 +52,16 @@
         <form id="commentForm" method="post" class="form-inline">
             {% csrf_token %}
             {{ comment_form | crispy }}
-            <button id="submitButton" type="submit" class="btn btn-primary">Add</button>
+            <div class="row justify-content-center">
+                <div class="col-10 col-lg-6">
+                    <button id="submitButton" type="submit" class="btn btn-primary btn-block w-100">Add</button>
+                </div>
+            </div>
         </form>
     </div>
     {% else %}
-    <div class="row m-3">
-        <p>Your post will be updated shortly!</p>
+    <div class="row ms-3">
+        <p class="pink-text">Your post will be updated shortly!</p>
     </div>
     {% endif %}
     {% else %}
