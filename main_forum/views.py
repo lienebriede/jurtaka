@@ -35,7 +35,7 @@ def post_detail(request, slug):
     """
     View to display an individual post
     """
-    queryset = Post.objects.filter(status=1)
+    queryset = Post.objects.filter(slug=slug, status__in=[1, 3])
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.count()
@@ -92,6 +92,7 @@ def post_create(request):
             'post_form': post_form,
         },
     )
+
 
 def post_edit(request, slug, post_id):
     """

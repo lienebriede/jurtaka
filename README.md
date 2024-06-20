@@ -64,7 +64,42 @@ This ERD shows the intended database structure. The blue colored tables (HikeSec
   Future features
 -	Technologies used
 -	Validation and testing
--	Bugs and Fixes
+
+## Bugs and Fixes
+
+### NoReverseMatch Error on Post Approval
+
+After adding a post, users encountered a "NoReverseMatch" error.
+
+**Reason:** There is a unique slug required for each post to generate a correct URL for approved posts. Since users do not provide slugs when adding posts, the system cannot match requested URLs with post details and this leads to an error.
+
+**Fix:** The bug was fixed by implementing an automatic slug generator using the 'slugify' library in Django models:
+
+```from django.utils.text import slugify```
+
+and adding a method that generates a slug automatically:
+
+```python
+def save(self, *args, **kwargs):
+    if not self.slug:
+        self.slug = slugify(self.title)
+    super().save(*args, **kwargs)
+```
+
+This overrides the 'save' method in the model. First, it checks if a slug already exists, if not, it generates one.  In this way the title is converted to a slug and each post has a unique identifier in its URL.
+
+### 404 Error on post_detail View for Posts Awaiting Approval
+
+When an edited post was submitted, the post_detail view could not retrieve the post, causing a 404 error. 
+
+**Reason:** When a post is edited, its status is set to "update pending" (status=3). The bug was caused because the post_detail view was retrieving only posts with the "approved" status (status=1). The edited post with its status set to "update pending" was not available to the post_detail view, resulting in a "Page not found" error.
+
+**Fix:** The bug was fixed by adjusting the post_detail view to include both statuses:
+
+```queryset = Post.objects.filter(slug=slug, status__in=[1, 3])```
+
+This makes it possible for users to view details of their edited posts while awaiting admin approval. Also in this way the original slug is used in the redirection, avoiding conflicts related to URLs.
+
 -	Deployment
 -	Credits
 
