@@ -135,10 +135,9 @@ def approve_posts(request):
         post = get_object_or_404(Post, id=post_id)
         
         # Updates original post content with the edited content
-        post.original_post_content = post.post_content
         post.status = 1
+        post.has_been_edited = True
         post.save()
-        messages.add_message(request, messages.SUCCESS, f'Your updated post "{post.title}" is approved!')
 
     return render(
         request, 

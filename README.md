@@ -53,6 +53,11 @@ This site map shows the intended structure of the site. The grey colored boxes r
 This ERD shows the intended database structure. The blue colored tables (HikeSection and HikeRating) relate to the 'could have' user stories or future implementations at the stage of planning.
 
 ![ERD](/documentation/db_schema_jurtaka.png)
+
+## Database Schema Enhancements
+
+Some changes were implemented to the database schemas. 
+The "Post" model has been implemented with a field **'has_been_edited'** Boolean field to differentiate between original and edited posts. This addition enables to display the "updated_on" date only for posts that have been edited.  
  	
 -	Agile Methodology:
 

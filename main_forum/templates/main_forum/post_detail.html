@@ -13,8 +13,11 @@
     <div class="row m-3">
         <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
         <p>{{post.created_on}}</p>
-        <p><strong>{{ post.title }}</strong></p>
+        <p class="pt-3 pb-3"><strong>{{ post.title }}</strong></p>
         <p>{{ post.post_content | safe }}</p>
+        {% if post.has_been_edited %}
+        <p class="text-secondary pt-3">Updated on {{ post.updated_on }}</p>
+        {% endif %}
     </div>
     <!-- Comment count -->
     <div class="row m-3">
