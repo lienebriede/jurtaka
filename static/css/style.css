@@ -76,7 +76,7 @@ body {
     border-color: var(--pink-hover);
 }
 
-/* Comments ----------------------------------------------------------------> */
+/* Comments and likes -----------------------------------------------------> */
 
 .comment-container,
 .form-control {
@@ -88,12 +88,25 @@ body {
 .custom-placeholder::placeholder {
     vertical-align: top;
     padding-top: 5px;
-    /* Adjust this value as needed */
 }
 
-.fa-comment {
+.fa-comment,
+.fa-thumbs-up {
     font-size: 18px;
     color: var(--font-color);
+}
+
+.btn-like {
+    border: none;
+    background-color: transparent;
+}
+
+.btn-liked {
+    color: var(--pink);
+}
+
+.count {
+    color: var(--font-color) !important;
 }
 
 /* Login, logout, signup ---------------------------------------------------> */

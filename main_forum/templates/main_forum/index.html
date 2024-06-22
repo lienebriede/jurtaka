@@ -27,9 +27,17 @@
                 </p>
             </a>
             <div class="row mb-2">
+                <!-- Like count -->
+                <div class="col-5 col-md-2 col-lg-1">
+                    <span>
+                        <i class="fa-regular fa-thumbs-up"></i> <span class="count">{{ post.likes.count | safe }}</span>
+                    </span>
+                </div>
                 <!-- Comment count -->
                 <div class="col-5 col-md-2 col-lg-1">
-                    <span><i class="fa-regular fa-comment"></i> {{ post.comment_count | safe }}</span>
+                    <span>
+                        <i class="fa-regular fa-comment"></i> <span class="count">{{ post.comment_count | safe}}</span>
+                    </span>
                 </div>
             </div>
         </div>

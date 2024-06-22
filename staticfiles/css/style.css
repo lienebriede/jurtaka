@@ -81,7 +81,6 @@ body {
 .custom-placeholder::placeholder {
     vertical-align: top;
     padding-top: 5px;
-    /* Adjust this value as needed */
 }
 
 .fa-comment {
