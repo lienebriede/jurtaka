@@ -37,7 +37,15 @@ As a **Registered Site User** I can edit and delete my comment so that I can upd
 
 As a **Registered Site User** I can update and delete my posts so that I can update the content of my post or remove posts that are not relevant [issue #27](https://github.com/lienebriede/jurtaka/issues/27)
 
+#### Changes
 
+- Update and delete my posts [issue #27](https://github.com/lienebriede/jurtaka/issues/27)
+
+This user story required more story points than initially estimated. Story points were increased from 4 to 6.
+
+- Edit and delete my comment [issue #26](https://github.com/lienebriede/jurtaka/issues/26)
+
+The user story needed revision because the approach of adding and editing comments resulted in poor user experience. The layout of the post detail page makes editing comments in the planned manner difficult for the users, as the "add comment" field is located just below the post, while the published comment that needs editing could be at the bottom of the page. To avoid confusion, comments should be edited directly within the published comment field. This change, however, requires more story points for this user story.
 
 ## Site Structure
     
