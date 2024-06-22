@@ -3,5 +3,5 @@ from .models import About
 from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(About)
-class PostAdmin(SummernoteModelAdmin):
+class AboutAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
