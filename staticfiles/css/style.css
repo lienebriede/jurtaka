@@ -42,21 +42,27 @@ body {
     color: var(--white);
 }
 
+.nav-title {
+    color: var(--light-grey);
+    text-transform: uppercase;
+}
+
 /* Main -------------------------------------------------------------------> */
 
 .post-link {
     text-decoration: none;
 }
 
-.container-p-detail,
-.container-login {
+.container-white {
     background-color: var(--white) !important;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
-.container-login-message {
-    background-color: var(--yellow) !important;
-    border-radius: 10px;
+.add-post-container {
+    background-color: var(--white) !important;
+    border-radius: 10px !important;
+    border-color: var(--dark-grey);
+    height: 100px;
 }
 
 .btn-primary {
@@ -69,7 +75,7 @@ body {
     border-color: var(--pink-hover);
 }
 
-/* Comments ----------------------------------------------------------------> */
+/* Comments and likes -----------------------------------------------------> */
 
 .comment-container,
 .form-control {
@@ -83,9 +89,23 @@ body {
     padding-top: 5px;
 }
 
-.fa-comment {
+.fa-comment,
+.fa-thumbs-up {
     font-size: 18px;
     color: var(--font-color);
+}
+
+.btn-like {
+    border: none;
+    background-color: transparent;
+}
+
+.btn-liked {
+    color: var(--pink);
+}
+
+.count {
+    color: var(--font-color) !important;
 }
 
 /* Login, logout, signup ---------------------------------------------------> */
