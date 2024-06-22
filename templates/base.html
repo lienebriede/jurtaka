@@ -48,10 +48,33 @@
                     </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="center nav-link" href="#">Nav item</a>
+                        <a class="nav-link" href="#">Nav item</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="center nav-link" href="#">Nav item</a>
+                    <li class="nav-title d-lg-none">
+                        <hr>
+                        About
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="#">
+                            Jurtaka
+                        </a>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="#">
+                            Contact
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown d-none d-lg-block">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="#">
+                                    Jurtaka</a></li>
+                            <li><a class="dropdown-item" href="#">
+                                    Contact</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -102,6 +125,7 @@
         crossorigin="anonymous"></script>
     <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/9c41b36590.js" crossorigin="anonymous"></script>
+    <!-- Custom JS file -->
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 

@@ -42,6 +42,11 @@ body {
     color: var(--white);
 }
 
+.nav-title {
+    color: var(--light-grey);
+    text-transform: uppercase;
+}
+
 /* Main -------------------------------------------------------------------> */
 
 .post-link {
