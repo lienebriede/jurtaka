@@ -53,10 +53,9 @@ body {
     text-decoration: none;
 }
 
-.container-p-detail,
-.container-login {
+.container-white {
     background-color: var(--white) !important;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .add-post-container {
@@ -64,11 +63,6 @@ body {
     border-radius: 10px !important;
     border-color: var(--dark-grey);
     height: 100px;
-}
-
-.container-new-post {
-    background-color: white !important;
-    border-radius: 20px;
 }
 
 .btn-primary {
