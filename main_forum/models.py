@@ -45,6 +45,10 @@ class Like(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="likes")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    # user can like one post only once
+    class Meta:
+        unique_together = ('post', 'user')
+    
     def __str__(self):
         return f"Like  by '{self.user}' on '{self.post}'"
         

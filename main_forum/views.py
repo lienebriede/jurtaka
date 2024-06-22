@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
-from .models import Post, Comment
+from .models import Post, Comment, Like
 from .forms import CommentForm, PostForm
 
 def post_list(request):
@@ -54,6 +54,19 @@ def post_detail(request, slug):
 
     comment_form = CommentForm()
 
+    is_liked = False
+
+    if request.user.is_authenticated:
+        is_liked = Like.objects.filter(post=post, user=request.user).exists()
+
+        if 'like' in request.POST:
+            if is_liked:
+                post.likes.filter(user=request.user).delete()
+                is_liked = False
+            else:
+                Like.objects.create(post=post, user=request.user)
+                is_liked = True
+
     return render(
         request,
         "main_forum/post_detail.html",
@@ -62,6 +75,7 @@ def post_detail(request, slug):
         "comments": comments,
         "comment_count": comment_count,
         "comment_form": comment_form,
+        "is_liked": is_liked,
         },
     )
 

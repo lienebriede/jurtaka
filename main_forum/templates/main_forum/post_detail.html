@@ -19,35 +19,55 @@
         <p class="text-secondary pt-3">Updated on {{ post.updated_on }}</p>
         {% endif %}
     </div>
-    <!-- Comment count -->
+
+    <!-- Likes and comments section -->
     <div class="row m-3">
-        <div class="col-12">
-            <span class="ps-4"><i class="fa-regular fa-comment"></i> {{ comment_count }}</span>
+        <!-- Like button and count -->
+        <div class="col-4 col-md-2 col-lg-1">
+            <span class="like">
+                <form method="post" action="{% url 'post_detail' post.slug %}">
+                    {% csrf_token %}
+                    <button type="submit" name="like" class="btn-like">
+                        {% if is_liked %}
+                        <i class="fa-solid fa-thumbs-up btn-liked"></i> {{ post.likes.count }}
+                        {% else %}
+                        <i class="fa-regular fa-thumbs-up"></i> {{ post.likes.count }}
+                        {% endif %}
+                    </button>
+                </form>
+            </span>
         </div>
-        <div class="col-12">
-            <hr>
+        <!-- Comment count -->
+        <div class="row m-3">
+            <div class="col-12">
+                <span class="ps-4"><i class="fa-regular fa-comment"></i> {{ comment_count }}</span>
+            </div>
+            <div class="col-12">
+                <hr>
+            </div>
+        </div>
+        <!-- Buttons for editing post for post author only -->
+        <div class="row m-3 pb-5 justify-content-center">
+            <div class="col-10 col-lg-6 mb-2 mb-lg-0">
+                <!-- Edit button and link to edit posts -->
+                {% if user.is_authenticated and post.author == user and post.status != 3 %}
+                <a href="{% url 'post_edit' slug=post.slug post_id=post.id %}"
+                    class="btn btn-secondary btn-block w-100">Edit
+                    post</a>
+            </div>
+            <div class="col-10 col-lg-6">
+                <!-- Delete button with JavaScript confirmation -->
+                <form id="deleteForm" method="post" action="{% url 'post_delete' slug=post.slug post_id=post.id %}"
+                    style="display: inline;">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-danger btn-block w-100" onclick="confirmDelete()">Delete
+                        Post</button>
+                </form>
+                {% endif %}
+            </div>
         </div>
     </div>
-    <!-- Buttons for editing post for post author only -->
-    <div class="row m-3 pb-5 justify-content-center">
-        <div class="col-10 col-lg-6 mb-2 mb-lg-0">
-            <!-- Edit button and link to edit posts -->
-            {% if user.is_authenticated and post.author == user and post.status != 3 %}
-            <a href="{% url 'post_edit' slug=post.slug post_id=post.id %}"
-                class="btn btn-secondary btn-block w-100">Edit
-                post</a>
-        </div>
-        <div class="col-10 col-lg-6">
-            <!-- Delete button with JavaScript confirmation -->
-            <form id="deleteForm" method="post" action="{% url 'post_delete' slug=post.slug post_id=post.id %}"
-                style="display: inline;">
-                {% csrf_token %}
-                <button type="button" class="btn btn-danger btn-block w-100" onclick="confirmDelete()">Delete
-                    Post</button>
-            </form>
-            {% endif %}
-        </div>
-    </div>
+
     <!-- Add comment -->
     {% if user.is_authenticated %}
     {% if post.status != 3 %}
@@ -83,7 +103,7 @@
                     <span><strong>{{ comment.author }}</strong></span> on {{ comment.created_on }}
                 </p>
             </div>
-            <div id=>
+            <div id="comment {{ comment.id }}">
                 {{ comment.comment_content | linebreaks }}
             </div>
         </div>
@@ -92,6 +112,6 @@
 </div>
 {% endblock %}
 
-{% block post-edit-btn %}
-<script src="{% static 'js/post_edit.js' %}"></script>
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
 {% endblock %}
