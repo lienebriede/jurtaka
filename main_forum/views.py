@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q, Count
+from django.utils.html import mark_safe
+import re
 from .models import Post, Comment, Like
 from .forms import CommentForm, PostForm
 
@@ -18,6 +20,11 @@ def search_results(request):
             status=1
         ).annotate(comment_count=Count('comments')).order_by('-created_on')
     
+        # Highlights, case insensitive
+        for post in queryset:
+            post.title = mark_safe(re.sub(re.escape(query), f'<span class="highlight">{query}</span>', post.title, flags=re.IGNORECASE))
+            post.post_content = mark_safe(re.sub(re.escape(query), f'<span class="highlight">{query}</span>', post.post_content, flags=re.IGNORECASE))
+
     else:
         queryset = Post.objects.none() 
 
@@ -40,10 +47,6 @@ def post_list(request):
     View to display all the posts (latest first)
     """
     queryset = Post.objects.filter(status=1).annotate(comment_count=Count('comments')).order_by('-created_on')
-
-    # Adds comment count to each post
-    for post in queryset:
-        post.comment_count = post.comments.count()
 
     paginator = Paginator(queryset, 5) 
     page_number = request.GET.get('page')

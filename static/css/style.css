@@ -51,6 +51,10 @@ body {
     background-color: var(--white) !important;
 }
 
+.highlight {
+    background-color: var(--yellow);
+}
+
 /* Main -------------------------------------------------------------------> */
 
 .post-link {
