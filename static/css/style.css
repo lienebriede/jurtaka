@@ -47,6 +47,10 @@ body {
     text-transform: uppercase;
 }
 
+.search-bar {
+    background-color: var(--white) !important;
+}
+
 /* Main -------------------------------------------------------------------> */
 
 .post-link {

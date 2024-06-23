@@ -3,8 +3,30 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Q
 from .models import Post, Comment, Like
 from .forms import CommentForm, PostForm
+
+def search_results(request):
+    """
+    Display posts filtered by search query
+    """
+    query = request.GET.get('q')
+    if query:
+        queryset = Post.objects.filter(
+            Q(title__icontains=query) | Q(post_content__icontains=query), 
+            status=1
+        ).order_by('-created_on')
+    
+    else:
+        queryset = Post.objects.none() 
+
+    context = {
+        'query': query,
+        'posts': queryset,
+    }
+
+    return render(request, "main_forum/search_results.html", context)
 
 def post_list(request):
     """
@@ -16,14 +38,12 @@ def post_list(request):
     for post in queryset:
         post.comment_count = post.comments.count()
 
-        
     paginator = Paginator(queryset, 5) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     is_paginated = page_obj.has_other_pages()
 
     context = {
-        'posts': queryset,
         'page_obj': page_obj,
         'posts': page_obj.object_list,
         'is_paginated': is_paginated,

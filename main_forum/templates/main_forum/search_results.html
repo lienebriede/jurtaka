@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Post list display -->
+{% for post in posts %}
+<div class="row m-3">
+    <div class="col-6 col-md-4">
+        <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
+        <p>{{post.created_on}}</p>
+    </div>
+    <div class="col-6 col-md-8">
+        <!-- Link to an individual post display-->
+        <a href="{% url 'post_detail' post.slug %}" class="post-link">
+            <p><strong>{{ post.title }}</strong></p>
+            <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
+            </p>
+        </a>
+        <div class="row mb-2">
+            <!-- Like count -->
+            <div class="col-5 col-md-2 col-lg-1">
+                <span>
+                    <i class="fa-regular fa-thumbs-up"></i> <span class="count">{{ post.likes.count | safe }}</span>
+                </span>
+            </div>
+            <!-- Comment count -->
+            <div class="col-5 col-md-2 col-lg-1">
+                <span>
+                    <i class="fa-regular fa-comment"></i> <span class="count">{{ post.comment_count | safe}}</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<hr>
+{% endfor %}
+
+{% endblock %}
