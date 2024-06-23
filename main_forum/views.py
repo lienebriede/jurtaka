@@ -21,9 +21,16 @@ def search_results(request):
     else:
         queryset = Post.objects.none() 
 
+    paginator = Paginator(queryset, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    is_paginated = page_obj.has_other_pages()
+
     context = {
         'query': query,
-        'posts': queryset,
+        'page_obj': page_obj,
+        'posts': page_obj.object_list,
+        'is_paginated': is_paginated,
     }
 
     return render(request, "main_forum/search_results.html", context)
