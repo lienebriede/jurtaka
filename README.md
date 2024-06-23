@@ -125,6 +125,16 @@ When an edited post was submitted, the post_detail view could not retrieve the p
 
 This makes it possible for users to view details of their edited posts while awaiting admin approval. Also in this way the original slug is used in the redirection, avoiding conflicts related to URLs.
 
+### Comment Count Issue on Search Results Page
+
+Comments were not counted on the search results page.
+
+**Reason:** Comments were not being counted on the search results page due to the way Django manages relations between the Post, Comment and Like models using foreign keys. On the post_list page counts were accessed using ```post.comments.count()``` and ```post.likes.count()```
+However, on search_results page Django did not automatically count comments for each post. 
+
+**Fix:** This was fixed by importing 'Q' class from django.db.models and adding ```annotate(comment_count=Count('comments'))``` to the queryset in the search_results view. This annotation instructs Django to calculate and include the comment count for each post.
+
+
 -	Deployment
 -	Credits
 

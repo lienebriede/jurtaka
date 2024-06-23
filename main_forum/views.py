@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
-from django.db.models import Q
+from django.db.models import Q, Count
 from .models import Post, Comment, Like
 from .forms import CommentForm, PostForm
 
@@ -16,7 +16,7 @@ def search_results(request):
         queryset = Post.objects.filter(
             Q(title__icontains=query) | Q(post_content__icontains=query), 
             status=1
-        ).order_by('-created_on')
+        ).annotate(comment_count=Count('comments')).order_by('-created_on')
     
     else:
         queryset = Post.objects.none() 
@@ -39,7 +39,7 @@ def post_list(request):
     """
     View to display all the posts (latest first)
     """
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Post.objects.filter(status=1).annotate(comment_count=Count('comments')).order_by('-created_on')
 
     # Adds comment count to each post
     for post in queryset:
