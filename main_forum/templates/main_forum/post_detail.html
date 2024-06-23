@@ -46,6 +46,13 @@
         <div class="col-12">
             <hr>
         </div>
+        <!-- Likers -->
+        {% if likers %}
+        <p>Liked by: {% for like in likers %}
+            <span><strong>{{ like.user.username }}</strong>{% if not forloop.last %}, {% endif %}</span>
+            {% endfor %}
+        </p>
+        {% endif %}
     </div>
     <!-- Buttons for editing post for post author only -->
     <div class="row m-3 pb-5 justify-content-center">
