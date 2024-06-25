@@ -5,6 +5,15 @@ from django.utils.text import slugify
 # Variable for post status
 STATUS = ((0, "Pending"), (1, "Approved"), (2, "Deleted"), (3, "Update Pending"))
 
+class Category(models.Model):
+    """
+    Model for categories
+    """
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     """
     Model for posts
@@ -19,6 +28,7 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     has_been_edited = models.BooleanField(default=False)
+    categories = models.ManyToManyField(Category, related_name='posts')
 
     class Meta:
         ordering = ['-created_on']

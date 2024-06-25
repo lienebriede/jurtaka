@@ -1,4 +1,4 @@
-from .models import Comment, Post
+from .models import Comment, Post, Category
 from django import forms
 
 
@@ -20,7 +20,7 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'post_content')
+        fields = ('title', 'post_content', 'categories')
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': "form-control",
