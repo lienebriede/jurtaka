@@ -1,7 +1,6 @@
 /* Google fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-
 /* Colors ----------------------------------------------------------------> */
 
 :root {
@@ -9,12 +8,11 @@
     --font-color: #3a3b3c;
     --dark-grey: #374955;
     --light-grey: #f4f7f7b9;
+    --placeholder-grey: #9a9e9e;
     --yellow: #f9f871;
-    --trans-yellow: #f9f971c0;
     --pink: #de245c;
     --pink-hover: #bc093f;
 }
-
 
 /* General styles --------------------------------------------------------> */
 
@@ -34,7 +32,8 @@ body {
 
 /* Navbar -----------------------------------------------------------------> */
 
-.navbar {
+.navbar,
+.navbar .dropdown-menu {
     background-color: var(--dark-grey);
 }
 
@@ -42,17 +41,26 @@ body {
     color: var(--white);
 }
 
+.nav-link.active,
+.nav-link:hover,
+.dropdown-item:hover,
+.dropdown-item.active {
+    background-color: var(--yellow);
+    color: var(--font-color) !important;
+}
+
+.btn-primary.nav-link:hover,
+.btn-primary.nav-link.active {
+    color: var(--white) !important;
+}
+
 .nav-title {
     color: var(--light-grey);
     text-transform: uppercase;
 }
 
-.search-bar {
-    background-color: var(--white) !important;
-}
-
-.highlight {
-    background-color: var(--yellow);
+.nav-item i {
+    font-size: 16px;
 }
 
 /* Main -------------------------------------------------------------------> */
@@ -81,6 +89,10 @@ body {
 .btn-primary:hover {
     background-color: var(--pink-hover) !important;
     border-color: var(--pink-hover);
+}
+
+.highlight {
+    background-color: var(--yellow);
 }
 
 /* Comments and likes -----------------------------------------------------> */
@@ -114,6 +126,29 @@ body {
 
 .count {
     color: var(--font-color) !important;
+}
+
+/* Search bar --------------------------------------------------------------> */
+
+.search-bar {
+    background-color: var(--white) !important;
+}
+
+input.search-bar {
+    color: var(--font-color) !important;
+}
+
+input.search-bar::placeholder {
+    color: var(--placeholder-grey) !important;
+}
+
+#searchFormContainer.show {
+    display: flex !important;
+}
+
+#searchIcon {
+    border: none;
+    background: transparent;
 }
 
 /* Login, logout, signup ---------------------------------------------------> */
@@ -164,4 +199,28 @@ i {
 
 a {
     color: inherit;
+}
+
+/* Search bar and login btn -------------------------------------------------> */
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+
+    .login-btn {
+        width: 200px;
+    }
+
+    #searchFormContainer {
+        flex: 0 0 30%;
+    }
+}
+
+@media (min-width: 1440px) {
+
+    .login-btn {
+        width: 200px;
+    }
+
+    #searchFormContainer {
+        flex: 0 0 50%;
+    }
 }
