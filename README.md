@@ -144,6 +144,12 @@ However, on search_results page Django did not automatically count comments for 
 
 **Fix:** This was fixed by importing 'Q' class from django.db.models and adding ```annotate(comment_count=Count('comments'))``` to the queryset in the search_results view. This annotation instructs Django to calculate and include the comment count for each post.
 
+### UX Confusion with 'Back' Button
+
+Users can view individual posts either from the main home page of from the search results. On the individual post page, users can find a 'Back' button that brings them back to the home page. However, it was confusing when users opened an individual post from the search results, as the button should have brought them back to the search results page instead.
+
+**Fix:** This was easily fixed by adding the ```HTTP_REFERE``` header to the post_detail view and setting the ```{referer}``` variable to the post_detail template. This header indicates the URL of the page from which the user navigated and by using this in the 'Back' button the, the user is brought back to where they came from, whether it's the search results or the main post list, thus enhancing the user experience.
+
 
 -	Deployment
 -	Credits

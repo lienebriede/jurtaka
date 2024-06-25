@@ -13,7 +13,6 @@
     {% endif %}
 
     <!-- Post list display: either Latest or Top based on view_type -->
-    <h2>{% if view_type == 'latest' %} Ordered by Latest {% else %}Ordered by Top {% endif %}</h2>
     {% for post in posts %}
     <div class="row m-3">
         <div class="col-6 col-md-4">

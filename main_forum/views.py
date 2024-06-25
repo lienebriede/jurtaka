@@ -88,6 +88,9 @@ def post_detail(request, slug):
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.count()
     likers = post.likes.all()
+
+    # brings backt to last visited site
+    referer = request.META.get('HTTP_REFERER', None)
     
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
@@ -126,6 +129,7 @@ def post_detail(request, slug):
         "comment_form": comment_form,
         "is_liked": is_liked,
         "likers": likers,
+        "referer": referer,
         },
     )
 
