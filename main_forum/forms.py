@@ -18,6 +18,13 @@ class CommentForm(forms.ModelForm):
         }
 
 class PostForm(forms.ModelForm):
+    categories = forms.ModelMultipleChoiceField(
+        queryset=Category.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True,
+        label='Categories'
+    )
+    
     class Meta:
         model = Post
         fields = ('title', 'post_content', 'categories')

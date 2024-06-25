@@ -15,9 +15,19 @@
     <!-- Post list display: either Latest or Top based on view_type -->
     {% for post in posts %}
     <div class="row m-3">
-        <div class="col-6 col-md-4">
+        <div class="col-6 col-md-4 category">
             <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
             <p>{{post.created_on}}</p>
+            <!-- Display category  -->
+            {% for category in post.categories.all %}
+            {% if category.id == 1 %}
+            <i class="fas fa-person-hiking ms-2"></i>
+            {% elif category.id == 2 %}
+            <i class="fas fa-apple-whole ms-2"></i>
+            {% elif category.id == 3 %}
+            <i class="fas fa-campground ms-2"></i>
+            {% endif %}
+            {% endfor %}
         </div>
         <div class="col-6 col-md-8">
             <!-- Link to an individual post display-->

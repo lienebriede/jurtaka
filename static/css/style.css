@@ -12,6 +12,7 @@
     --yellow: #f9f871;
     --pink: #de245c;
     --pink-hover: #bc093f;
+    --light-cyan: #47f5e4;
 }
 
 /* General styles --------------------------------------------------------> */
@@ -126,6 +127,11 @@ body {
 
 .count {
     color: var(--font-color) !important;
+}
+
+.category>i {
+    color: var(--font-color);
+    font-size: 20px;
 }
 
 /* Search bar --------------------------------------------------------------> */
