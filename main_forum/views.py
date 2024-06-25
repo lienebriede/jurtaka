@@ -9,6 +9,7 @@ import re
 from .models import Post, Comment, Like
 from .forms import CommentForm, PostForm
 
+
 def search_results(request):
     """
     Display posts filtered by search query
@@ -42,11 +43,27 @@ def search_results(request):
 
     return render(request, "main_forum/search_results.html", context)
 
+
 def post_list(request):
     """
-    View to display all the posts (latest first)
+    View to display either latest or top posts
+    based on view_type.
+    Displays latest first by default
     """
-    queryset = Post.objects.filter(status=1).annotate(comment_count=Count('comments')).order_by('-created_on')
+
+    view_type = request.GET.get('view_type', 'latest')
+
+    if view_type == 'latest':
+        queryset = Post.objects.filter(status=1).annotate(
+            comment_count=Count('comments')).order_by('-created_on')
+    elif view_type == 'top': 
+        queryset = Post.objects.filter(status=1).annotate(
+            comment_count=Count('comments'), 
+            popularity=Count('likes') + Count('comments')
+        ).order_by('-popularity', '-created_on')
+    else:
+        queryset = Post.objects.filter(status=1).annotate(
+            comment_count=Count('comments')).order_by('-created_on')
 
     paginator = Paginator(queryset, 5) 
     page_number = request.GET.get('page')
@@ -60,6 +77,7 @@ def post_list(request):
     }
 
     return render(request, "main_forum/index.html", context)
+
 
 def post_detail(request, slug):
     """
@@ -110,6 +128,7 @@ def post_detail(request, slug):
         "likers": likers,
         },
     )
+
 
 def post_create(request):
     """
@@ -169,6 +188,7 @@ def post_edit(request, slug, post_id):
         },
     )
 
+
 @staff_member_required
 def approve_posts(request):
     """
@@ -193,6 +213,7 @@ def approve_posts(request):
         },
     )
 
+
 def post_delete(request, slug, post_id):
     """
     View to delete posts
@@ -205,3 +226,5 @@ def post_delete(request, slug, post_id):
         return redirect('home')
     
     return redirect('post_detail', slug=post.slug)
+
+

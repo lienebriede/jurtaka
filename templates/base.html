@@ -81,14 +81,15 @@
                         Forum
                     </li>
                     <li class="nav-item d-lg-none mt-4">
-                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="#">
+                        <a class="nav-link {% if view_type == 'top' %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}?view_type=top">
                             <span class="me-2"><i class="fa-solid fa-star"></i></span>
                             <span>Top</span>
                         </a>
                     </li>
                     <li class="nav-item d-lg-none mt-2">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}">
+                        <a class="nav-link {% if view_type == 'latest' %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}?view_type=latest">
                             <span class="me-2"><i class="fa-solid fa-clock"></i>
                             </span>
                             <span>Latest</span>
@@ -140,14 +141,14 @@
                             Forum
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="forumDropdown">
-                            <li><a class="dropdown-item mt-2 text-center {% if request.path == '/' %}active{% endif %}"
-                                    aria-current="page" href="#">
+                            <li><a class="dropdown-item mt-2 text-center {% if view_type == 'top' %}active{% endif %}"
+                                    aria-current="page" href="{% url 'home' %}?view_type=top">
                                     <span class="me-2"><i class="fa-solid fa-star"></i></span>
                                     <span>Top</span>
                                 </a>
                             </li>
-                            <li><a class="dropdown-item mt-2 text-center {% if request.path == home_url %}active{% endif %}"
-                                    aria-current="page" href="{% url 'home' %}">
+                            <li><a class="dropdown-item mt-2 text-center {% if view_type == 'latest' %}active{% endif %}"
+                                    aria-current="page" href="{% url 'home' %}?view_type=latest">
                                     <span class="me-2"><i class="fa-solid fa-clock"></i></span>
                                     <span>Latest</span></a>
                             </li>
