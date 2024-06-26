@@ -88,6 +88,8 @@ Some changes were implemented to the database schemas.
 - The "Post" model has been implemented with a field **'has_been_edited'** Boolean field to differentiate between original and edited posts. This addition enables to display the "updated_on" date only for posts that have been edited.  
 
 - The "Contact" model has been implemented with an **email** field to make it possible for unregistered users to provide their contact information. Setting 'null=True, blank=True' allows this field to be optional, allowing both registered and unregistered users to submit the form. 
+
+- The **reason** field has been removed from the "Contact" model. Since the contact form already includes a **subject** field, having two separate fields for subject and reason is redundant for submitting contact inquiries.
  	
 # Agile Methodology:
 

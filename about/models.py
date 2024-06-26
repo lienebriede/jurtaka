@@ -12,6 +12,12 @@ class About(models.Model):
 
 
 class Contact(models.Model):
+    STATUS_CHOICES = (
+        ('Pending', 'Pending'),
+        ('Replied', 'Replied'),
+        ('Closed', 'Closed'),
+    )
+
     SUBJECT_CHOICES = (
     ('General Inquiry', 'General Inquiry'),
     ('Technical Issue', 'Technical Issue'),
@@ -25,7 +31,8 @@ class Contact(models.Model):
     message = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     subject = models.CharField(max_length=20, choices=SUBJECT_CHOICES, default='General Inquiry')
-
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Pending')
+    
     def __str__(self):
         if self.user:
             return f"Message from {self.user.username}"

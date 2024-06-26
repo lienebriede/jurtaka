@@ -8,5 +8,6 @@ class PostAdmin(SummernoteModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(SummernoteModelAdmin):
-    list_display = ('user', 'email', 'subject', 'created_on',)
-    list_filter = ('subject', 'created_on',)
+    list_display = ('user', 'email', 'subject', 'created_on', 'status')
+    list_filter = ('status', 'subject', 'created_on',)
+    search_fields = ('user__username', 'message')
