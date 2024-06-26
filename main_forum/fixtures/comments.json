@@ -1,0 +1,134 @@
+[
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 3,
+            "author": 2,
+            "comment_content": "Congrats! Keep the updates coming! 🌟 #AdventureTime",
+            "created_on": "2024-05-15T16:30:00.000Z",
+            "updated_on": "2024-05-15T16:30:00.000Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 3,
+            "author": 3,
+            "comment_content": "Curonian Spit to Klaipeda? I'd love to hear more about it. How did you come across this part of the trail?",
+            "created_on": "2024-05-15T17:45:00.000Z",
+            "updated_on": "2024-05-15T17:45:00.000Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 3,
+            "author": 1,
+            "comment_content": "Ah, the stretch from the Curonian Spit to Klaipeda is a stunning section of the Jurtaka trail. It's a narrow strip of land separating the Curonian Lagoon from the Baltic Sea, known for its unique sand dunes and picturesque landscapes. The trail offers breathtaking views as it winds through the sandy terrain, and then there is Klaipeda, a charming port city, marking the end of this leg. I stumbled upon this part of the trail while researching Jurtaka trail and was instantly drawn to its natural beauty and adventure potential. It definitely exceeded my expectations!",
+            "created_on": "2024-05-15T20:45:00.000Z",
+            "updated_on": "2024-05-15T20:45:00.000Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 3,
+            "author": 4,
+            "comment_content": "Wow, your day sounds absolutely amazing! 🤩 Can't wait to hear about your next days! 🌊🌴",
+            "created_on": "2024-05-15T19:00:00.000Z",
+            "updated_on": "2024-05-15T19:00:00.000Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 3,
+            "author": 6,
+            "comment_content": "Awesome! Definitely need to plan a hike soon. Keep the awesome updates coming! 🚀",
+            "created_on": "2024-05-15T20:15:00.000Z",
+            "updated_on": "2024-05-15T20:15:00.000Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 3,
+            "author": 7,
+            "comment_content": "Thanks for sharing! That sounds absolutely breathtaking. I've always been fascinated by coastal landscapes, and the combination of sand dunes and sea views must be truly spectacular. I'll definitely have to add this stretch to my hiking bucket list. Thanks for the inspiration!",
+            "created_on": "2024-05-15T21:30:00.000Z",
+            "updated_on": "2024-05-15T21:30:00.000Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 4,
+            "author": 1,
+            "comment_content": "I'm really sorry to hear you're having such a tough time. Dealing with bad weather on a hike can be really challenging. My advice would be to take it one step at a time and make sure you’re staying safe. If the weather doesn’t improve, maybe take a break and wait it out if you can. Sometimes it's better to rest and regroup. And remember, it's okay to change plans if it means staying safe. Hang in there!",
+            "created_on": "2024-05-06T14:45:12.789Z",
+            "updated_on": "2024-05-06T14:45:12.789Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 4,
+            "author": 4,
+            "comment_content": "That sounds rough, I'm sorry to hear you're struggling with the weather. How much time do you have for the hike? Do you think you could wait a few days for the weather to improve? Sometimes just a bit of patience can make all the difference. Stay safe out there!",
+            "created_on": "2024-05-07T14:45:12.789Z",
+            "updated_on": "2024-05-07T14:45:12.789Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 4,
+            "author": 7,
+            "comment_content": "I just checked the weather forecast, and it seems like it's going to stay rainy for the next few days. I'm really sorry to hear you're dealing with such tough conditions. Maybe it's worth considering taking a break until the weather improves? Stay safe out there!",
+            "created_on": "2024-05-08T14:45:12.789Z",
+            "updated_on": "2024-05-08T14:45:12.789Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 4,
+            "author": 2,
+            "comment_content": "I've decided to take a break and stay in the nearby town of Liepaja for a couple of days. It's a beautiful coastal town with a rich history and plenty to explore. There are charming cafes, a stunning beach, and even a historic military port area. Plus, it'll be nice to rest up and recharge. In two days, I'll head back and continue the hike, hopefully with better weather. Thanks to everybody for the encouragement and support during this challenging time. It means a lot to have such a supportive community. Looking forward to getting back on the trail soon!",
+            "created_on": "2024-05-09T22:45:12.789Z",
+            "updated_on": "2024-05-09T22:45:12.789Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 7,
+            "author": 2,
+            "comment_content": "Thanks for sharing these tips! I'm planning my own Jurtaka hike, so this advice is super helpful.",
+            "created_on": "2024-05-25T09:46:21.678Z",
+            "updated_on": "2024-05-25T09:46:21.678Z"
+        }
+    },
+    {
+        "model": "main_forum.comment",
+        "pk": null,
+        "fields": {
+            "post": 7,
+            "author": 7,
+            "comment_content": "I've hiked this part of Jurtaka myself, and I can totally relate to the struggle of finding food along this stretch!",
+            "created_on": "2024-05-25T11:46:21.678Z",
+            "updated_on": "2024-05-25T11:46:21.678Z"
+        }
+    }
+]

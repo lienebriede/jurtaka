@@ -34,7 +34,7 @@ class Post(models.Model):
         ordering = ['-created_on']
     
     def __str__(self):
-        return f"{self.title} by {self.author}"
+        return f"{self.title} by {self.author}{self.id}"
     
     # returns only two first lines of post text
     def get_content_preview(self):
