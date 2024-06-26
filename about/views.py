@@ -21,12 +21,12 @@ def contact_page(request):
     View to the contact form
     """
     if request.method == 'POST':
-        contact_form = ContactForm(data=request.POST)
+        contact_form = ContactForm(request.POST, user=request.user)
         if contact_form.is_valid():
             contact_form.save()
             return redirect('home')
     else:
-        contact_form = ContactForm()
+        contact_form = ContactForm(user=request.user)
     
     return render(
         request, 
