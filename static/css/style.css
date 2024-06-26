@@ -160,7 +160,6 @@ input.search-bar::placeholder {
 /* Login, logout, signup ---------------------------------------------------> */
 
 .signup-link {
-    color: var(--pink);
     text-decoration: none;
 }
 

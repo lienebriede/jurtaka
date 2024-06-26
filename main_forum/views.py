@@ -111,7 +111,10 @@ def post_detail(request, slug):
                 "Thanks for commenting!"
             )
 
-    comment_form = CommentForm()
+            comment_count = post.comments.count()
+            return redirect('post_detail', slug=slug)
+    else:
+        comment_form = CommentForm()
 
     is_liked = False
 

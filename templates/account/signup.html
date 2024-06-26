@@ -28,8 +28,9 @@
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <div class="mt-4">
-          <p>{% blocktrans %}Already have an account? <a class="link signup-link" href="{{ login_url }}">Log
-              in</a>{% endblocktrans %}</p>
+          <p>{% blocktrans %}Already have an account? <a class="link signup-link pink-text"
+              href="{{ login_url }}"><strong>Log
+                in</strong></a>{% endblocktrans %}</p>
         </div>
         <div class="d-grid gap-2 col-4 mx-auto pt-5 pb-3"><button class="btn btn-primary center" type="submit">Sign
             up</button>

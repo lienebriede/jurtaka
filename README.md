@@ -150,6 +150,15 @@ Users can view individual posts either from the main home page of from the searc
 
 **Fix:** This was easily fixed by adding the ```HTTP_REFERE``` header to the post_detail view and setting the ```{referer}``` variable to the post_detail template. This header indicates the URL of the page from which the user navigated and by using this in the 'Back' button the, the user is brought back to where they came from, whether it's the search results or the main post list, thus enhancing the user experience.
 
+### Comment Count Not Updating After Adding Comment
+
+The code did not update the comment_count variable after saving a new comment. 
+
+**Reason:**Even though a new comment was added succesfully, the count displayed in the template ```{{ comment_count }}``` remained the same until the page was refreshed. This happened because the variable was not recalculated and rendered in the template.
+
+**Fix:** This was fixed by adding changes to post_detail view:
+```comment_count = post.comments.count()``` was added after saving a new comment. This insures that the comment count reflexts the current number of comments after a new comment is added. 
+The view was adjusted with ```return redirect('post_detail', slug=slug)``` This ensures that the page is updated with the new comment count without requiring a manual refresh.
 
 -	Deployment
 -	Credits
