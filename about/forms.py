@@ -5,10 +5,13 @@ from .models import Contact
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['user', 'email', 'message']
+        fields = ['user', 'email', 'subject', 'message']
         widgets = {
             'user': forms.HiddenInput(),
             'email': forms.TextInput(attrs={
+                'class': "form-control",
+            }),
+            'subject': forms.Select(attrs={
                 'class': "form-control",
             }),
             'message': forms.Textarea(attrs={
