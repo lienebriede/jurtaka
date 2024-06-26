@@ -6,7 +6,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q, Count
 from django.utils.html import mark_safe
 import re
-from .models import Post, Comment, Like
+from .models import Post, Comment, Like, Category
 from .forms import CommentForm, PostForm
 
 
@@ -46,13 +46,19 @@ def search_results(request):
 
 def post_list(request):
     """
-    View to display either latest or top posts
-    based on view_type.
+    View to display either latest, top posts or posts by category
     Displays latest first by default
     """
 
     view_type = request.GET.get('view_type', 'latest')
+    category_id = request.GET.get('category')
+    
+    queryset = Post.objects.filter(status=1)
 
+    if category_id:
+        queryset = Post.objects.filter(categories__id=category_id)
+        view_type = None
+        
     if view_type == 'latest':
         queryset = Post.objects.filter(status=1).annotate(
             comment_count=Count('comments')).order_by('-created_on')
@@ -60,20 +66,21 @@ def post_list(request):
         queryset = Post.objects.filter(status=1).annotate(
             comment_count=Count('comments'), 
             popularity=Count('likes') + Count('comments')
-        ).order_by('-popularity', '-created_on')
-    else:
-        queryset = Post.objects.filter(status=1).annotate(
-            comment_count=Count('comments')).order_by('-created_on')
-
+            ).order_by('-popularity', '-created_on')
+     
     paginator = Paginator(queryset, 5) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     is_paginated = page_obj.has_other_pages()
 
+    categories = Category.objects.all()
+
     context = {
         'page_obj': page_obj,
         'posts': page_obj.object_list,
         'is_paginated': is_paginated,
+        'view_type': view_type,
+        'current_category': category_id,
     }
 
     return render(request, "main_forum/index.html", context)
