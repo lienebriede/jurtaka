@@ -230,12 +230,13 @@ def approve_posts(request):
 
 def post_delete(request, slug, post_id):
     """
-    View to delete posts
+    View to " soft delete" posts
     """
     post = get_object_or_404(Post, slug=slug, id=post_id)
     
     if request.method == "POST" and post.author == request.user:
-        post.delete()
+        post.status = 2
+        post.save()
         messages.success(request, 'Your post has been deleted successfully!')
         return redirect('home')
     
