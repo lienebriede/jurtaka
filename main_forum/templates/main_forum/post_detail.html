@@ -6,10 +6,6 @@
 
 <!-- Individual post display -->
 <div class="container-white mx-lg-5 mb-3 pt-4">
-    <!-- Go back arrow -->
-    <a href="{% if referer %}{{ referer }}{% else %}{% url 'home' %}{% endif %}" aria-label="go back home" class="ps-4">
-        <i class="fa-solid fa-arrow-left"></i>
-    </a>
     <div class="row m-3">
         <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
         <p>{{post.created_on}}</p>
@@ -65,7 +61,7 @@
                 class="btn btn-secondary btn-block w-100">Edit
                 post</a>
             {% elif post.status == 3 %}
-            <button class="btn btn-secondary btn-block w-100" disabled>Edit post</button>
+            <button id="editButton" class="btn btn-secondary btn-block w-100" disabled>Edit post</button>
             {% endif %}
         </div>
         <div class="col-10 col-lg-6">

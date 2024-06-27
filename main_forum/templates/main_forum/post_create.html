@@ -6,6 +6,10 @@
 
 <!-- Create a new post -->
 <div class="container container-white col-md-8 p-4">
+    <!-- Exit button -->
+    <a href="{% url 'home' %}" aria-label="go back home">
+        <i class="fa-solid fa-xmark float-end"></i>
+    </a>
     <h2>New post</h2>
     <form method="post" class="mt-4">
         {% csrf_token %}

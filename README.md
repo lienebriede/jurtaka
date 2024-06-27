@@ -104,7 +104,7 @@ Some changes were implemented to the database schemas.
 
 ## Bugs and Fixes
 
-### NoReverseMatch Error on Post Approval
+1. NoReverseMatch Error on Post Approval
 
 After adding a post, users encountered a "NoReverseMatch" error.
 
@@ -125,7 +125,7 @@ def save(self, *args, **kwargs):
 
 This overrides the 'save' method in the model. First, it checks if a slug already exists, if not, it generates one.  In this way the title is converted to a slug and each post has a unique identifier in its URL.
 
-### 404 Error on post_detail View for Posts Awaiting Approval
+2. 404 Error on post_detail View for Posts Awaiting Approval
 
 When an edited post was submitted, the post_detail view could not retrieve the post, causing a 404 error. 
 
@@ -137,7 +137,7 @@ When an edited post was submitted, the post_detail view could not retrieve the p
 
 This makes it possible for users to view details of their edited posts while awaiting admin approval. Also in this way the original slug is used in the redirection, avoiding conflicts related to URLs.
 
-### Comment Count Issue on Search Results Page
+3. Comment Count Issue on Search Results Page
 
 Comments were not counted on the search results page.
 
@@ -146,27 +146,30 @@ However, on search_results page Django did not automatically count comments for 
 
 **Fix:** This was fixed by importing 'Q' class from django.db.models and adding ```annotate(comment_count=Count('comments'))``` to the queryset in the search_results view. This annotation instructs Django to calculate and include the comment count for each post.
 
-### UX Confusion with 'Back' Button
+4. UX Confusion with 'Back' Button
 
-Users can view individual posts either from the main home page of from the search results. On the individual post page, users can find a 'Back' button that brings them back to the home page. However, it was confusing when users opened an individual post from the search results, as the button should have brought them back to the search results page instead.
+Initially, the individual post page featured a 'Back' button intended to enhance user navigation. Users could view individual posts either from the main home page or from the search results. The 'Back' button was designed to bring them back to the home page or the search results, respectively. This was accomplished by adding the ```HTTP_REFERER``` header to the post_detail view and setting the referer variable in the post_detail template. The ```HTTP_REFERER``` header indicates the URL of the page from which the user navigated, ensuring that the 'Back' button would bring users back to their previous page, thus enhancing the user experience.
 
-**Fix:** This was easily fixed by adding the ```HTTP_REFERE``` header to the post_detail view and setting the ```{referer}``` variable to the post_detail template. This header indicates the URL of the page from which the user navigated and by using this in the 'Back' button the, the user is brought back to where they came from, whether it's the search results or the main post list, thus enhancing the user experience.
+However, the implementation of this feature led to unintended user experience issues. When users submitted comments or edited their posts, the 'Back' button did not function as expected. Instead of returning users to their previous page, it often resulted in confusion, as the 'Back' button would not work. 
 
-### Comment Count Not Updating After Adding Comment
+To avoid this confusion the 'Back' button was removed from the post_detail template. The remaining buttons are:
+'Exit' button on account related templates and 'Back' button on the post_create template.
+
+5. Comment Count Not Updating After Adding Comment
 
 The code did not update the comment_count variable after saving a new comment. 
 
-**Reason:**Even though a new comment was added succesfully, the count displayed in the template ```{{ comment_count }}``` remained the same until the page was refreshed. This happened because the variable was not recalculated and rendered in the template.
+**Reason:** Even though a new comment was added succesfully, the count displayed in the template ```{{ comment_count }}``` remained the same until the page was refreshed. This happened because the variable was not recalculated and rendered in the template.
 
 **Fix:** This was fixed by adding changes to post_detail view:
 ```comment_count = post.comments.count()``` was added after saving a new comment. This insures that the comment count reflexts the current number of comments after a new comment is added. 
 The view was adjusted with ```return redirect('post_detail', slug=slug)``` This ensures that the page is updated with the new comment count without requiring a manual refresh.
 
-### Conflict in Form Submissions for Like/Unlike and Comment
+6. Conflict in Form Submissions for Like/Unlike and Comment
 
 When users liked or unliked a post, a "required field" message appeared under the comment form.
 
-**Reason:**Both the 'like' and 'comment' forms were submitting to the same post_detail URL. This caused confusion because the server expected data from both forms simultaneously, and this lead to the error. 
+**Reason:** Both the 'like' and 'comment' forms were submitting to the same post_detail URL. This caused confusion because the server expected data from both forms simultaneously, and this lead to the error. 
 
 **Fix:** This was fixed by adding a separate 'like_post' URL for handling likes. A hidden input field was added to the form, which now captures the current URL, allowing the server to redirect users back to the original post detail page after processing the like action. This separation of handling likes and comments prevents conflicts between the submissions.
 

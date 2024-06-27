@@ -60,10 +60,6 @@ body {
     text-transform: uppercase;
 }
 
-.nav-item i {
-    font-size: 16px;
-}
-
 /* Main -------------------------------------------------------------------> */
 
 .post-link {
@@ -96,10 +92,6 @@ body {
     background-color: var(--yellow);
 }
 
-.post-display i {
-    font-size: 120%;
-}
-
 /* Comments and likes -----------------------------------------------------> */
 
 .comment-container,
@@ -112,12 +104,6 @@ body {
 .custom-placeholder::placeholder {
     vertical-align: top;
     padding-top: 5px;
-}
-
-.fa-comment,
-.fa-thumbs-up {
-    font-size: 18px;
-    color: var(--font-color);
 }
 
 .btn-like {
@@ -137,10 +123,6 @@ body {
 
 .search-bar {
     background-color: var(--white) !important;
-}
-
-.fa-search {
-    font-size: 24px;
 }
 
 input.search-bar {
@@ -174,6 +156,29 @@ input.search-bar::placeholder {
     color: var(--pink);
 }
 
+/* Icons ------------------------------------------------------------------> */
+
+.nav-item i {
+    font-size: 16px;
+}
+
+.fa-comment,
+.fa-thumbs-up,
+.post-display i {
+    font-size: 18px;
+    color: var(--font-color);
+}
+
+.fa-search,
+.fa-xmark,
+.fa-arrow-left {
+    font-size: 24px;
+}
+
+footer i {
+    font-size: 150%;
+}
+
 /* Pagination -------------------------------------------------------------> */
 
 .pagination>li>a {
@@ -197,10 +202,6 @@ input.search-bar::placeholder {
     background-color: var(--yellow);
 }
 
-footer i {
-    font-size: 150%;
-}
-
 .copy {
     font-size: 100%;
 }
@@ -213,22 +214,22 @@ a {
 
 @media (min-width: 1024px) and (max-width: 1440px) {
 
-    .login-btn {
-        width: 200px;
+    .nav-login {
+        width: 200px !important;
     }
 
     #searchFormContainer {
-        flex: 0 0 30%;
+        flex: 0 0 30% !important;
     }
 }
 
 @media (min-width: 1440px) {
 
-    .login-btn {
-        width: 200px;
+    .nav-login {
+        width: 200px !important;
     }
 
     #searchFormContainer {
-        flex: 0 0 50%;
+        flex: 0 0 50% !important;
     }
 }
