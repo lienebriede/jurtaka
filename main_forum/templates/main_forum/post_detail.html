@@ -19,7 +19,6 @@
         <p class="text-secondary pt-3">Updated on {{ post.updated_on }}</p>
         {% endif %}
     </div>
-
     <!-- Likes and comments section -->
     <div class="row m-3">
         <!-- Like button and count -->
@@ -55,10 +54,10 @@
         {% endif %}
     </div>
     <!-- Buttons for editing post for post author only -->
+    {% if user.is_authenticated and post.author == user %}
     <div class="row m-3 pb-5 justify-content-center">
         <div class="col-10 col-lg-6 mb-2 mb-lg-0">
             <!-- Edit button and link to edit posts -->
-            {% if user.is_authenticated and post.author == user %}
             {% if post.status != 3 %}
             <a href="{% url 'post_edit' slug=post.slug post_id=post.id %}"
                 class="btn btn-secondary btn-block w-100">Edit
@@ -75,15 +74,13 @@
                 <button type="button" class="btn btn-danger btn-block w-100" onclick="confirmDelete()">Delete
                     Post</button>
             </form>
-            {% endif %}
         </div>
     </div>
-
-
+    {% endif %}
     <!-- Add comment -->
     {% if user.is_authenticated %}
     {% if post.status != 3 %}
-    <div class="row m-3">
+    <div class="row m-3 col-sm-10 mx-auto">
         <form id="commentForm" method="post" class="form-inline">
             {% csrf_token %}
             {{ comment_form | crispy }}
@@ -105,11 +102,10 @@
                 </a>to comment!</strong></p>
     </div>
     {% endif %}
-
     <!-- Comments -->
     <div class="row m-3">
         {% for comment in comments %}
-        <div class="comment-container my-3">
+        <div class="comment-container my-3 col-sm-10 mx-auto">
             <div class="pt-3">
                 <p>
                     <span><strong>{{ comment.author }}</strong></span> on {{ comment.created_on }}
@@ -125,5 +121,7 @@
 {% endblock %}
 
 {% block extras %}
+
 <script src="{% static 'js/comments.js' %}"></script>
+
 {% endblock %}

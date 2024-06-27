@@ -96,6 +96,10 @@ body {
     background-color: var(--yellow);
 }
 
+.post-display i {
+    font-size: 120%;
+}
+
 /* Comments and likes -----------------------------------------------------> */
 
 .comment-container,
@@ -127,11 +131,6 @@ body {
 
 .count {
     color: var(--font-color) !important;
-}
-
-.category>i {
-    color: var(--font-color);
-    font-size: 20px;
 }
 
 /* Search bar --------------------------------------------------------------> */
@@ -194,7 +193,7 @@ input.search-bar::placeholder {
     background-color: var(--yellow);
 }
 
-i {
+footer i {
     font-size: 150%;
 }
 

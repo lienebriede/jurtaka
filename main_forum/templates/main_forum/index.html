@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
 <div class="container-fluid">
     <!-- Create a post section -->
     {% if user.is_authenticated %}
-    <div class="row add-post-container border mx-3 mb-5">
+    <div class="row add-post-container border mx-1 mx-sm-3 mb-5">
         <a href=" {% url 'post_create' %}" class="text-decoration-none">
             <p>Add a post!</p>
         </a>
@@ -14,37 +16,37 @@
 
     <!-- Post list display: either Latest or Top based on view_type -->
     {% for post in posts %}
-    <div class="row m-3">
-        <div class="col-6 col-md-4 category">
+    <div class="row my-3 m-sm-3 post-display">
+        <div class="col-5 col-md-4">
             <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
             <p>{{post.created_on}}</p>
-            <!-- Display category  -->
-            {% for category in post.categories.all %}
-            {% if category.id == 1 %}
-            <i class="fas fa-person-hiking ms-2"></i>
-            {% elif category.id == 2 %}
-            <i class="fas fa-apple-whole ms-2"></i>
-            {% elif category.id == 3 %}
-            <i class="fas fa-campground ms-2"></i>
-            {% endif %}
-            {% endfor %}
         </div>
-        <div class="col-6 col-md-8">
+        <div class="col-7 col-md-8">
             <!-- Link to an individual post display-->
             <a href="{% url 'post_detail' post.slug %}" class="post-link">
                 <p><strong>{{ post.title }}</strong></p>
+                <!-- Display category  -->
+                {% for category in post.categories.all %}
+                {% if category.id == 1 %}
+                <i class="fas fa-person-hiking ms-2"></i>
+                {% elif category.id == 2 %}
+                <i class="fas fa-apple-whole ms-2"></i>
+                {% elif category.id == 3 %}
+                <i class="fas fa-campground ms-2"></i>
+                {% endif %}
+                {% endfor %}
                 <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
                 </p>
             </a>
             <div class="row mb-2">
                 <!-- Like count -->
-                <div class="col-5 col-md-2 col-lg-1">
+                <div class="col-5 col-md-2 col-lg-2">
                     <span>
                         <i class="fa-regular fa-thumbs-up"></i> <span class="count">{{ post.likes.count | safe }}</span>
                     </span>
                 </div>
                 <!-- Comment count -->
-                <div class="col-5 col-md-2 col-lg-1">
+                <div class="col-5 col-md-2 col-lg-2">
                     <span>
                         <i class="fa-regular fa-comment"></i> <span class="count">{{ post.comment_count | safe}}</span>
                     </span>
@@ -108,7 +110,7 @@
 <!-- Login message -->
 {% block login_message %}
 
-<div class="row ms-3 me-3 pt-3">
+<div class="row mx-1 mx-sm-3 pt-3">
     {% if user.is_authenticated %}
     <p><strong>Welcome to Jurtaka Hiking Forum! You are logged in as
             <span class="pink-text">{{ user }}</span></strong>
