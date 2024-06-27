@@ -24,8 +24,10 @@
         <!-- Like button and count -->
         <div class="col-4 col-md-2 col-lg-1">
             <span class="like">
-                <form method="post" action="{% url 'post_detail' post.slug %}">
+                <form method="post" action="{% url 'like_post' post.slug %}">
                     {% csrf_token %}
+                    <!-- Hidden input field to store the current URL -->
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     <button type="submit" name="like" class="btn-like">
                         {% if is_liked %}
                         <i class="fa-solid fa-thumbs-up btn-liked"></i>
@@ -81,7 +83,7 @@
     {% if user.is_authenticated %}
     {% if post.status != 3 %}
     <div class="row m-3 col-sm-10 mx-auto">
-        <form id="commentForm" method="post" class="form-inline">
+        <form id="commentForm" method="post" action="{% url 'post_detail' post.slug %}" class="form-inline">
             {% csrf_token %}
             {{ comment_form | crispy }}
             <div class="row justify-content-center">
@@ -98,7 +100,8 @@
     {% endif %}
     {% else %}
     <div class="row m-3">
-        <p><strong>You are not logged in. Please <a class="link signup-link" href="{% url 'account_login' %}">log in
+        <p><strong>You are not logged in. Please <a class="link signup-link pink-text"
+                    href="{% url 'account_login' %}">log in
                 </a>to comment!</strong></p>
     </div>
     {% endif %}

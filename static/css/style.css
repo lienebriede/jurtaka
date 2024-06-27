@@ -139,6 +139,10 @@ body {
     background-color: var(--white) !important;
 }
 
+.fa-search {
+    font-size: 24px;
+}
+
 input.search-bar {
     color: var(--font-color) !important;
 }

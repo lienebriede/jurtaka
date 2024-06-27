@@ -121,14 +121,6 @@ def post_detail(request, slug):
     if request.user.is_authenticated:
         is_liked = Like.objects.filter(post=post, user=request.user).exists()
 
-        if 'like' in request.POST:
-            if is_liked:
-                post.likes.filter(user=request.user).delete()
-                is_liked = False
-            else:
-                Like.objects.create(post=post, user=request.user)
-                is_liked = True
-
     return render(
         request,
         "main_forum/post_detail.html",
@@ -243,3 +235,16 @@ def post_delete(request, slug, post_id):
     return redirect('post_detail', slug=post.slug)
 
 
+def like_post(request, slug):
+    if request.method == 'POST':
+        post = get_object_or_404(Post, slug=slug)
+        
+        
+        if Like.objects.filter(user=request.user, post=post).exists():
+            Like.objects.filter(user=request.user, post=post).delete()
+        else:
+            Like.objects.create(user=request.user, post=post)
+            
+        return redirect('post_detail', slug=slug)
+    else:
+        return HttpResponse('Method not allowed', status=405)

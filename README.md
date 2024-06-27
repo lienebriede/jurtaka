@@ -162,6 +162,14 @@ The code did not update the comment_count variable after saving a new comment.
 ```comment_count = post.comments.count()``` was added after saving a new comment. This insures that the comment count reflexts the current number of comments after a new comment is added. 
 The view was adjusted with ```return redirect('post_detail', slug=slug)``` This ensures that the page is updated with the new comment count without requiring a manual refresh.
 
+### Conflict in Form Submissions for Like/Unlike and Comment
+
+When users liked or unliked a post, a "required field" message appeared under the comment form.
+
+**Reason:**Both the 'like' and 'comment' forms were submitting to the same post_detail URL. This caused confusion because the server expected data from both forms simultaneously, and this lead to the error. 
+
+**Fix:** This was fixed by adding a separate 'like_post' URL for handling likes. A hidden input field was added to the form, which now captures the current URL, allowing the server to redirect users back to the original post detail page after processing the like action. This separation of handling likes and comments prevents conflicts between the submissions.
+
 -	Deployment
 -	Credits
 

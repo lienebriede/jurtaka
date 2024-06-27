@@ -11,6 +11,11 @@ class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('post_content',)
     filter_horizontal = ('categories',)
 
+
+@admin.register(Comment)
+class CommentAdmin(SummernoteModelAdmin):
+    list_display = ('author', 'post', 'created_on',)
+
+
 admin.site.register(Like)
-admin.site.register(Comment)
 admin.site.register(Category)
