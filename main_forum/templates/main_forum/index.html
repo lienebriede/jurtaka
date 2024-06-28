@@ -37,6 +37,12 @@
                 {% endfor %}
                 <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
                 </p>
+                {% if post.image1 %}
+                <img src="{{ post.image1.url }}" alt="{{ post.title }}">
+                {% endif %}
+                {% if post.image2 %}
+                <img src="{{ post.image1.url }}" alt="{{ post.title }}">
+                {% endif %}
             </a>
             <div class="row mb-2">
                 <!-- Like count -->

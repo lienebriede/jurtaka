@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 # Variable for post status
 STATUS = ((0, "Pending"), (1, "Approved"), (2, "Deleted"), (3, "Update Pending"))
@@ -29,6 +30,8 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     has_been_edited = models.BooleanField(default=False)
     categories = models.ManyToManyField(Category, related_name='posts')
+    image1 = CloudinaryField('image', blank=True, null=True)
+    image2 = CloudinaryField('image', blank=True, null=True)
 
     class Meta:
         ordering = ['-created_on']
