@@ -17,11 +17,11 @@
     <!-- Post list display: either Latest or Top based on view_type -->
     {% for post in posts %}
     <div class="row my-3 m-sm-3 post-display">
-        <div class="col-5 col-md-4">
+        <div class="col-md-3">
             <p class="mb-0">Posted by <strong>{{post.author}}</strong></p>
             <p>{{post.created_on}}</p>
         </div>
-        <div class="col-7 col-md-8">
+        <div class="col-md-9">
             <!-- Link to an individual post display-->
             <a href="{% url 'post_detail' post.slug %}" class="post-link">
                 <p><strong>{{ post.title }}</strong></p>
@@ -37,12 +37,23 @@
                 {% endfor %}
                 <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
                 </p>
-                {% if post.image1 %}
-                <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
-                {% endif %}
-                {% if post.image2 %}
-                <img class="img-fluid mt-2" src="{{ post.image2.url }}" alt="{{ post.title }}">
-                {% endif %}
+                <!-- Image display -->
+                <div class="row">
+                    {% if post.image1 %}
+                    {% if post.image2 %}
+                    <div class="col-md-6">
+                        <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-fluid mt-2 mt-md-0" src="{{ post.image2.url }}" alt="{{ post.title }}">
+                    </div>
+                    {% else %}
+                    <div class="col-md-12">
+                        <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                </div>
             </a>
             <!-- Likes and comments -->
             <div class="row mt-4">

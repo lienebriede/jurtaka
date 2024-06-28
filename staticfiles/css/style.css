@@ -168,17 +168,18 @@ input.search-bar::placeholder {
     font-size: 16px;
 }
 
-.fa-comment,
-.fa-thumbs-up,
-.post-display i {
-    font-size: 18px;
-    color: var(--font-color);
-}
-
+.post-display i,
 .fa-search,
 .fa-xmark,
 .fa-arrow-left {
     font-size: 24px;
+}
+
+
+.fa-comment,
+.fa-thumbs-up {
+    font-size: 18px;
+    color: var(--font-color);
 }
 
 footer i {
@@ -216,7 +217,7 @@ a {
     color: inherit;
 }
 
-/* Search bar and login btn -------------------------------------------------> */
+/* Search bar, login btn, about image --------------------------------------> */
 
 @media (min-width: 1024px) and (max-width: 1440px) {
 
