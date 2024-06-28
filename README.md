@@ -55,6 +55,9 @@ As a **New Site User/Registered Site User** I can fill in the contact form so th
 
 As a **Site Admin** I can receive contact requests so that I can respond to user inquiries and manage communication efficiently [issue #31](https://github.com/lienebriede/jurtaka/issues/31)
 
+As a **Registered Site User** I can add photos to posts so that the content of my post is more interactive [issue #39](https://github.com/lienebriede/jurtaka/issues/39)
+
+
 
 #### Changes
 
@@ -87,9 +90,11 @@ Some changes were implemented to the database schemas.
 
 - The "Post" model has been implemented with a field **'has_been_edited'** Boolean field to differentiate between original and edited posts. This addition enables to display the "updated_on" date only for posts that have been edited.  
 
-- The "Contact" model has been implemented with an **email** field to make it possible for unregistered users to provide their contact information. Setting 'null=True, blank=True' allows this field to be optional, allowing both registered and unregistered users to submit the form. 
+- The "Contact" model has been implemented with an **'email'** field to make it possible for unregistered users to provide their contact information. Setting 'null=True, blank=True' allows this field to be optional, allowing both registered and unregistered users to submit the form. 
 
-- The **reason** field has been removed from the "Contact" model. Since the contact form already includes a **subject** field, having two separate fields for subject and reason is redundant for submitting contact inquiries.
+- The **'reason'** field has been removed from the "Contact" model. Since the contact form already includes a **'subject'** field, having two separate fields for subject and reason is redundant for submitting contact inquiries.
+
+- Both the "Post" and "About" models have been implemented with  Cloudinary **'image'** fields. This allows admins to upload an image for the "About" page and the users to add one or two images to their posts.
  	
 # Agile Methodology:
 
