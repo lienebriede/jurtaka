@@ -37,12 +37,11 @@
                 {% endfor %}
                 <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
                 </p>
-
                 {% if post.image1 %}
                 <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
                 {% endif %}
                 {% if post.image2 %}
-                <img class="img-fluid mt-2" src="{{ post.image1.url }}" alt="{{ post.title }}">
+                <img class="img-fluid mt-2" src="{{ post.image2.url }}" alt="{{ post.title }}">
                 {% endif %}
             </a>
             <!-- Likes and comments -->

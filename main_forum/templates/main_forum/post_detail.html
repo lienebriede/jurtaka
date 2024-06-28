@@ -11,6 +11,23 @@
         <p>{{post.created_on}}</p>
         <p class="pt-3 pb-3"><strong>{{ post.title }}</strong></p>
         <p>{{ post.post_content | safe }}</p>
+        <!-- Image display -->
+        <div class="row">
+            {% if post.image1 %}
+            {% if post.image2 %}
+            <div class="col-md-6">
+                <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
+            </div>
+            <div class="col-md-6">
+                <img class="img-fluid mt-2 mt-md-0" src="{{ post.image2.url }}" alt="{{ post.title }}">
+            </div>
+            {% else %}
+            <div class="col-md-12">
+                <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
         {% if post.has_been_edited %}
         <p class="text-secondary pt-3">Updated on {{ post.updated_on }}</p>
         {% endif %}
