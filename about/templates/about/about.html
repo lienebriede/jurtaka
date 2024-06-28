@@ -4,6 +4,13 @@
 {% block content %}
 
 <div class="container-white mx-lg-5 mb-3">
+    <div class="image-container">
+        {% if "placeholder" in about.featured_image.url %}
+        <img src="{% static 'images/about.jpg' %}" alt="hiking at the sea">
+        {% else %}
+        <img src=" {{ about.featured_image.url }}" alt="hiking at the sea">
+        {% endif %}
+    </div>
     <div class="m-3 my-lg-5 about-text">
         <div class="text-center pb-3">
             <h2>{{ about.title }}</h2>

@@ -78,6 +78,12 @@ body {
     height: 100px;
 }
 
+.image-container img {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+}
+
 .btn-primary {
     background-color: var(--pink) !important;
     border-color: var(--pink);
@@ -221,6 +227,10 @@ a {
     #searchFormContainer {
         flex: 0 0 30% !important;
     }
+
+    .image-container img {
+        height: 40vh;
+    }
 }
 
 @media (min-width: 1440px) {
@@ -231,5 +241,9 @@ a {
 
     #searchFormContainer {
         flex: 0 0 50% !important;
+    }
+
+    .image-container img {
+        height: 50vh;
     }
 }
