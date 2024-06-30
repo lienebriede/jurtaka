@@ -17,6 +17,16 @@ class CommentForm(forms.ModelForm):
             'comment_content': '',
         }
 
+    # Sets the max length of a comment text
+    def clean_comment_content(self):
+            comment_content = self.cleaned_data['comment_content']
+            max_length = 10000
+            
+            if len(comment_content) > max_length:
+                raise forms.ValidationError(f'Sorry, your comment is too long. Comments cannot exceed {max_length} characters.')
+            
+            return comment_content
+
 class PostForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(),

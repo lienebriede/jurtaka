@@ -77,10 +77,23 @@
 
 ## Form Testing
 
-| Form | Test | Expected Result | Outcome |
-| -- | -- | -- | -- |
-| Comment Form | `test_form_is_valid ` | Validates with non-empty content | PASS |
-|| `test_form_is_invalid ` | Does not validate with empty content | PASS |
+| Form          | Test                                         | Expected Result                                                               | Outcome |
+|---------------|----------------------------------------------|-------------------------------------------------------------------------------|---------|
+| Comment Form  | `test_comment_form_is_valid`                 | Should validate with non-empty content                                        | PASS    |
+|               | `test_comment_form_is_invalid`               | Should not validate with empty content                                        | PASS    |
+|               | `test_comment_form_has_fields`               | The form should have a content field                                          | PASS    |
+|               | `test_comment_form_invalid_with_blank_space` | Should not validate with blank space in content field                         | PASS    |
+|               | `test_comment_form_labels`                   | The label for the content field should be an empty string                     | PASS    |
+|               | `test_comment_form_placeholder`              | There should be a placeholder text 'Add a comment'                            | PASS    |
+|               | `test_comment_form_valid_with_max_length`    | The content should be valid within the allowed 10 000 character limit         | PASS    |
+|               | `test_comment_form_invalid_with_max_length`  | The content should be invalid if exceeding the allowed 10 000 character limit | PASS    |
+|---------------|----------------------------------------------|-------------------------------------------------------------------------------|---------|
+| Contact Form  | `test_contact_form_valid_with_user`          | Should validate with non-empty content, valid user ID and empty email field   | PASS    |
+|               | `test_contact_form_valid_with_email`         | Should validate with non-empty content, valid email and no user ID            | PASS    |
+|               | `test_contact_form_is_invalid`               | Should not validate with empty content                                        | PASS    |
+|               | `test_contact_form_invalid_with_blank_space` | Should not validate with blank space in content field                         | PASS    |
+|---------------|----------------------------------------------|-------------------------------------------------------------------------------|---------|
+
 
 ## View Testing
 
