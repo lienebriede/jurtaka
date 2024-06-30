@@ -77,22 +77,45 @@
 
 ## Form Testing
 
-| Form          | Test                                         | Expected Result                                                               | Outcome |
-|---------------|----------------------------------------------|-------------------------------------------------------------------------------|---------|
-| Comment Form  | `test_comment_form_is_valid`                 | Should validate with non-empty content                                        | PASS    |
-|               | `test_comment_form_is_invalid`               | Should not validate with empty content                                        | PASS    |
-|               | `test_comment_form_has_fields`               | The form should have a content field                                          | PASS    |
-|               | `test_comment_form_invalid_with_blank_space` | Should not validate with blank space in content field                         | PASS    |
-|               | `test_comment_form_labels`                   | The label for the content field should be an empty string                     | PASS    |
-|               | `test_comment_form_placeholder`              | There should be a placeholder text 'Add a comment'                            | PASS    |
-|               | `test_comment_form_valid_with_max_length`    | The content should be valid within the allowed 10 000 character limit         | PASS    |
-|               | `test_comment_form_invalid_with_max_length`  | The content should be invalid if exceeding the allowed 10 000 character limit | PASS    |
-|---------------|----------------------------------------------|-------------------------------------------------------------------------------|---------|
-| Contact Form  | `test_contact_form_valid_with_user`          | Should validate with non-empty content, valid user ID and empty email field   | PASS    |
-|               | `test_contact_form_valid_with_email`         | Should validate with non-empty content, valid email and no user ID            | PASS    |
-|               | `test_contact_form_is_invalid`               | Should not validate with empty content                                        | PASS    |
-|               | `test_contact_form_invalid_with_blank_space` | Should not validate with blank space in content field                         | PASS    |
-|---------------|----------------------------------------------|-------------------------------------------------------------------------------|---------|
+| Form          | Test                                              | Expected Result                                                                        |Outcome|
+|---------------|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| Comment Form  | `test_comment_form_is_valid`                      | Should validate with non-empty content                                                 | PASS  |
+|               | `test_comment_form_is_invalid`                    | Should not validate with empty content                                                 | PASS  |
+|               | `test_comment_form_has_fields`                    | The form should have a content field                                                   | PASS  |
+|               | `test_comment_form_invalid_with_blank_space`      | Should not validate with blank space in content field                                  | PASS  |
+|               | `test_comment_form_labels`                        | The label for the content field should be an empty string                              | PASS  |
+|               | `test_comment_form_placeholder`                   | There should be a placeholder text 'Add a comment'                                     | PASS  |
+|               | `test_comment_form_valid_with_max_length`         | The content should be valid within the allowed 10 000 character limit                  | PASS  |
+|               | `test_comment_form_invalid_with_max_length`       | The content should be invalid if exceeding the allowed 10 000 character limit          | PASS  |
+
+| Post Form     | `test_post_form_has_fields`                       | The form should have fields: 'title', 'post_content', 'categories', 'image1', 'image2' | PASS  |
+|               | `test_post_form_is_valid`                         | Should validate with non-empty title, content, and valid categories                    | PASS  |
+|               | `test_post_form_is_invalid_no_title`              | Should not validate with empty title                                                   | PASS  |
+|               | `test_post_form_is_invalid_no_content`            | Should not validate with empty content                                                 | PASS  |
+|               | `test_post_form_is_invalid_no_categories`         | Should not validate with no categories selected                                        | PASS  |
+|               | `test_post_form_is_invalid_with_invalid_category` | Should not validate with an invalid category ID                                        | PASS  |
+|               | `test_post_form_invalid_with_blank_space_title`   | Should not validate with only blank spaces in title                                    | PASS  |
+|               | `test_post_form_invalid_with_blank_space_content` | Should not validate with only blank spaces in content                                  | PASS  |
+|               | `test_post_form_is_valid_with_one_image`          | Should validate with one uploaded image                                                | PASS  |
+|               | `test_post_form_is_valid_with_two_images`         | Should validate with two uploaded images                                               | PASS  |
+|               | `test_post_form_valid_with_no_images`             | Should validate with no uploaded images                                                | PASS  |
+|               | `test_post_form_title_placeholder`                | There should be a placeholder text 'Add a title'                                       | PASS  |
+|               | `test_post_form_content_placeholder`              | There should be a placeholder text 'Add text'                                          | PASS  |
+|               | `test_post_form_title_no_label`                   | The title field should have no label                                                   | PASS  |
+|               | `test_post_form_content_no_label`                 | The post content field should have no label                                            | PASS  |
+|               | `test_post_form_categories_label`                 | The categories field should have a label 'Categories'                                  | PASS  |
+|               | `test_post_form_image1_label`                     | The image1 field should have a label 'Image'                                           | PASS  |
+|               | `test_post_form_image2_label`                     | The image2 field should have a label 'Image'                                           | PASS  |
+|               | `test_post_form_valid_with_max_length`            | Should validate with content at max length 10,000 characters                           | PASS  |
+|               | `test_post_form_invalid_with_max_length`          | Should not validate with content exceeding 10,000 characters                           | PASS  |
+
+
+
+| Contact Form  | `test_contact_form_valid_with_user`               | Should validate with non-empty content, valid user ID and empty email field            | PASS  |
+|               | `test_contact_form_valid_with_email`              | Should validate with non-empty content, valid email and no user ID                     | PASS  |
+|               | `test_contact_form_is_invalid`                    | Should not validate with empty content                                                 | PASS  |
+|               | `test_contact_form_invalid_with_blank_space`      | Should not validate with blank space in content field                                  | PASS  |
+
 
 
 ## View Testing

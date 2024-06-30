@@ -11,7 +11,7 @@ class TestContactForm(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='tuser', email='test@test.com', password='p123')
 
-    # tests if the form is valid with a valid user id and no email
+    # tests if valid with a valid user id and no email
     def test_contact_form_valid_with_user(self):
 
         # mocks an authenticated user  
@@ -32,7 +32,7 @@ class TestContactForm(TestCase):
         self.assertTrue(form.is_valid(), msg="Form is not valid")
 
 
-    # tests if the form is valid with an email but no user id
+    # tests if valid with an email but no user id
     def test_contact_form_valid_with_email(self):
         request = RequestFactory().get('/')
         request.user = self.user
@@ -46,7 +46,7 @@ class TestContactForm(TestCase):
         form = ContactForm(data=form_data, request=request)
         self.assertTrue(form.is_valid(), msg="Form is not valid")
 
-    # tests if the form is invalid with an empty content
+    # tests if invalid with an empty content
     def test_contact_form_is_invalid(self):
         
         request = RequestFactory().get('/')
@@ -61,7 +61,7 @@ class TestContactForm(TestCase):
         form = ContactForm(data=form_data, request=request)
         self.assertFalse(form.is_valid(), msg='Form is valid with empty content')
 
-    # tests if the form is invalid with blank space in content
+    # tests if invalid with blank space in content
     def test_contact_form_invalid_with_blank_space(self):
         request = RequestFactory().get('/')
         request.user = self.user
