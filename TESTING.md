@@ -132,15 +132,28 @@
 
 | Test                                              | Expected Result                                                                        |Outcome|
 |---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
-| `test_render_post_detail_page_authenticated`      | Should render the post_detail page for authenticated users                             | PASS  |
+| `test_render_post_detail_page`                    | Should render the 'post_detail' page                                                   | PASS  |
 |                                                   | Should initialize comment form                                                         | PASS  |
-|                                                   | Should display these features:                                                         | PASS  |
-|                                                   | Post: post author, post title, post content, images             | PASS  |
-|                                                   | Comment: comments, comment authors, comment form, comment count                        | FAIL* |
-|                                                   | Likes: like count, is liked, likers usernames                                          | PASS  |
-|                                                   | Edit and Delete button for post author                                                 | PASS  |
+|                                                   | Should display post author, post title, and post content                               | PASS  |
+|                                                   | Should display comments, comment authors, comment form, comment count                  | FAIL* |
+|                                                   | Should display like count, is liked, likers usernames                                  | PASS  |
+                                       
 * Comment count not rendered properly.
+After adding a more simplified test code where it checks if the added 2 comments = 2
+`self.assertEqual(self.post.comments.count(),2)` PASS
 
 
+### About View
+
+| Test                                              | Expected Result                                                                        |Outcome|
+|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| `test_render_about_page`                          | Should render the 'about' page                                                         | PASS  |
+|                                                   | Should display page title and content                                                  | PASS  |
 
 
+### Contact View
+
+| Test                                              | Expected Result                                                                        |Outcome|
+|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| `test_render_contact_page`                        | Should render the 'contact' page                                                       | PASS  |
+|                                                   | Should initialize Contact form                                                         | PASS  |

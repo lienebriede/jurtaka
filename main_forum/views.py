@@ -116,6 +116,7 @@ def post_detail(request, slug):
     else:
         comment_form = CommentForm()
 
+
     is_liked = False
 
     if request.user.is_authenticated:
