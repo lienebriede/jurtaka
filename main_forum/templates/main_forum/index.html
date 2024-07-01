@@ -37,24 +37,24 @@
                 {% endfor %}
                 <p class="pt-2 pb-2">{{ post.get_content_preview | safe }}... <small class="text-muted">See more</small>
                 </p>
-                <!-- Image display -->
-                <div class="row">
-                    {% if post.image1 %}
-                    {% if post.image2 %}
-                    <div class="col-md-6">
-                        <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
-                    </div>
-                    <div class="col-md-6">
-                        <img class="img-fluid mt-2 mt-md-0" src="{{ post.image2.url }}" alt="{{ post.title }}">
-                    </div>
-                    {% else %}
-                    <div class="col-md-12">
-                        <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
-                    </div>
-                    {% endif %}
-                    {% endif %}
-                </div>
             </a>
+            <!-- Image display -->
+            <div class="row">
+                {% if post.image1 %}
+                {% if post.image2 %}
+                <div class="col-md-6">
+                    <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
+                </div>
+                <div class="col-md-6">
+                    <img class="img-fluid mt-2 mt-md-0" src="{{ post.image2.url }}" alt="{{ post.title }}">
+                </div>
+                {% else %}
+                <div class="col-md-12">
+                    <img class="img-fluid" src="{{ post.image1.url }}" alt="{{ post.title }}">
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
             <!-- Likes and comments -->
             <div class="row mt-4">
                 <!-- Like count -->

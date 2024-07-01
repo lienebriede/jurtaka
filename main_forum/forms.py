@@ -30,10 +30,12 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.CheckboxSelectMultiple(attrs={'class': 'custom-checkbox'}),
         required=True,
-        label='Categories'
+        label='Categories',
+    error_messages={'required': 'Please select at least one category.'}
     )
+    
     
     class Meta:
         model = Post

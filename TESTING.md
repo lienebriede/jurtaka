@@ -62,6 +62,7 @@
 |||| I can add posts | To be checked |
 |||| After posting I am redirected back to the main site | To be checked |
 |||| After posting I receive a message that my post is awaiting approval | To be checked |
+|||| In case of failed submission I receive an error message | To be checked |
 || #23 | As a Registered Site User when I am posting I can add categories to posts so that I can categorise my post | When I add a post, I can choose a relevant category/categories for this post | To be checked | 
 || #39 | As a Registered Site User I can add photos to posts so that the content of my post is more interactive | I can upload at least two images when posting on forum | To be checked | 
 | Content Interaction | #16 | As a Registered Site User I can comment on posts so that I can engage with the author and the forum community | When I read an individual post I can see a "leave a comment" section | To be checked | 
@@ -73,6 +74,8 @@
 |||| I can see if I have liked a post and I can unlike it | To be checked |
 || #27 | As a Registered Site User I can update and delete my posts so that I can update the content of my post or remove posts that are not relevant | After submitting a post, as the post author, I can see an option to update my post | To be checked | 
 |||| I can either update the content of my post or delete my post entirely | To be checked |
+|||| Upon submitting my edited post, I receive a message that my post is awaiting approval | To be checked |
+|||| In case of failed submission I receive an error message | To be checked |
 |||| Upon deleting my post, I get a confirmation prompt that asks to confirm the deletion of my post | To be checked |
 
 ## Automated Tests

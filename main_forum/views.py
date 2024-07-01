@@ -154,6 +154,8 @@ def post_create(request):
                 "Thanks for posting! Your post will be visible shortly."
             )
             return redirect('home')
+        else:
+            messages.add_message(request, messages.ERROR, 'There was an error uploading your post!')
 
     return render(
         request, 
@@ -181,7 +183,6 @@ def post_edit(request, slug, post_id):
             return redirect('post_detail', slug=post.slug)
         else:
             messages.add_message(request, messages.ERROR, 'There was an error updating your post!')
-    
     else:
         post_form = PostForm(instance=post)
     
