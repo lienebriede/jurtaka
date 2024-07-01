@@ -93,7 +93,6 @@
 | `test_comment_form_valid_with_max_length`         | The content should be valid within the allowed 10 000 character limit                  | PASS  |
 | `test_comment_form_invalid_with_max_length`       | The content should be invalid if exceeding the allowed 10 000 character limit          | PASS  |
 
-
 ### Post Form
 
 | Test                                              | Expected Result                                                                        |Outcome|
@@ -142,6 +141,33 @@
 After adding a more simplified test code where it checks if the added 2 comments = 2
 `self.assertEqual(self.post.comments.count(),2)` PASS
 
+### Latest View
+
+| Test                                              | Expected Result                                                                        |Outcome|
+|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| `test_render_post_list_latest_view`               | Should render the 'Latest' posts page                                                  | PASS  |
+|                                                   | Should display posts ordered by latest first                                           | PASS  |
+
+### Browse by Category View
+
+| Test                                              | Expected Result                                                                        |Outcome|
+|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| `test_render_post_list_category_filter`           | Should render the 'Browse by Category' page                                            | PASS  |
+|                                                   | Should display posts filtered by Category 1                                            | PASS  |
+
+### Create Post View
+
+| Test                                              | Expected Result                                                                        |Outcome|
+|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| `test_render_post_create_view`                    | Should render the 'New Post' page                                                      | PASS  |
+|                                                   | Should initialize the PostForm                                                         | PASS  |
+
+### Edit Post View
+
+| Test                                              | Expected Result                                                                        |Outcome|
+|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| `test_render_post_edit_view`                      | Should render the 'Edit Post' page                                                     | PASS  |
+|                                                   | Should initialize the PostForm                                                         | PASS  |
 
 ### About View
 
@@ -149,7 +175,6 @@ After adding a more simplified test code where it checks if the added 2 comments
 |---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
 | `test_render_about_page`                          | Should render the 'about' page                                                         | PASS  |
 |                                                   | Should display page title and content                                                  | PASS  |
-
 
 ### Contact View
 

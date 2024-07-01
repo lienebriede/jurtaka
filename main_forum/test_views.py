@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.test import TestCase
 from django.utils.text import slugify
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from .models import Post, Comment, Category, Like
 
 class PostViews(TestCase):
@@ -39,6 +39,19 @@ class PostViews(TestCase):
             slug=slugify("Test post"),
             )
         self.post.save()
+
+        # creates a another test post
+        self.post2 = Post(
+            title="Second test post", 
+            author=self.user,
+            post_content="This is the second test post content", 
+            status=1,
+            slug=slugify("Second test post"),
+            )
+        self.post2.save()
+
+        # adds category for testing
+        self.post2.categories.add(self.category1)
 
         # creates test comments for the test post
         self.comment1 = Comment(
@@ -118,3 +131,57 @@ class PostViews(TestCase):
                     break
             self.assertTrue(likers_present, "Likers were not found in the response")
 
+
+    def test_render_post_list_latest_view(self):
+        """
+        Tests 'Latest' page
+        """
+
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200, "Failed to load post list page. Expected status code 200, but received {response.status_code}.")
+        
+        # Converts to string representation and compares to list in context
+        expected_posts = [
+            str(self.post2),
+            str(self.post),
+        ]
+        actual_posts = [str(post) for post in response.context['posts']]
+        self.assertEqual(actual_posts, expected_posts, f"Expected posts {expected_posts}, but got {actual_posts}")
+    
+
+    def test_render_post_list_category_filter(self):
+        """
+        Tests 'Browse by category1' page
+        """
+
+        # retrieves from setUp()
+        category_id = self.category1.id
+        response = self.client.get(reverse('home') + f'?category={category_id}')
+        self.assertEqual(response.status_code, 200, "Failed to load browse by category1 page. Expected status code 200, but received {response.status_code}.")
+
+        # checks if post matches the category
+        expected_posts = [
+            str(self.post2),
+        ]
+        actual_posts = [str(post) for post in response.context['posts']]
+        self.assertEqual(actual_posts, expected_posts, f"Expected posts {expected_posts}, but got {actual_posts}")
+
+
+    def test_render_post_create_view(self):
+        """
+        Tests 'New Post' page
+        """
+
+        response = self.client.get(reverse('post_create'))
+        self.assertEqual(response.status_code, 200, "Failed to load add post page. Expected status code 200, but received {response.status_code}.")
+        self.assertIsInstance(response.context['post_form'], PostForm, "Post form is not correctly initialized.")
+
+
+    def test_render_post_edit_view(self):
+        """
+        Tests 'Edit Post' page
+        """
+
+        response = self.client.get(reverse('post_edit', args=[self.post.slug, self.post.id]))
+        self.assertEqual(response.status_code, 200, "Failed to load edit post page. Expected status code 200, but received {response.status_code}.")
+        self.assertIsInstance(response.context['post_form'], PostForm, "Post form is not correctly initialized.")
