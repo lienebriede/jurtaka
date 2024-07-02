@@ -157,6 +157,8 @@ def post_create(request):
             return redirect('home')
         else:
             messages.add_message(request, messages.ERROR, 'There was an error uploading your post!')
+    else:
+        post_form = PostForm()
 
     return render(
         request, 
@@ -234,7 +236,8 @@ def post_delete(request, slug, post_id):
         messages.success(request, 'Your post has been deleted successfully!')
         return redirect('home')
     
-    return redirect('post_detail', slug=post.slug)
+    else:
+        return redirect('post_detail', slug=post.slug)
 
 
 def like_post(request, slug):

@@ -138,8 +138,9 @@
 |                                                   | Should display like count, is liked, likers usernames                                  | PASS  |
                                        
 * Comment count not rendered properly.
-After adding a more simplified test code where it checks if the added 2 comments = 2
-`self.assertEqual(self.post.comments.count(),2)` PASS
+
+PASS: after adding a more simplified test code where it checks if the added 2 comments = 2
+`self.assertEqual(self.post.comments.count(),2)` 
 
 ### Latest View
 
@@ -182,3 +183,36 @@ After adding a more simplified test code where it checks if the added 2 comments
 |---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
 | `test_render_contact_page`                        | Should render the 'contact' page                                                       | PASS  |
 |                                                   | Should initialize Contact form                                                         | PASS  |
+
+
+### Form Submission
+
+| Test                                              | Expected Result                                                                        |Outcome|
+|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| `test_successful_comment_submission`              | Posts a comment on a post using test credentials                                       | PASS  |
+|                                                   | Checks if the comment submission redirects correctly to the post detail page           | PASS  |
+|                                                   | Displays a success message                                                             | PASS  |
+| `test_successful_post_submission`                 | Submits a new post using test credentials                                              | FAIL* |
+|                                                   | Verifies if the home page loads after submission                                       | PASS  |
+|                                                   | Displays a success message                                                             | PASS  |               
+| `test_successful_post_edit_submission`            | Edits an existing post using test credentials                                          | PASS  |
+|                                                   | Verifies if the post edit redirects correctly to the post detail page                  | PASS  |
+|                                                   | Checks if the post status is updated to '3'                                            | PASS  |
+|                                                   | Displays a success message                                                             | PASS  |
+| `test_successful_contact_submission`              | Submits a contact form with specified email and message                                | FAIL* |
+|                                                   | Checks if the contact form data is stored in the database                              | PASS  |
+|                                                   | Verifies if the home page loads after contact submission                               | PASS  |
+|                                                   | Displays a success message for the contact submission                                  | PASS  |
+| `test_successful_contact_submission_registered_user`| Edits an existing post using test credentials                                        | PASS  |
+|                                                   | Submits a contact form by a registered user with specified subject and message         | PASS  |
+|                                                   | Checks if the contact form data is stored in the database                              | PASS  |
+|                                                   | Verifies if the home page loads after contact submission                               | PASS  |
+|                                                   | Displays a success message for the contact submission                                  | PASS  |
+
+* `KeyError: 'post_form'`: The 'post_form' was missing from the context in the 'post_create' view during form rendering.
+
+PASS: after updating the 'post_create' view to include 'post_form' in the context for 'POST' requests.
+
+* Both 'post_form' and 'contact_form' tests failed when submitted without required fields ('Category' for Post form and 'Subject' for Contact form).
+
+PASS: after providing corect test data in all the required fields.

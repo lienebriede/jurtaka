@@ -5,8 +5,8 @@ from django.utils.text import slugify
 from .forms import CommentForm, PostForm
 from .models import Post, Comment, Category, Like
 
-class PostViews(TestCase):
 
+class PostViews(TestCase):
 
     def setUp(self):
         """
@@ -32,9 +32,9 @@ class PostViews(TestCase):
 
         # creates a test post
         self.post = Post(
-            title="Test post", 
+            title="Test post",
             author=self.user,
-            post_content="This is test post content", 
+            post_content="This is test post content",
             status=1,
             slug=slugify("Test post"),
             )
@@ -42,9 +42,9 @@ class PostViews(TestCase):
 
         # creates a another test post
         self.post2 = Post(
-            title="Second test post", 
+            title="Second test post",
             author=self.user,
-            post_content="This is the second test post content", 
+            post_content="This is the second test post content",
             status=1,
             slug=slugify("Second test post"),
             )
@@ -85,7 +85,7 @@ class PostViews(TestCase):
         response = self.client.get(reverse('post_detail', args=[self.post.slug]))
         
         # checks for a succesful request
-        self.assertEqual(response.status_code, 200, "Failed to load post detail page. Expected status code 200, but received {response.status_code}.")
+        self.assertEqual(response.status_code, 200, "Failed to load post detail page.")
 
         # checks post title and content
         self.assertIn(b"Test post", response.content, "Post title 'Test post' not found in the response content.")
@@ -138,7 +138,7 @@ class PostViews(TestCase):
         """
 
         response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200, "Failed to load post list page. Expected status code 200, but received {response.status_code}.")
+        self.assertEqual(response.status_code, 200, "Failed to load post list page.")
         
         # Converts to string representation and compares to list in context
         expected_posts = [
@@ -157,7 +157,7 @@ class PostViews(TestCase):
         # retrieves from setUp()
         category_id = self.category1.id
         response = self.client.get(reverse('home') + f'?category={category_id}')
-        self.assertEqual(response.status_code, 200, "Failed to load browse by category1 page. Expected status code 200, but received {response.status_code}.")
+        self.assertEqual(response.status_code, 200, "Failed to load browse by category1 page.")
 
         # checks if post matches the category
         expected_posts = [
@@ -173,7 +173,7 @@ class PostViews(TestCase):
         """
 
         response = self.client.get(reverse('post_create'))
-        self.assertEqual(response.status_code, 200, "Failed to load add post page. Expected status code 200, but received {response.status_code}.")
+        self.assertEqual(response.status_code, 200, "Failed to load add post page.")
         self.assertIsInstance(response.context['post_form'], PostForm, "Post form is not correctly initialized.")
 
 
@@ -183,5 +183,82 @@ class PostViews(TestCase):
         """
 
         response = self.client.get(reverse('post_edit', args=[self.post.slug, self.post.id]))
-        self.assertEqual(response.status_code, 200, "Failed to load edit post page. Expected status code 200, but received {response.status_code}.")
+        self.assertEqual(response.status_code, 200, "Failed to load edit post page.")
         self.assertIsInstance(response.context['post_form'], PostForm, "Post form is not correctly initialized.")
+
+    
+    def test_successful_comment_submission(self):
+        """
+        Tests for posting a comment on a post
+        """
+
+        self.client.login(username="tusername", password="tuserpass")
+        post_data = {'comment_content': 'This is a test comment.'}
+
+        # use follow=True to ensure test client follows redirect after submission
+        response = self.client.post(reverse('post_detail', args=[self.post.slug]), post_data, follow=True)
+
+        # tests if created in the database
+        self.assertTrue(Comment.objects.filter(post=self.post, comment_content='This is a test comment.').exists(),
+                        "Comment object not created in the database.")
+                        
+        self.assertEqual(response.status_code, 200, "Failed to load post detail page after comment submission.")
+        
+        # tests the success message with assertContains to avoid html in terminal
+        success_message = "Thanks for commenting!"
+        self.assertContains(response, success_message, msg_prefix="Expected success message not found.")
+        
+        
+
+    def test_successful_post_submission(self):
+        """
+        Tests for posting a post
+        """
+
+        self.client.login(username="tusername", password="tuserpass")
+        post_data = {
+            'title': 'Walk in the woods', 
+            'post_content': 'This is walk in the woods post.',
+            'categories': self.category1.id}
+
+        response = self.client.post(reverse('post_create'), post_data, follow=True)
+        
+        # tests if created in the database
+        self.assertTrue(Post.objects.filter(title='Walk in the woods', post_content='This is walk in the woods post.', categories=self.category1).exists(),
+                        "Post object not created in the database.")
+        
+        self.assertEqual(response.status_code, 200, "Failed to load home page after post submission.")
+
+        success_message = "Thanks for posting! Your post will be visible shortly."
+        self.assertContains(response, success_message, msg_prefix="Expected success message not found.")
+
+    def test_succesful_post_edit_submission(self):
+        """
+        Tests successful post edit
+        """
+
+        self.client.login(username="tusername", password="tuserpass")
+        post_data = {
+            'title': 'Walk in the forest', 
+            'post_content': 'This is walk in the forest post.',
+            'categories': self.category1.id}
+
+        response = self.client.post(reverse('post_edit', args=[self.post.slug, self.post.id]), post_data, follow=True)
+
+        # tests if created in the database
+        self.assertTrue(Post.objects.filter(title='Walk in the forest', post_content='This is walk in the forest post.').exists(),
+                        "Post-edit object not created in the database.")
+
+        self.assertEqual(response.status_code, 200, "Failed to load home page after post submission.")
+
+        # retrieves and tests the status of the post
+        updated_post = Post.objects.get(id=self.post.id)
+        self.assertEqual(updated_post.status, 3, "Post status was not updated to 3")
+
+        success_message = "Your post update is awaiting approval!"
+        self.assertContains(response, success_message, msg_prefix="Expected success message not found.")
+
+
+
+
+        
