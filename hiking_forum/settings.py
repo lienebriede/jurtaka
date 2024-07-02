@@ -166,3 +166,6 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 } 
+
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-lienebriede-jurtaka-fsjtch2utun.ws.codeinstitute-ide.net']
