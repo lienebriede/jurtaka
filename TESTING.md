@@ -80,19 +80,6 @@
 
 ## Automated Tests
 
-### Comment Form
-
-| Test                                              | Expected Result                                                                        |Outcome|
-|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
-| `test_comment_form_is_valid`                      | Should validate with non-empty content                                                 | PASS  |
-| `test_comment_form_is_invalid`                    | Should not validate with empty content                                                 | PASS  |
-| `test_comment_form_has_fields`                    | The form should have a content field                                                   | PASS  |
-| `test_comment_form_invalid_with_blank_space`      | Should not validate with blank space in content field                                  | PASS  |
-| `test_comment_form_labels`                        | The label for the content field should be an empty string                              | PASS  |
-| `test_comment_form_placeholder`                   | There should be a placeholder text 'Add a comment'                                     | PASS  |
-| `test_comment_form_valid_with_max_length`         | The content should be valid within the allowed 10 000 character limit                  | PASS  |
-| `test_comment_form_invalid_with_max_length`       | The content should be invalid if exceeding the allowed 10 000 character limit          | PASS  |
-
 ### Post Form
 
 | Test                                              | Expected Result                                                                        |Outcome|
@@ -117,6 +104,19 @@
 | `test_post_form_image2_label`                     | The image2 field should have a label 'Image'                                           | PASS  |
 | `test_post_form_valid_with_max_length`            | Should validate with content at max length 10,000 characters                           | PASS  |
 | `test_post_form_invalid_with_max_length`          | Should not validate with content exceeding 10,000 characters                           | PASS  |
+
+### Comment Form
+
+| Test                                              | Expected Result                                                                        |Outcome|
+|---------------------------------------------------|----------------------------------------------------------------------------------------|-------|
+| `test_comment_form_is_valid`                      | Should validate with non-empty content                                                 | PASS  |
+| `test_comment_form_is_invalid`                    | Should not validate with empty content                                                 | PASS  |
+| `test_comment_form_has_fields`                    | The form should have a content field                                                   | PASS  |
+| `test_comment_form_invalid_with_blank_space`      | Should not validate with blank space in content field                                  | PASS  |
+| `test_comment_form_labels`                        | The label for the content field should be an empty string                              | PASS  |
+| `test_comment_form_placeholder`                   | There should be a placeholder text 'Add a comment'                                     | PASS  |
+| `test_comment_form_valid_with_max_length`         | The content should be valid within the allowed 10 000 character limit                  | PASS  |
+| `test_comment_form_invalid_with_max_length`       | The content should be invalid if exceeding the allowed 10 000 character limit          | PASS  |
 
 ### Contact Form
 

@@ -21,22 +21,26 @@ class CommentForm(forms.ModelForm):
     def clean_comment_content(self):
         comment_content = self.cleaned_data['comment_content']
         max_length = 10000
-        
+
         if len(comment_content) > max_length:
-            raise forms.ValidationError(f'Sorry, your comment is too long. Comments cannot exceed {max_length} characters.')
-        
+            raise forms.ValidationError(
+                f'Sorry, your comment is too long.'
+                'Comments cannot exceed {max_length} characters.'
+                )
+
         return comment_content
+
 
 class PostForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(),
-        widget=forms.CheckboxSelectMultiple(attrs={'class': 'custom-checkbox'}),
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'custom-checkbox'}),
         required=True,
         label='Categories',
-    error_messages={'required': 'Please select at least one category.'}
+        error_messages={'required': 'Please select at least one category.'}
     )
-    
-    
+
     class Meta:
         model = Post
         fields = ('title', 'post_content', 'categories', 'image1', 'image2')
@@ -60,9 +64,11 @@ class PostForm(forms.ModelForm):
     def clean_post_content(self):
         post_content = self.cleaned_data['post_content']
         max_length = 10000
-        
-        if len(post_content) > max_length:
-            raise forms.ValidationError(f'Sorry, your post is too long. Posts cannot exceed {max_length} characters.')
-        
-        return post_content
 
+        if len(post_content) > max_length:
+            raise forms.ValidationError(
+                f'Sorry, your post is too long.'
+                'Posts cannot exceed {max_length} characters.'
+            )
+
+        return post_content

@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import About, Contact
 from .forms import ContactForm
 
+
 def about_page(request):
     """
     Renders the About page
@@ -16,6 +17,7 @@ def about_page(request):
             'about': about
         },
     )
+
 
 def contact_page(request):
     """
@@ -32,10 +34,10 @@ def contact_page(request):
             return redirect('home')
     else:
         contact_form = ContactForm(request=request)
-    
+
     return render(
-        request, 
-        "about/contact.html", 
+        request,
+        "about/contact.html",
         {
             'contact_form': contact_form
         },

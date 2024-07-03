@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Contact
 
+
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
@@ -45,5 +46,7 @@ class ContactForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if not self.request.user.is_authenticated and not email:
-            raise forms.ValidationError("Please provide your e-mail or log in!")
+            raise forms.ValidationError(
+                "Please provide your e-mail or log in!"
+            )
         return email

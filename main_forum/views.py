@@ -17,17 +17,23 @@ def search_results(request):
     query = request.GET.get('q')
     if query:
         queryset = Post.objects.filter(
-            Q(title__icontains=query) | Q(post_content__icontains=query), 
+            Q(title__icontains=query) | Q(post_content__icontains=query),
             status=1
         ).annotate(comment_count=Count('comments')).order_by('-created_on')
-    
+
         # Highlights, case insensitive
         for post in queryset:
-            post.title = mark_safe(re.sub(re.escape(query), f'<span class="highlight">{query}</span>', post.title, flags=re.IGNORECASE))
-            post.post_content = mark_safe(re.sub(re.escape(query), f'<span class="highlight">{query}</span>', post.post_content, flags=re.IGNORECASE))
+            post.title = mark_safe(re.sub(
+                re.escape(query),
+                f'<span class="highlight">{query}</span>',
+                post.title, flags=re.IGNORECASE))
+            post.post_content = mark_safe(re.sub(
+                re.escape(query),
+                f'<span class="highlight">{query}</span>',
+                post.post_content, flags=re.IGNORECASE))
 
     else:
-        queryset = Post.objects.none() 
+        queryset = Post.objects.none()
 
     paginator = Paginator(queryset, 5)
     page_number = request.GET.get('page')
@@ -52,23 +58,23 @@ def post_list(request):
 
     view_type = request.GET.get('view_type', 'latest')
     category_id = request.GET.get('category')
-    
+
     queryset = Post.objects.filter(status=1)
 
     if category_id:
         queryset = Post.objects.filter(categories__id=category_id)
         view_type = None
-        
+
     if view_type == 'latest':
         queryset = Post.objects.filter(status=1).annotate(
             comment_count=Count('comments')).order_by('-created_on')
-    elif view_type == 'top': 
+    elif view_type == 'top':
         queryset = Post.objects.filter(status=1).annotate(
-            comment_count=Count('comments'), 
+            comment_count=Count('comments'),
             popularity=Count('likes') + Count('comments')
             ).order_by('-popularity', '-created_on')
-     
-    paginator = Paginator(queryset, 5) 
+
+    paginator = Paginator(queryset, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     is_paginated = page_obj.has_other_pages()
@@ -98,7 +104,7 @@ def post_detail(request, slug):
 
     # brings backt to last visited site
     referer = request.META.get('HTTP_REFERER', None)
-    
+
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -116,7 +122,6 @@ def post_detail(request, slug):
     else:
         comment_form = CommentForm()
 
-
     is_liked = False
 
     if request.user.is_authenticated:
@@ -126,13 +131,13 @@ def post_detail(request, slug):
         request,
         "main_forum/post_detail.html",
         {
-        "post": post,
-        "comments": comments,
-        "comment_count": comment_count,
-        "comment_form": comment_form,
-        "is_liked": is_liked,
-        "likers": likers,
-        "referer": referer,
+            "post": post,
+            "comments": comments,
+            "comment_count": comment_count,
+            "comment_form": comment_form,
+            "is_liked": is_liked,
+            "likers": likers,
+            "referer": referer,
         },
     )
 
@@ -141,7 +146,7 @@ def post_create(request):
     """
     View to display a form for creating posts
     """
-    post_form = PostForm() 
+    post_form = PostForm()
 
     if request.method == "POST":
         post_form = PostForm(request.POST)
@@ -156,12 +161,14 @@ def post_create(request):
             )
             return redirect('home')
         else:
-            messages.add_message(request, messages.ERROR, 'There was an error uploading your post!')
+            messages.add_message(request,
+                                 messages.ERROR,
+                                 'There was an error uploading your post!')
     else:
         post_form = PostForm()
 
     return render(
-        request, 
+        request,
         "main_forum/post_create.html",
         {
             'post_form': post_form,
@@ -174,7 +181,7 @@ def post_edit(request, slug, post_id):
     View to edit posts
     """
     post = get_object_or_404(Post, slug=slug, id=post_id)
-    
+
     if request.method == "POST":
         post_form = PostForm(request.POST, instance=post)
 
@@ -182,18 +189,22 @@ def post_edit(request, slug, post_id):
             post = post_form.save(commit=False)
             post.status = 3
             post.save()
-            messages.add_message(request, messages.SUCCESS, 'Your post update is awaiting approval!')
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Your post update is awaiting approval!')
             return redirect('post_detail', slug=post.slug)
         else:
-            messages.add_message(request, messages.ERROR, 'There was an error updating your post!')
+            messages.add_message(
+                request, messages.ERROR,
+                'There was an error updating your post!')
     else:
         post_form = PostForm(instance=post)
-    
+
     return render(
-        request, 
-        "main_forum/edit_post.html", 
+        request,
+        "main_forum/edit_post.html",
         {
-            'post_form': post_form, 
+            'post_form': post_form,
             'post': post
         },
     )
@@ -209,14 +220,14 @@ def approve_posts(request):
     if request.method == "POST":
         post_id = request.POST.get('post_id')
         post = get_object_or_404(Post, id=post_id)
-        
+
         # Updates original post content with the edited content
         post.status = 1
         post.has_been_edited = True
         post.save()
 
     return render(
-        request, 
+        request,
         "main_forum/approve_posts.html",
         {
             'pending_posts': pending_posts
@@ -229,13 +240,13 @@ def post_delete(request, slug, post_id):
     View to " soft delete" posts
     """
     post = get_object_or_404(Post, slug=slug, id=post_id)
-    
+
     if request.method == "POST" and post.author == request.user:
         post.status = 2
         post.save()
         messages.success(request, 'Your post has been deleted successfully!')
         return redirect('home')
-    
+
     else:
         return redirect('post_detail', slug=post.slug)
 
@@ -243,13 +254,12 @@ def post_delete(request, slug, post_id):
 def like_post(request, slug):
     if request.method == 'POST':
         post = get_object_or_404(Post, slug=slug)
-        
-        
+
         if Like.objects.filter(user=request.user, post=post).exists():
             Like.objects.filter(user=request.user, post=post).delete()
         else:
             Like.objects.create(user=request.user, post=post)
-            
+
         return redirect('post_detail', slug=slug)
     else:
         return HttpResponse('Method not allowed', status=405)
