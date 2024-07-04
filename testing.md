@@ -260,23 +260,27 @@ Results:
 - Microsoft Computer
   - Microsoft Edge
   - Google Chrome
-  - Mozilla Firefox
+  - Mozilla Firefox*
 
 2. Mobile Devices:
 
 - Samsung Galaxy Tablet
   - Chrome (Android)
-  - Mozilla Firefox - add post error, required fields ignore
+  - Mozilla Firefox*
 - iPhone SE
   - Safari (iOS)
 - Samsung Galaxy Smartphone
   - Chrome (Android) 
-  - Mozilla Firefox - add post error, required fields ignore
+  - Mozilla Firefox*
 
 **Results**:
 
 There was an issue on all of the devices: 
 When users performed a search using the search bar (`q` parameter), the application correctly displayed search results based on the query. After performing a search, clicking on a category link in the navbar did not navigate users to the intended category page. Instead, it appeared as if the application tried to interpret the click as a new search with the query parameter `q=none`. This was fixed by modifying the category links in the navbar to explicitly construct their URLs using `{% url 'home' %}`.
 
+* When users attempted to add a post using Mozilla Firefox, they encountered the following issues:
+- Mozilla Firefox did not display the required field indicators on the forms fields (title and post_content) that are mandatory.
+- Only on Microsoft Computer the post form was possible to submit at all.
+This was fixed by explicitly marking the PostForm fields as `required=True`. This might have been an issue of how Mozilla handles form validation.
 
 [Return to contents list](#table-of-contents)

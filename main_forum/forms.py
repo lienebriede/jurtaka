@@ -48,11 +48,13 @@ class PostForm(forms.ModelForm):
             'title': forms.TextInput(attrs={
                 'class': "form-control",
                 'placeholder': 'Add a title',
+                'required': True,
             }),
             'post_content': forms.Textarea(attrs={
                 'class': "form-control",
                 'placeholder': 'Add text',
                 'style': 'height: 200px;',
+                'required': True,
             }),
         }
         labels = {
