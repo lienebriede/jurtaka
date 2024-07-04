@@ -384,7 +384,7 @@ Some changes were implemented to the database schemas.
 
 # 6. Validation and Testing
 
-See [TESTING.md](TESTING.md) for all testing and validation.
+See [testing.md](testing.md) for all testing and validation.
 
 # 7. Bugs and Fixes
 
@@ -396,7 +396,7 @@ After adding a post, users encountered a "NoReverseMatch" error.
 
 **Fix:** The bug was fixed by implementing an automatic slug generator using the 'slugify' library in Django models:
 
-```from django.utils.text import slugify```
+`from django.utils.text import slugify`
 
 and adding a method that generates a slug automatically:
 
@@ -417,7 +417,7 @@ When an edited post was submitted, the post_detail view could not retrieve the p
 
 **Fix:** The bug was fixed by adjusting the post_detail view to include both statuses:
 
-```queryset = Post.objects.filter(slug=slug, status__in=[1, 3])```
+`queryset = Post.objects.filter(slug=slug, status__in=[1, 3])`
 
 This makes it possible for users to view details of their edited posts while awaiting admin approval. Also in this way the original slug is used in the redirection, avoiding conflicts related to URLs.
 
@@ -425,14 +425,14 @@ This makes it possible for users to view details of their edited posts while awa
 
 Comments were not counted on the search results page.
 
-**Reason:** Comments were not being counted on the search results page due to the way Django manages relations between the Post, Comment and Like models using foreign keys. On the post_list page counts were accessed using ```post.comments.count()``` and ```post.likes.count()```
+**Reason:** Comments were not being counted on the search results page due to the way Django manages relations between the Post, Comment and Like models using foreign keys. On the post_list page counts were accessed using `post.comments.count()` and `post.likes.count()`
 However, on search_results page Django did not automatically count comments for each post. 
 
-**Fix:** This was fixed by importing 'Q' class from django.db.models and adding ```annotate(comment_count=Count('comments'))``` to the queryset in the search_results view. This annotation instructs Django to calculate and include the comment count for each post.
+**Fix:** This was fixed by importing 'Q' class from django.db.models and adding `annotate(comment_count=Count('comments'))` to the queryset in the search_results view. This annotation instructs Django to calculate and include the comment count for each post.
 
 4. UX Confusion with 'Back' Button
 
-Initially, the individual post page featured a 'Back' button intended to enhance user navigation. Users could view individual posts either from the main home page or from the search results. The 'Back' button was designed to bring them back to the home page or the search results, respectively. This was accomplished by adding the ```HTTP_REFERER``` header to the post_detail view and setting the referer variable in the post_detail template. The ```HTTP_REFERER``` header indicates the URL of the page from which the user navigated, ensuring that the 'Back' button would bring users back to their previous page, thus enhancing the user experience.
+Initially, the individual post page featured a 'Back' button intended to enhance user navigation. Users could view individual posts either from the main home page or from the search results. The 'Back' button was designed to bring them back to the home page or the search results, respectively. This was accomplished by adding the `HTTP_REFERER` header to the post_detail view and setting the referer variable in the post_detail template. The `HTTP_REFERER` header indicates the URL of the page from which the user navigated, ensuring that the 'Back' button would bring users back to their previous page, thus enhancing the user experience.
 
 However, the implementation of this feature led to unintended user experience issues. When users submitted comments or edited their posts, the 'Back' button did not function as expected. Instead of returning users to their previous page, it often resulted in confusion, as the 'Back' button would not work. 
 
@@ -443,11 +443,11 @@ To avoid this confusion the 'Back' button was removed from the post_detail templ
 
 The code did not update the comment_count variable after saving a new comment. 
 
-**Reason:** Even though a new comment was added succesfully, the count displayed in the template ```{{ comment_count }}``` remained the same until the page was refreshed. This happened because the variable was not recalculated and rendered in the template.
+**Reason:** Even though a new comment was added succesfully, the count displayed in the template `{{ comment_count }}` remained the same until the page was refreshed. This happened because the variable was not recalculated and rendered in the template.
 
 **Fix:** This was fixed by adding changes to post_detail view:
-```comment_count = post.comments.count()``` was added after saving a new comment. This insures that the comment count reflexts the current number of comments after a new comment is added. 
-The view was adjusted with ```return redirect('post_detail', slug=slug)``` This ensures that the page is updated with the new comment count without requiring a manual refresh.
+`comment_count = post.comments.count()` was added after saving a new comment. This insures that the comment count reflexts the current number of comments after a new comment is added. 
+The view was adjusted with `return redirect('post_detail', slug=slug)` This ensures that the page is updated with the new comment count without requiring a manual refresh.
 
 6. Conflict in Form Submissions for Like/Unlike and Comment
 
@@ -456,6 +456,16 @@ When users liked or unliked a post, a "required field" message appeared under th
 **Reason:** Both the 'like' and 'comment' forms were submitting to the same post_detail URL. This caused confusion because the server expected data from both forms simultaneously, and this lead to the error. 
 
 **Fix:** This was fixed by adding a separate 'like_post' URL for handling likes. A hidden input field was added to the form, which now captures the current URL, allowing the server to redirect users back to the original post detail page after processing the like action. This separation of handling likes and comments prevents conflicts between the submissions.
+
+7. Image Upload Failure
+
+When adding a post, users were unable to upload images.
+
+**Reason:**  Absence of the Pillow library, which is necessary for handling image files in Django. Additionally, the storage backend for Cloudinary was not properly configured in the Django settings.
+
+**Fix:** Installed the Pillow library: `pip install Pillow==8.2.0` and add necessary dependencies to the settings file:
+- Defined `MEDIA_URL = '/media/'`.
+- Configured `DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'`.
 
 # 8. Deployment
 
