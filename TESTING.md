@@ -1,11 +1,29 @@
 # Testing and Validation
 
-## Contents
+## Table of Contents
+
+[Code Validation](#code-validation)
 
 [User Story Testing](#user-story-testing)
 
-[Test Cases](#form-testing)
+[Automated Tests](#automated-tests)
 
+[Accessability Testing](#accessability-testing)
+
+[Compatibility Testing](#compatibility-testing)
+
+## Code Validation
+
+Python files  have been passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). 
+Results: 
+
+JavaScript files havebeen passed through the [Jshint](https://jshint.com/).
+Results:
+
+HTML and CSS files have been passed throught the [Nu Html Checker](https://validator.w3.org/nu/).
+Results:
+
+[Return to contents list](#table-of-contents)
 
 ## User Story Testing
 
@@ -77,6 +95,8 @@
 |||| Upon submitting my edited post, I receive a message that my post is awaiting approval | To be checked |
 |||| In case of failed submission I receive an error message | To be checked |
 |||| Upon deleting my post, I get a confirmation prompt that asks to confirm the deletion of my post | To be checked |
+
+[Return to contents list](#table-of-contents)
 
 ## Automated Tests
 
@@ -216,3 +236,44 @@ PASS: after updating the 'post_create' view to include 'post_form' in the contex
 * Both 'post_form' and 'contact_form' tests failed when submitted without required fields ('Category' for Post form and 'Subject' for Contact form).
 
 PASS: after providing corect test data in all the required fields.
+
+[Return to contents list](#table-of-contents)
+
+## Accessability Testing
+
+Chrome developer tools Lighthouse was used to test the performance, accessibility, best practices and SEO of all pages within the platform. 
+Results:
+
+[Return to contents list](#table-of-contents)
+
+## Cross-Device and Cross-Browser Testing
+
+1. Desktop Devices:
+
+- iMac
+  - Safari
+  - Google Chrome
+  - Mozilla Firefox
+- MacBook Air
+  - Safari
+  - Google Chrome
+  - Mozilla Firefox
+- Microsoft Computer
+  - Microsoft Edge
+  - Google Chrome
+  - Mozilla Firefox
+
+2. Mobile Devices:
+
+- Samsung Galaxy Tablet
+  - Chrome (Android)
+  - Mozilla Firefox
+- iPhone SE
+  - Safari (iOS)
+- Samsung Galaxy Smartphone
+  - Chrome (Android)
+  - Mozilla Firefox
+
+Results:
+
+[Return to contents list](#table-of-contents)
