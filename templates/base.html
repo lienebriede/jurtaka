@@ -65,22 +65,22 @@
                 <ul class="navbar-nav justify-content-lg-end flex-grow-1 text-center">
                     <!-- Login/logout button -->
                     {% if user.is_authenticated %}
-                    <li class="nav-item pt-3 pt-lg-0">
+                    <li class="nav-item pt-sm-3 pt-lg-0">
                         <a class="btn btn-primary nav-login col-12 mx-auto login-btn nav-link {% if request.path == logout_url %}active{% endif %}"
                             aria-current="page" href="{% url 'account_logout' %}">Log out</a>
                     </li>
                     {% else %}
-                    <li class="nav-item">
+                    <li class="nav-item pt-sm-3 pt-lg-0">
                         <a class="btn btn-primary nav-login col-12 mx-auto nav-link {% if request.path == login_url %}active{% endif %}"
                             aria-current="page" href="{% url 'account_login' %}">Log in</a>
                     </li>
                     {% endif %}
                     <!-- Nav items for small devices -->
-                    <li class="nav-title d-lg-none mt-4">
+                    <li class="nav-title d-lg-none mt-sm-4">
                         <hr>
                         Forum
                     </li>
-                    <li class="nav-item d-lg-none mt-4">
+                    <li class="nav-item d-lg-none mt-2 mt-sm-4">
                         <a class="nav-link {% if view_type == 'top' %}active{% endif %}" aria-current="page"
                             href="{% url 'home' %}?view_type=top">
                             <span class="me-2"><i class="fa-solid fa-star"></i></span>
@@ -95,11 +95,11 @@
                             <span>Latest</span>
                         </a>
                     </li>
-                    <li class="nav-title d-lg-none mt-2">
+                    <li class="nav-title d-lg-none mt-sm-2">
                         <hr>
                         Categories
                     </li>
-                    <li class="nav-item d-lg-none mt-4">
+                    <li class="nav-item d-lg-none mt-2 mt-sm-4">
                         <a class="nav-link {% if current_category == '1' %}active{% endif %}" aria-current="page"
                             href="?view_type={{ view_type }}&category=1">
                             <span class="me-2"><i class="fa-solid fa-person-hiking"></i></span>
@@ -119,11 +119,11 @@
                             <span>Lodging</span>
                         </a>
                     </li>
-                    <li class="nav-title d-lg-none mt-2">
+                    <li class="nav-title d-lg-none mt-sm-2">
                         <hr>
                         About
                     </li>
-                    <li class="nav-item d-lg-none mt-4">
+                    <li class="nav-item d-lg-none mt-2 mt-sm-4">
                         <a class="nav-link {% if request.path == 'about_url' %}active{% endif %}" aria-current="page"
                             href="{% url 'about' %}">
                             <span class="me-2"><i class="fa-solid fa-water"></i></span>
