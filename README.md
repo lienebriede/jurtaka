@@ -4,6 +4,8 @@
 
 This web application is a forum designed for hikers navigating the Jurtaka trail along the Baltic coast. Developed as a learning project using Django, it emphasizes secure user authentication and efficient content management. The platform supports user-generated content such as posts and comments, facilitating community interaction. It features responsive design for accessibility across devices and includes robust search functionality and intuitive navigation. Admin tools are provided for effective site management and content moderation.
 
+<img src="documentation/responsive.png">
+
 ## Table of Contents
 
 1. [Project Description](#project-description)
@@ -16,11 +18,11 @@ This web application is a forum designed for hikers navigating the Jurtaka trail
     - [Database Schemas](#database-schemas)
     - [Database Schema Enhancements](#database-schema-enhancements)
 4. [Features](#4-features)
-    - [Existing Features](#)
-    - [Future Features](#)
+    - [Existing Features](#existing-features)
+    - [Future Features](#future-features)
 5. [Technologies Used](#5-technologies-used)
-    - [Languages Used]()
-    - [Frameworks, Libraries and Programs Used]()
+    - [Languages and Frameworks Used](#languages-and-frameworks-used)
+    - [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
 6. [Validation and Testing](#6-validation-and-testing)
 7. [Bugs and Fixes](#7-bugs-and-fixes)
 8. [Deployment](#8-deployment)
@@ -57,6 +59,8 @@ The ideal user of the Jurtaka forum is a hiking enthusiast with an interest in e
 First-Time Visitor: Someone who is new to the Jurtaka trail and is looking for information, tips, and community insights about the hike.
 Returning Visitor: A hiker who has already visited the forum, found valuable information, and is coming back for more detailed discussions, updates, and to share their own experiences.
 Frequent User: A regular participant who actively engages with the community by contributing posts and comments. This user values the interactive nature of the forum and enjoys being a part of the vibrant hiking community.
+
+[Return to contents list](#table-of-contents)
 
 # 2. User Experience
 
@@ -301,6 +305,8 @@ These User Stories have been assigned Won't-Have status.
 
 **Since the users are not required to provide email address when registering for the site, this feature seemed unnesecary at this time, giving time to work on more relative features.
 
+[Return to contents list](#table-of-contents)
+
 ## Wireframes and Design
 
 ### Wireframes
@@ -312,6 +318,8 @@ These User Stories have been assigned Won't-Have status.
 ### Typography
 
 ### Icons and Images
+
+[Return to contents list](#table-of-contents)
 
 # 3. Site Structure
     
@@ -338,13 +346,17 @@ Some changes were implemented to the database schemas.
 - The **'reason'** field has been removed from the "Contact" model. Since the contact form already includes a **'subject'** field, having two separate fields for subject and reason is redundant for submitting contact inquiries.
 
 - Both the "Post" and "About" models have been implemented with  Cloudinary **'image'** fields. This allows admins to upload an image for the "About" page and the users to add one or two images to their posts.
- 	
+
+[Return to contents list](#table-of-contents)
+
 # 4. Features
 
 ## Existing Features
 
 
 ## Future Features
+
+[Return to contents list](#table-of-contents)
 
 # 5. Technologies Used
 
@@ -381,6 +393,8 @@ Some changes were implemented to the database schemas.
     Google fonts were used to import the fonts for styling.
 1. [Google Photos:](https://www.google.com/photos/about/) 
     Google Photos was used for finding placeholder images for the site.
+
+[Return to contents list](#table-of-contents)
 
 # 6. Validation and Testing
 
@@ -467,6 +481,8 @@ When adding a post, users were unable to upload images.
 - Defined `MEDIA_URL = '/media/'`.
 - Configured `DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'`.
 
+[Return to contents list](#table-of-contents)
+
 # 8. Deployment
 
 ## Deployment to Heroku
@@ -514,5 +530,9 @@ The project was deployed to [Heroku](https://dashboard.heroku.com/). These steps
 2. Find the [Jurtaka](https://github.com/lienebriede/jurtaka) repository.
 3. Click on the "Fork" button in the upper right-hand corner of the repository's page. This creates a copy (fork) of the repository under your GitHub account.
 
+[Return to contents list](#table-of-contents)
+
 
 # 9. Credits
+
+[Return to contents list](#table-of-contents)

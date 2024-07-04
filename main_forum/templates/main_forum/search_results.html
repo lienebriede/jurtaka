@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cloudinary %}
 
 {% block content %}
 
@@ -19,18 +20,37 @@
             <p class="pt-2 pb-2">{{ post.post_content | safe }}
             </p>
         </a>
-        <div class="row mb-2">
+        <!-- Image display -->
+        <div class="row">
+            {% if post.image1 %}
+            {% if post.image2 %}
+            <div class="col-md-6">
+                <img class="img-fluid" src="{% cloudinary_url post.image1.url width=600 crop='fill' %}"
+                    alt="{{ post.title }}">
+            </div>
+            <div class="col-md-6">
+                <img class="img-fluid mt-2 mt-md-0" src="{% cloudinary_url post.image2.url width=600 crop='fill' %}"
+                    alt="{{ post.title }}">
+            </div>
+            {% else %}
+            <div class="col-md-12">
+                <img class="img-fluid" src="{% cloudinary_url post.image1.url width=1200 crop='fill' %}"
+                    alt="{{ post.title }}">
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
+        <!-- Likes and comments -->
+        <div class="d-flex mt-4 likes-comments-display">
             <!-- Like count -->
-            <div class="col-5 col-md-2 col-lg-1">
-                <span>
-                    <i class="fa-regular fa-thumbs-up"></i> <span class="count">{{ post.likes.count | safe }}</span>
-                </span>
+            <div class="me-4 d-flex align-items-center">
+                <i class="fa-regular fa-thumbs-up me-2"></i>
+                <span class="count">{{ post.likes.count | safe }}</span>
             </div>
             <!-- Comment count -->
-            <div class="col-5 col-md-2 col-lg-1">
-                <span>
-                    <i class="fa-regular fa-comment"></i> <span class="count">{{ post.comment_count | safe}}</span>
-                </span>
+            <div class="d-flex align-items-center">
+                <i class="fa-regular fa-comment me-2"></i>
+                <span class="count">{{ post.comment_count | safe}}</span>
             </div>
         </div>
     </div>
