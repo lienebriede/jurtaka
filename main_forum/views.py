@@ -149,7 +149,7 @@ def post_create(request):
     post_form = PostForm()
 
     if request.method == "POST":
-        post_form = PostForm(request.POST)
+        post_form = PostForm(request.POST, request.FILES)
         if post_form.is_valid():
             post = post_form.save(commit=False)
             post.author = request.user
@@ -161,6 +161,7 @@ def post_create(request):
             )
             return redirect('home')
         else:
+            print(post_form.errors)
             messages.add_message(request,
                                  messages.ERROR,
                                  'There was an error uploading your post!')

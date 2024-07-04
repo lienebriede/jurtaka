@@ -56,18 +56,16 @@
                 {% endif %}
             </div>
             <!-- Likes and comments -->
-            <div class="row mt-4">
+            <div class="d-flex mt-4 likes-comments-display">
                 <!-- Like count -->
-                <div class="col-5 col-md-2 col-lg-2">
-                    <span>
-                        <i class="fa-regular fa-thumbs-up"></i> <span class="count">{{ post.likes.count | safe }}</span>
-                    </span>
+                <div class="me-4 d-flex align-items-center">
+                    <i class="fa-regular fa-thumbs-up me-2"></i>
+                    <span class="count">{{ post.likes.count | safe }}</span>
                 </div>
                 <!-- Comment count -->
-                <div class="col-5 col-md-2 col-lg-2">
-                    <span>
-                        <i class="fa-regular fa-comment"></i> <span class="count">{{ post.comment_count | safe}}</span>
-                    </span>
+                <div class="d-flex align-items-center">
+                    <i class="fa-regular fa-comment me-2"></i>
+                    <span class="count">{{ post.comment_count | safe}}</span>
                 </div>
             </div>
         </div>

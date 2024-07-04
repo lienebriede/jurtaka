@@ -125,6 +125,14 @@ body {
     color: var(--font-color) !important;
 }
 
+.likes-comments-display {
+    justify-content: start;
+}
+
+.likes-comments-display .count {
+    white-space: nowrap;
+}
+
 /* Search bar --------------------------------------------------------------> */
 
 .search-bar {
@@ -168,6 +176,12 @@ input.search-bar::placeholder {
     font-size: 16px;
 }
 
+.fa-comment,
+.fa-thumbs-up {
+    font-size: 18px;
+    color: var(--font-color);
+}
+
 .post-display i,
 .fa-search,
 .fa-xmark,
@@ -175,10 +189,8 @@ input.search-bar::placeholder {
     font-size: 24px;
 }
 
-
-.fa-comment,
-.fa-thumbs-up {
-    font-size: 18px;
+.likes-comments-display i {
+    font-size: 20px;
     color: var(--font-color);
 }
 
