@@ -497,6 +497,14 @@ In the 'Top' Post View, comment count is much higher than it should be
 
 **Solution Implemented**: Due to time constraints and the persistence of the issue, the affected category had to be temporarily removed from the site. This decision ensures data integrity and user experience until a more robust solution can be implemented.
 
+9. UnorderedObjectListWarning Warning
+
+The warning message appears in the terminal during testing the Django application. 
+
+**Reason**: Django's Paginator has encountered an unordered queryset. The reason might be the complex query manipulations or improper ordering of query results before pagination.
+
+**Solution Implemented**: Due to time constraints, there was not sufficient opportunity to thoroughly investigate the exact source of the warning, therefore pagination still is applied to the search view but this issue needs to be fixed.
+
 [Return to contents list](#table-of-contents)
 
 # 8. Deployment

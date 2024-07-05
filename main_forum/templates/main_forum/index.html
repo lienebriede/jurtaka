@@ -45,16 +45,16 @@
                 {% if post.image2 %}
                 <div class="col-md-6">
                     <img class="img-fluid" src="{% cloudinary_url post.image1.url width=600 crop='fill' %}"
-                        alt="{{ post.title }}">
+                        alt="{{ post.title }}" loading="lazy">
                 </div>
                 <div class="col-md-6">
                     <img class="img-fluid mt-2 mt-md-0" src="{% cloudinary_url post.image2.url width=600 crop='fill' %}"
-                        alt="{{ post.title }}">
+                        alt="{{ post.title }}" loading="lazy">
                 </div>
                 {% else %}
                 <div class="col-md-12">
                     <img class="img-fluid" src="{% cloudinary_url post.image1.url width=1200 crop='fill' %}"
-                        alt="{{ post.title }}">
+                        alt="{{ post.title }}" loading="lazy">
                 </div>
                 {% endif %}
                 {% endif %}
