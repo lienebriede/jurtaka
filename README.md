@@ -73,7 +73,7 @@ Agile values and principles have been followed in the creation of this project f
 ### Kanban Board
 
 There have been 42 issues managed on the Kanban board, encompassing Epics, User Stories and Bugs. 
-Throughout the project, encountered bugs were either integrated into existing user stories with a bug label or tracked separately with a dedicated bug label. By the project's conclusion, all implemented requirements were moved to the 'Done' column (excluding Epics and 'Won't Have' items).
+Throughout the project, encountered bugs were either integrated into existing user stories with a bug label or tracked separately with a dedicated bug label. By the project's conclusion, all implemented requirements were moved to the 'Done' column (excluding Epics, 'Won't Have' items and issue [#44](https://github.com/users/lienebriede/projects/8/views/1?pane=issue&itemId=69943676)).
 
 ![Kanban board](/documentation/kanban_screenshot.png)
 
@@ -480,6 +480,22 @@ When adding a post, users were unable to upload images.
 **Fix:** Installed the Pillow library: `pip install Pillow==8.2.0` and add necessary dependencies to the settings file:
 - Defined `MEDIA_URL = '/media/'`.
 - Configured `DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'`.
+
+8. Incorrect Comment Count in 'Top' Post View
+
+In the 'Top' Post View, comment count is much higher than it should be
+
+**Possible reason**: Error in calculating like and comment count in the queryset.
+
+**Tried Fixes**: 
+- Annotated the queryset to calculate comment count.
+- Used `ExpressionWrapper` to ensure accurate calculation of comment count.
+- Utilized `F` expressions to reference and aggregate comment count correctly.
+- Specified `IntegerField` to ensure that the field type used for storing comment count is appropriate and avoids any type-related issues.
+
+**Possible Fix**: Add `comment_count` and `likes_count` as fields directly on the Post model, override the `save()` method on the Comment and Likes models to update these fields whenever a new comment or like is added. 
+
+**Solution Implemented**: Due to time constraints and the persistence of the issue, the affected category had to be temporarily removed from the site. This decision ensures data integrity and user experience until a more robust solution can be implemented.
 
 [Return to contents list](#table-of-contents)
 

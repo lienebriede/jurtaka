@@ -69,11 +69,6 @@ def post_list(request):
     if view_type == 'latest':
         queryset = Post.objects.filter(status=1).annotate(
             comment_count=Count('comments')).order_by('-created_on')
-    elif view_type == 'top':
-        queryset = Post.objects.filter(status=1).annotate(
-            comment_count=Count('comments'),
-            popularity=Count('likes') + Count('comments')
-            ).order_by('-popularity', '-created_on')
 
     paginator = Paginator(queryset, 5)
     page_number = request.GET.get('page')
