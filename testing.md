@@ -14,14 +14,57 @@
 
 ## Code Validation
 
-Python files  have been passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). 
-Results: 
+Python files have been passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). 
 
-JavaScript files havebeen passed through the [Jshint](https://jshint.com/).
-Results:
+**Results:** 
+
+JavaScript file has been passed through the [Jshint](https://jshint.com/).
+
+**Results:** No errors found.
 
 HTML and CSS files have been passed throught the [Nu Html Checker](https://validator.w3.org/nu/).
-Results:
+
+**Results:**
+
+| Page                          | Result       |
+|-------------------------------|--------------|
+| [Home](https://jurtaka-f9d15d94d51b.herokuapp.com)                         | No errors    |
+| [Post detail](https://jurtaka-f9d15d94d51b.herokuapp.com/post/)            | No errors    |
+| [Create post](https://jurtaka-f9d15d94d51b.herokuapp.com/rainy-day/edit_post/4/) | No errors    |
+| [Edit post](https://jurtaka-f9d15d94d51b.herokuapp.com/rainy-day/edit_post/4/)   | No errors    |
+| [Latest view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=latest) | No errors    |
+| [Hiking category view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=top&category=1) | No errors    |
+| [Food and Drinks category view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=2) | No errors    |
+| [Lodging view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=3) | No errors    |
+| [About](https://jurtaka-f9d15d94d51b.herokuapp.com/about/)                   | No errors    |
+| [Contact](https://jurtaka-f9d15d94d51b.herokuapp.com/about/contact/)         | No errors    |
+| [Search view](https://jurtaka-f9d15d94d51b.herokuapp.com/search/?q=liepaja)  | No errors    |
+| [Log out](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/logout/)      | No errors    |
+| [Log in](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/login/)        | No errors    |
+| [Sign up](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/signup/)      | No errors    |
+
+https://jurtaka-f9d15d94d51b.herokuapp.com/post/
+https://jurtaka-f9d15d94d51b.herokuapp.com/rainy-day/edit_post/4/
+https://jurtaka-f9d15d94d51b.herokuapp.com/discover-jurtaka/
+https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=latest
+https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=top&category=1
+https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=2
+https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=3
+https://jurtaka-f9d15d94d51b.herokuapp.com/about/
+https://jurtaka-f9d15d94d51b.herokuapp.com/about/contact/
+https://jurtaka-f9d15d94d51b.herokuapp.com/search/?q=liepaja
+https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/logout/
+https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/login/
+https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/signup/
+
+
+
+
+
+- Element style not allowed as child of element body in this context. 
+</script><style media="all" id="fa-v4-font-face">
+  </style><style media="all" id="fa-v5-font-face">
+
 
 [Return to contents list](#table-of-contents)
 
@@ -260,7 +303,7 @@ Results:
 - Microsoft Computer
   - Microsoft Edge
   - Google Chrome
-  - Mozilla Firefox*
+  - Mozilla Firefox
 
 2. Mobile Devices:
 
@@ -280,7 +323,7 @@ When users performed a search using the search bar (`q` parameter), the applicat
 
 * When users attempted to add a post using Mozilla Firefox, they encountered the following issues:
 - Mozilla Firefox did not display the required field indicators on the forms fields (title and post_content) that are mandatory.
-- Only on Microsoft Computer the post form was possible to submit at all.
-This was fixed by explicitly marking the PostForm fields as `required=True`. This might have been an issue of how Mozilla handles form validation.
+- Attempting to submit the form resulted in a 500 error. On desktop devices everything worked as expected. 
+This could be an issue of how Mozilla handles form validation. This was partyly fixed by explicitly marking the PostForm fields as `required=True`. Users can now successfully submit forms on mobile devices using Mozilla Firefox. However, the required field indicators are still not displayed.
 
 [Return to contents list](#table-of-contents)

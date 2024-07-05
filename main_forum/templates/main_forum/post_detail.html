@@ -138,7 +138,7 @@
                     <span><strong>{{ comment.author }}</strong></span> on {{ comment.created_on }}
                 </p>
             </div>
-            <div id="comment {{ comment.id }}">
+            <div id="comment{{ comment.id }}">
                 {{ comment.comment_content | linebreaks }}
             </div>
         </div>
