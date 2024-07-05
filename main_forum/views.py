@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q, Count
-from django.utils.html import mark_safe
+from django.utils.html import mark_safe, strip_tags
 import re
 from .models import Post, Comment, Like, Category
 from .forms import CommentForm, PostForm
@@ -23,14 +23,18 @@ def search_results(request):
 
         # Highlights, case insensitive
         for post in queryset:
-            post.title = mark_safe(re.sub(
+            highlighted_title = mark_safe(re.sub(
                 re.escape(query),
                 f'<span class="highlight">{query}</span>',
                 post.title, flags=re.IGNORECASE))
-            post.post_content = mark_safe(re.sub(
+            highlighted_content = mark_safe(re.sub(
                 re.escape(query),
                 f'<span class="highlight">{query}</span>',
                 post.post_content, flags=re.IGNORECASE))
+
+            post.highlighted_title = highlighted_title
+            post.highlighted_content = highlighted_content
+            post.sanitized_title = strip_tags(post.title)
 
     else:
         queryset = Post.objects.none()
