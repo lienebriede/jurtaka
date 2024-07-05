@@ -66,7 +66,7 @@ def post_list(request):
     queryset = Post.objects.filter(status=1)
 
     if category_id:
-        queryset = Post.objects.filter(categories__id=category_id).annotate(
+        queryset = Post.objects.filter(categories__id=category_id, status=1).annotate(
             comment_count=Count('comments'))
         view_type = None
 

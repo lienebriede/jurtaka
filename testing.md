@@ -30,41 +30,47 @@ HTML and CSS files have been passed throught the [Nu Html Checker](https://valid
 |-------------------------------|--------------|
 | [Home](https://jurtaka-f9d15d94d51b.herokuapp.com)                         | No errors    |
 | [Post detail](https://jurtaka-f9d15d94d51b.herokuapp.com/post/)            | No errors    |
-| [Create post](https://jurtaka-f9d15d94d51b.herokuapp.com/rainy-day/edit_post/4/) | No errors    |
-| [Edit post](https://jurtaka-f9d15d94d51b.herokuapp.com/rainy-day/edit_post/4/)   | No errors    |
+| [Create post](https://jurtaka-f9d15d94d51b.herokuapp.com/rainy-day/edit_post/4/) | *1    |
+| [Edit post](https://jurtaka-f9d15d94d51b.herokuapp.com/rainy-day/edit_post/4/)   | *1    |
 | [Latest view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=latest) | No errors    |
 | [Hiking category view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=top&category=1) | No errors    |
 | [Food and Drinks category view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=2) | No errors    |
 | [Lodging view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=3) | No errors    |
-| [About](https://jurtaka-f9d15d94d51b.herokuapp.com/about/)                   | No errors    |
+| [About](https://jurtaka-f9d15d94d51b.herokuapp.com/about/)                   | *2    |
 | [Contact](https://jurtaka-f9d15d94d51b.herokuapp.com/about/contact/)         | No errors    |
 | [Search view](https://jurtaka-f9d15d94d51b.herokuapp.com/search/?q=liepaja)  | No errors    |
 | [Log out](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/logout/)      | No errors    |
 | [Log in](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/login/)        | No errors    |
-| [Sign up](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/signup/)      | No errors    |
+| [Sign up](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/signup/)      | *3    |
 
-https://jurtaka-f9d15d94d51b.herokuapp.com/post/
-https://jurtaka-f9d15d94d51b.herokuapp.com/rainy-day/edit_post/4/
-https://jurtaka-f9d15d94d51b.herokuapp.com/discover-jurtaka/
-https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=latest
-https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=top&category=1
-https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=2
-https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=3
-https://jurtaka-f9d15d94d51b.herokuapp.com/about/
-https://jurtaka-f9d15d94d51b.herokuapp.com/about/contact/
-https://jurtaka-f9d15d94d51b.herokuapp.com/search/?q=liepaja
-https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/logout/
-https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/login/
-https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/signup/
+Errors that were found, but could not be located in the templates:
 
+*1
+- No p element in scope but a p end tag seen.
 
+```html 
+<label for="id_categories_2"><input type="checkbox" name="categories" value="3" class="custom-checkbox" id="id_categories_2">Lodging</label>
+</div>
+</div>
+</p>
+```
 
+*2
+- No p element in scope but a p end tag seen.
 
+```html 
+<span style="font-weight: 700;">Register today and join the conversation! Let’s explore the beauty of Jurtaka together!</span></p></p>
+```
 
-- Element style not allowed as child of element body in this context. 
-</script><style media="all" id="fa-v4-font-face">
-  </style><style media="all" id="fa-v5-font-face">
+*3 
+- End tag p implied, but there were open elements.
+- Unclosed element span.
+- Stray end tag span.
+- No p element in scope but a p end tag seen.
 
+```html 
+<span class="helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span></p>
+```
 
 [Return to contents list](#table-of-contents)
 
