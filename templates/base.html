@@ -76,9 +76,9 @@
                     </li>
                     {% endif %}
                     <!-- Nav items for small devices -->
-                    <li class="nav-title d-lg-none mt-sm-4">
+                    <li class="nav-title d-lg-none mt-sm-2">
                         <hr>
-                        <span class="text-muted">Forum</span>
+                        <span class="text-muted">Categories</span>
                     </li>
                     <li class="nav-item d-lg-none mt-2">
                         <a class="nav-link {% if view_type == 'latest' %}active{% endif %}" aria-current="page"
@@ -88,7 +88,7 @@
                             <span>Latest</span>
                         </a>
                     </li>
-                    <li class="nav-item d-lg-none mt-2 mt-sm-4">
+                    <li class="nav-item d-lg-none mt-2">
                         <a class="nav-link {% if current_category == '1' %}active{% endif %}" aria-current="page"
                             href="{% url 'home' %}?view_type={{ view_type }}&category=1">
                             <span class="me-2"><i class="fa-solid fa-person-hiking"></i></span>
@@ -112,7 +112,7 @@
                         <hr>
                         <span class="text-muted">About</span>
                     </li>
-                    <li class="nav-item d-lg-none mt-2 mt-sm-4">
+                    <li class="nav-item d-lg-none mt-2">
                         <a class="nav-link {% if request.path == 'about_url' %}active{% endif %}" aria-current="page"
                             href="{% url 'about' %}">
                             <span class="me-2"><i class="fa-solid fa-water"></i></span>
@@ -130,7 +130,7 @@
                     <li class="nav-item dropdown me-lg-2 mx-lg-4 d-none d-lg-block">
                         <a class="nav-link dropdown-toggle" href="#" id="forumDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Forum
+                            Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="forumDropdown">
                             <li><a class="dropdown-item mt-2 text-center {% if view_type == 'latest' %}active{% endif %}"

@@ -38,7 +38,7 @@ HTML and CSS files have been passed throught the [Nu Html Checker](https://valid
 | [Lodging view](https://jurtaka-f9d15d94d51b.herokuapp.com/?view_type=None&category=3) | No errors    |
 | [About](https://jurtaka-f9d15d94d51b.herokuapp.com/about/)                   | *2    |
 | [Contact](https://jurtaka-f9d15d94d51b.herokuapp.com/about/contact/)         | No errors    |
-| [Search view](https://jurtaka-f9d15d94d51b.herokuapp.com/search/?q=liepaja)  | No errors    |
+| [Search view](https://jurtaka-f9d15d94d51b.herokuapp.com/search/?q=liepaja)  | *4    |
 | [Log out](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/logout/)      | No errors    |
 | [Log in](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/login/)        | No errors    |
 | [Sign up](https://jurtaka-f9d15d94d51b.herokuapp.com/accounts/signup/)      | *3    |
@@ -70,6 +70,18 @@ Errors that were found, but could not be located in the templates:
 
 ```html 
 <span class="helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span></p>
+```
+*4
+
+- End tag main seen, but there were open elements.
+
+```html 
+<div class="container-fluid">
+```
+
+- Unclosed element div.
+```html 
+</main>
 ```
 
 [Return to contents list](#table-of-contents)
@@ -290,7 +302,16 @@ PASS: after providing corect test data in all the required fields.
 ## Lighthouse Testing
 
 Chrome developer tools Lighthouse was used to test the performance, accessibility, best practices and SEO of all pages within the platform. 
-Results:
+
+| Page              | Mobile                                          | Desktop                                         |
+|-------------------|-------------------------------------------------|-------------------------------------------------|
+| Home              | <img src="">    | <img src="">   |
+| Post detail       | <img src="">  | <img src=""> |
+| Add a post        | <img src="">  | <img src=""> |
+| Search view       | <img src=""> | <img src=""> |
+| Browse by category| <img src=""> | <img src=""> |
+| About             | <img src="">  | <img src="">|
+| Contact           | <img src=""> | <img src=""> |
 
 [Return to contents list](#table-of-contents)
 

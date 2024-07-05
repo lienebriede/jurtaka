@@ -67,7 +67,7 @@ def post_list(request):
 
     if category_id:
         queryset = Post.objects.filter(categories__id=category_id, status=1).annotate(
-            comment_count=Count('comments'))
+            comment_count=Count('comments')).order_by('-created_on')
         view_type = None
 
     if view_type == 'latest':

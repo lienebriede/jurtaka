@@ -353,8 +353,149 @@ Some changes were implemented to the database schemas.
 
 ## Existing Features
 
+**Home Page**
+
+<img src="documentation/home.jpg">
+
+1. New users see a welcome message encouraging them to log in.
+2. Returning users receive a personalized greeting upon logging in.
+3. Users add new posts in the designated "Add a post" section.
+4. Each post displays its content along with the comment and like count.
+5. The categories associated with each post are shown.
+6. Pagination ensures smooth navigation through posts.
+7. A post preview option allows users to quickly glance at the post content.
+
+**Individual Post Display**
+
+<img src="documentation/post_detail1.jpg" height="360">
+<img src="documentation/post_detail2.jpg" height="360">
+
+1. Each post shows the username of the author and the date it was posted.
+2. The title and full content of the post are displayed, along with one or two images.
+3. If the post has been updated, the update date is shown in grey.
+4. Users see the like and comment count for each post.
+5. The like button changes from outlined to black if the user has liked the post.
+6. A list of users who liked the post is available.
+7. Logged-in users can add comments to posts.
+8. Users who are not logged in see a prompt to log in to add comments.
+9. The comments section displays all comments on the post.
+10. Post authors have the option to edit and/or delete their posts.
+
+**Add a Post**
+
+<img src="documentation/create_post.jpg" height="360">
+
+1. Clicking the "Add a post" field opens a new post page.
+2. An exit button on the new post page allows users to return to the home page.
+3. The form requires users to fill in the title, content, and categories.
+4. Missing title and content fields trigger an error message.
+5. A missing category prompts a Django error message and a required field message.
+6. Upon successful submission, a Django success message is displayed.
+
+**Edit and Delete Post**
+
+<img src="documentation/edit_post1.jpg" height="360">
+<img src="documentation/edit_post2.jpg" height="360">
+
+1. Clicking the "Edit post" button opens the edit post page.
+2. An arrow left button allows users to return to the individual post view.
+3. Users can edit all fields, including title, content, category, and images.
+4. All required fields must be filled; otherwise, error messages appear.
+5. Upon successful submission, a Django success message is displayed.
+6. After submission, the edit button is disabled.
+7. The add comment section is hidden with a message indicating that the post will be updated shortly.
+8. The post does not appear on the post list until approved by the admin.
+9. The user can still delete the post after editing.
+10. Clicking on delete post triggers a confirmation modal.
+11. After feleting the post, the user is redirected to the home page.
+
+**Like and Comment**
+
+<img src="documentation/add_comment.jpg" height="360">
+
+**Search Functionality**
+
+<img src="documentation/search_view.jpg" height="360">
+
+1. Users can search for keywords within the app.
+2. Posts containing the keyword in the title or content are shown.
+3. The keyword is highlighted in yellow within the search results.
+4. If no match is found, a message indicates no such keyword.
+5. Pagination is available for the search results.
+
+**Navigation**
+
+<img src="documentation/navbar.jpg" height="360">
+
+1. Users can browse posts by various categories.
+2. The default view shows the latest posts.
+3. Users can view top posts in a dedicated category.
+4. Posts can belong to multiple categories, and all relevant posts are displayed.
+5. The navigation bar shows either log in or log out buttons depending on the user's status.
+
+**Log in/Log out Page**
+
+<img src="documentation/login1.jpg" height="360">
+<img src="documentation/login2.jpg" height="360">
+
+1. The app uses Django's built-in authentication system with required fields.
+2. The log in page offers the option to register an account if the user is not logged in.
+3. An exit button on the log in/log out page allows users to return to the home page.
+
+**About Page**
+
+<img src="documentation/about.jpg" height="360">
+
+1. The about page provides information about the app.
+2. The content on the about page can be updated by the admin.
+
+**Contact Page**
+
+<img src="documentation/contact.jpg" height="360">
+
+1. Both logged-in and not logged-in users can send a request form through the contact page.
+2. The form requires a message and a subject, with the subject defaulting to "general inquiry."
+3. Logged-in users do not need to provide an email address.
+4. Unregistered users must include their email address in the form.
+5. Upon successful form submission, a Django success message appears.
+6. The user is redirected to the home page after form submission.
+
+**Admin Controls**
+
+<img src="documentation/admin_posts.jpg" height="360">
+
+- The post model in the admin panel lets admins oversee user-generated content, including author details, titles, slugs, content, creation and update dates, status, categories, and associated images.
+- Admins can filter posts by status and categories, and search through titles and content for efficient moderation.
+- The post admin view includes small previews of images if they are available, making it easier for admins to manage visual content.
+
+<img src="documentation/admin_likes.jpg" height="200">
+
+- The admin panel features a model for likes, ensuring that each user can only like a post once, and allowing admins to monitor like activity.
+
+<img src="documentation/admin_comments.jpg" height="300">
+
+- Comment management is facilitated with the comment model, showing the post, author, content, and timestamps for each comment.
+
+<img src="documentation/admin_about.jpg" height="360">
+
+- Admins can edit and moderate About content using the Summernote editor integrated into the About model, enhancing content management capabilities.
+
+<img src="documentation/admin_contact.jpg" height="200">
+
+- The admin panel provides a list display for contacts, showing user information, email, subject, creation date, and status for better communication tracking.
+- Filters and search fields are available in the contact admin view to help admins manage inquiries based on status, subject, and user details.
 
 ## Future Features
+
+1. Implement a feature that allows users to see posts categorized by the most popular posts, enabling them to view the most useful content first.
+2. Enable users to edit and delete their comments so they can update or remove irrelevant content.
+3. Add an option for users to delete their accounts, allowing them to opt out of all services.
+4. Implement a view counter so users can see how many times a post has been viewed, providing insight into the post's popularity.
+5. Create a feature that displays a list of all the sections of the hike, helping users to learn more about the hike.
+6. Display hiking section ratings on posts so users can see feedback from other users.
+7. Enable users to rate hiking sections, offering feedback to other users.
+8. Allow users to add hiking sections to posts, providing more detailed information.
+
 
 [Return to contents list](#table-of-contents)
 
@@ -496,14 +637,6 @@ In the 'Top' Post View, comment count is much higher than it should be
 **Possible Fix**: Add `comment_count` and `likes_count` as fields directly on the Post model, override the `save()` method on the Comment and Likes models to update these fields whenever a new comment or like is added. 
 
 **Solution Implemented**: Due to time constraints and the persistence of the issue, the affected category had to be temporarily removed from the site. This decision ensures data integrity and user experience until a more robust solution can be implemented.
-
-9. UnorderedObjectListWarning Warning
-
-The warning message appears in the terminal during testing the Django application. 
-
-**Reason**: Django's Paginator has encountered an unordered queryset. The reason might be the complex query manipulations or improper ordering of query results before pagination.
-
-**Solution Implemented**: Due to time constraints, there was not sufficient opportunity to thoroughly investigate the exact source of the warning, therefore pagination still is applied to the search view but this issue needs to be fixed.
 
 [Return to contents list](#table-of-contents)
 
