@@ -1,4 +1,4 @@
-# Jurtaka Hiking Forum
+<h2 align="center">Jurtaka Hiking Forum</h2>
 
 [Find the project here.](https://jurtaka-f9d15d94d51b.herokuapp.com/)
 
@@ -8,15 +8,12 @@ This web application is a forum designed for hikers navigating the Jurtaka trail
 
 ## Table of Contents
 
-1. [Project Description](#project-description)
+1. [Project Description](#1-project-description)
 2. [User Experience](#2-user-experience)
     - [Agile Methodology](#agile-methodology)
     - [User Stories](#user-stories)
     - [Wireframes and Design](#wireframes-and-design)
 3. [Site Structure](#3-site-structure)
-    - [Site Maps](#site-maps)
-    - [Database Schemas](#database-schemas)
-    - [Database Schema Enhancements](#database-schema-enhancements)
 4. [Features](#4-features)
     - [Existing Features](#existing-features)
     - [Future Features](#future-features)
@@ -75,7 +72,7 @@ Agile values and principles have been followed in the creation of this project f
 There have been 42 issues managed on the Kanban board, encompassing Epics, User Stories and Bugs. 
 Throughout the project, encountered bugs were either integrated into existing user stories with a bug label or tracked separately with a dedicated bug label. By the project's conclusion, all implemented requirements were moved to the 'Done' column (excluding Epics, 'Won't Have' items and issue [#44](https://github.com/users/lienebriede/projects/8/views/1?pane=issue&itemId=69943676)).
 
-<img src="documentation/kanban_screenshot.png" width="500">
+<img src="documentation/kanban_screenshot.png" width="600">
 
 
 ### Epics
@@ -117,6 +114,8 @@ A total of **100** story points were allocated across the project's user stories
 By the project's completion, 17 story points in total were categorized as 'Won't-Have' due to project constraints.
 
 Since this project serves educational purposes, it's important to note that the assigned story points may not always accurately reflect the actual effort required. Some tasks may have required more time, while others may have required less.
+
+[Return to contents list](#table-of-contents)
 
 ## User Stories
 
@@ -333,6 +332,16 @@ A simple logo was created using Adobe Illustrator. The background image, sourced
 The font used for the app is "Lato", with Sans Serif as the fallback font.
 In the app, icons from Font Awesome are used to enhance its aesthetics and functionality, making it more visually appealing, user-friendly, and engaging. The icons are used for representing the categories, thumbs up for likes, and comment bubbles for comments. These icons play a crucial role in helping users quickly understand and navigate through various sections and actions within the app, contributing to a more intuitive and enjoyable user experience.
 
+### Footer
+
+The app includes a footer section with links to Facebook and Instagram for direct access to the forums social media profiles.
+
+### Error Pages
+
+<img src="documentation/error_pages.jpg" width="300">
+
+Custom error pages for both the '404 Not Found' and '500 Internal Server Error' scenarios have been implemented to enhance user experience and provide clear guidance in case of resource not found or server issues.
+
 ### Responsivness
 
 **Search Bar**
@@ -357,19 +366,19 @@ The image display adapts responsively depending on the screen size. When viewing
 
 # 3. Site Structure
     
-## Site maps
+### Site maps
 
 This site map shows the intended structure of the site. The grey colored boxes relate to the 'could have' user stories or future implementations at the stage of planning.
 
 ![Site Map](/documentation/sitemap_jurtaka.png)
 
-## Database schemas
+### Database schemas
 
 This ERD shows the intended database structure. The blue colored tables (HikeSection and HikeRating) relate to the 'could have' user stories or future implementations at the stage of planning.
 
 ![ERD](/documentation/db_schema_jurtaka.png)
 
-## Database Schema Enhancements
+### Database Schema Enhancements
 
 Some changes were implemented to the database schemas. 
 
@@ -447,6 +456,10 @@ Some changes were implemented to the database schemas.
 
 <img src="documentation/add_comment.jpg" height="300">
 
+1. Users can add comments to posts.
+2. Upon successful submission, a Django success message is displayed.
+3. Users can like and unlike a post. The like button changes from outlined to black if the user has liked the post.
+
 **Search Functionality**
 
 <img src="documentation/search_view.jpg" height="300">
@@ -496,7 +509,7 @@ Some changes were implemented to the database schemas.
 
 **Admin Controls**
 
-<img src="documentation/admin_posts.jpg" height="300">
+<img src="documentation/admin_posts.jpg" height="400">
 
 - The post model in the admin panel lets admins oversee user-generated content, including author details, titles, slugs, content, creation and update dates, status, categories, and associated images.
 - Admins can filter posts by status and categories, and search through titles and content for efficient moderation.
@@ -530,7 +543,6 @@ Some changes were implemented to the database schemas.
 7. Enable users to rate hiking sections, offering feedback to other users.
 8. Allow users to add hiking sections to posts, providing more detailed information.
 
-
 [Return to contents list](#table-of-contents)
 
 # 5. Technologies Used
@@ -545,29 +557,29 @@ Some changes were implemented to the database schemas.
 ## Frameworks, Libraries and Programs Used
 
 1. [Git:](https://git-scm.com/)
-    Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+    Used for version control via Gitpod terminal for commits and pushes to GitHub.
 1. [GitHub:](https://github.com/)
-    GitHub is used to store the projects code after being pushed from Git.
+    Used to store the project's code after being pushed from Git.
 1. [Heroku](https://heroku.com/)
-    Heroku is used to deploy the project.
+    Used for deploying the project.
 1. [Bootstrap 5](https://getbootstrap.com/)
-    Bootstrap is used to create design and layout of the page.
+    Used for creating the design and layout of the page.
 1. [Font Awesome:](https://fontawesome.com/)
-    Font Awesome is used to add icons for aesthetic and UX purposes.
+    Used to add icons for aesthetic and UX purposes.
 1. [Coudinary](https://cloudinary.com/)
-    Cloudinary is used for image management.
+    Used for image management.
 1. [Balsamiq](https://balsamiq.com/)
-    Balsamiq was used to create the wireframes during the design process.
-1. [Figma:](https://figma.com/)
-    Figma was used to create the wireframes during the design process.
+    Used to create wireframes during the design process.
+1. [Adobe Stock](https://www.adobe.com/)
+    Used to source the background image.
 1. [Adobe Illustrator](https://www.adobe.com/)
-    Adobe Illustrator was used to create the logo.
+    Used to create the logo.
 1. [Lucidchart](https://www.lucidchart.com)
-   Lucidchart was used to create site maps and database schemas.
+   Used to create site maps and database schemas.
 1. [Google Fonts:](https://fonts.google.com/)
-    Google fonts were used to import the fonts for styling.
+    Used to import fonts for styling.
 1. [Google Photos:](https://www.google.com/photos/about/) 
-    Google Photos was used for finding placeholder images for the site.
+    Used for finding placeholder images for the site.
 
 [Return to contents list](#table-of-contents)
 
@@ -723,7 +735,16 @@ The project was deployed to [Heroku](https://dashboard.heroku.com/). These steps
 
 [Return to contents list](#table-of-contents)
 
-
 # 9. Credits
+
+### Code
+
+This code would not have been written and functional without the invaluable assistance from [Stack Overflow](https://stackoverflow.com/) and the dedicated support from tutors at Code Institute. 
+
+Massive thanks!
+
+### Content
+
+All content was written by the developer with the help of [ChatGPT](https://chatgpt.com/).
 
 [Return to contents list](#table-of-contents)

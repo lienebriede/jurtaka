@@ -16,7 +16,7 @@
 
 Python files have been passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). 
 
-**Results:** 
+**Results:** No errors found.
 
 JavaScript file has been passed through the [Jshint](https://jshint.com/).
 
@@ -104,7 +104,7 @@ Errors that were found, but could not be located in the templates:
 |||| I find the log in button easily | PASS |
 || #30 | As a New and/or Registered Site User I can fill in the contact form so that I can contact the forum administration | I can find a contact form on the site | PASS | 
 |||| I can fill in the form and send it to the admin | PASS |
-|||| After sending the form, I receive a message that the form has been sent |
+|||| After sending the form, I receive a message that the form has been sent | PASS |
 |||| I can choose a reason for contacting the admin | PASS |
 | Content Viewing | #8 | As a New Site User I can view a list of posts so that I can read the forum | When I open the main page, I see a list of posts | PASS | 
 |||| Besides the post I also see the title, the author and the date the post has been created | PASS |
@@ -308,6 +308,8 @@ Chrome developer tools Lighthouse was used to test the performance, accessibilit
 
 ## Cross-Device and Cross-Browser Testing
 
+The app was tested on these devices:
+
 1. Desktop Devices:
 
 - iMac
@@ -342,6 +344,6 @@ When users performed a search using the search bar (`q` parameter), the applicat
 * When users attempted to add a post using Mozilla Firefox, they encountered the following issues:
 - Mozilla Firefox did not display the required field indicators on the forms fields (title and post_content) that are mandatory.
 - Attempting to submit the form resulted in a 500 error. On desktop devices everything worked as expected. 
-This could be an issue of how Mozilla handles form validation. This was partyly fixed by explicitly marking the PostForm fields as `required=True`. Users can now successfully submit forms on mobile devices using Mozilla Firefox. However, the required field indicators are still not displayed.
+This could be an issue of how Mozilla handles form validation. This was partly fixed by explicitly marking the PostForm fields as `required=True`. Users can now successfully submit forms on mobile devices using Mozilla Firefox. However, the required field indicators are still not displayed on mobile devices.
 
 [Return to contents list](#table-of-contents)

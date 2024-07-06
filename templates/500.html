@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container container-white col-md-6 p-4 text-center">
+    <div class="row">
+        <h1>500 - Oops!</h1>
+        <p>Internal Server Error</p>
+    </div>
+    <a href="{% url 'home' %}" class="btn btn-primary" aria-label="Return Home">Return Home</a>
+</div>
+</div>
+
+{% endblock content %}
