@@ -135,7 +135,6 @@ def post_detail(request, slug):
             "comment_form": comment_form,
             "is_liked": is_liked,
             "likers": likers,
-            "referer": referer,
         },
     )
 
