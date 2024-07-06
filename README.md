@@ -75,7 +75,7 @@ Agile values and principles have been followed in the creation of this project f
 There have been 42 issues managed on the Kanban board, encompassing Epics, User Stories and Bugs. 
 Throughout the project, encountered bugs were either integrated into existing user stories with a bug label or tracked separately with a dedicated bug label. By the project's conclusion, all implemented requirements were moved to the 'Done' column (excluding Epics, 'Won't Have' items and issue [#44](https://github.com/users/lienebriede/projects/8/views/1?pane=issue&itemId=69943676)).
 
-![Kanban board](/documentation/kanban_screenshot.png)
+<img src="documentation/kanban_screenshot.png" width="500">
 
 
 ### Epics
@@ -300,6 +300,7 @@ These User Stories have been assigned Won't-Have status.
 | Rate Hiking Sections [issue #36](https://github.com/lienebriede/jurtaka/issues/36) | could have | won't have |
 | See Hiking Section ratings on Posts [issue #37](https://github.com/lienebriede/jurtaka/issues/37) | could have | won't have |
 | Add hiking section to post [issue #38](https://github.com/lienebriede/jurtaka/issues/38) | could have | won't have |
+| Top posts [issue #21](https://github.com/lienebriede/jurtaka/issues/21) | should have | won't have |
 
 *The user story needed revision because the approach of adding and editing comments resulted in poor user experience. The layout of the post detail page makes editing comments in the planned manner difficult for the users, as the "add comment" field is located just below the post, while the published comment that needs editing could be at the bottom of the page. To avoid confusion, comments should be edited directly within the published comment field. This change, however, requires more story points for this user story. Ultimately, after assessing priorities and the need to focus resources on more critical 'Could-Have' features (e.g., adding images to the post), the decision was made to assign 'Won't Have' status to this user story.
 
@@ -311,13 +312,46 @@ These User Stories have been assigned Won't-Have status.
 
 ### Wireframes
 
-### Logo
+These wireframes were created during the project planning phase. Several changes have been implemented in the final application to enhance the user experience.
+
+<img src="documentation/initial_wireframes.png">
+<img src="documentation/initial_desktop_wireframes.png" height="600">
+
+### Logo and Background Image
+
+<img src="documentation/logo.png" height="100">
+<img src="documentation/background_image.jpg">
+
+A simple logo was created using Adobe Illustrator. The background image, sourced from Adobe Stock images, aligns with the forum's theme. Its light design ensures it does not distract users but still enhances the forum's visual appeal and thematic coherence.
 
 ### Colour Scheme
 
-### Typography
+<img src="documentation/colors.png">
 
-### Icons and Images
+### Typography and Icons
+
+The font used for the app is "Lato", with Sans Serif as the fallback font.
+In the app, icons from Font Awesome are used to enhance its aesthetics and functionality, making it more visually appealing, user-friendly, and engaging. The icons are used for representing the categories, thumbs up for likes, and comment bubbles for comments. These icons play a crucial role in helping users quickly understand and navigate through various sections and actions within the app, contributing to a more intuitive and enjoyable user experience.
+
+### Responsivness
+
+**Search Bar**
+
+<img src="documentation/seacrh_bar.jpg">
+
+On desktops the website displays a full search bar with a text input field and a search button for easy access, while on mobile screens it simplifies to a search icon to save space. Clicking the search icon reveals a dropdown search bar, maintaining a clean and user-friendly interface.
+
+**Navigation Bar**
+
+<img src="documentation/nav_responsive.jpg">
+
+On desktops the website displays a full search bar and a detailed navigation bar with all the menu items visible and an active button highlighting the current page. On mobile devices the navigation bar is a toggle button that expands to show menu items, with the active button still highlighting the current page, ensuring a clean and user-friendly interface.
+
+**Image Display**
+
+<img src="documentation/image_display.jpg">
+
+The image display adapts responsively depending on the screen size. When viewing on larger screens, posts with two images are shown side by side in equal-sized columns, optimizing space and layout. On smaller screens, or when only one image is available, it expands to fill the entire width, ensuring images remain clear and well-presented while maintaining a cohesive and user-friendly browsing experience across all devices.
 
 [Return to contents list](#table-of-contents)
 
@@ -367,8 +401,8 @@ Some changes were implemented to the database schemas.
 
 **Individual Post Display**
 
-<img src="documentation/post_detail1.jpg" height="360">
-<img src="documentation/post_detail2.jpg" height="360">
+<img src="documentation/post_detail1.jpg" height="300">
+<img src="documentation/post_detail2.jpg" height="300">
 
 1. Each post shows the username of the author and the date it was posted.
 2. The title and full content of the post are displayed, along with one or two images.
@@ -383,7 +417,7 @@ Some changes were implemented to the database schemas.
 
 **Add a Post**
 
-<img src="documentation/create_post.jpg" height="360">
+<img src="documentation/create_post.jpg" height="300">
 
 1. Clicking the "Add a post" field opens a new post page.
 2. An exit button on the new post page allows users to return to the home page.
@@ -394,8 +428,8 @@ Some changes were implemented to the database schemas.
 
 **Edit and Delete Post**
 
-<img src="documentation/edit_post1.jpg" height="360">
-<img src="documentation/edit_post2.jpg" height="360">
+<img src="documentation/edit_post1.jpg" height="300">
+<img src="documentation/edit_post2.jpg" height="300">
 
 1. Clicking the "Edit post" button opens the edit post page.
 2. An arrow left button allows users to return to the individual post view.
@@ -411,11 +445,11 @@ Some changes were implemented to the database schemas.
 
 **Like and Comment**
 
-<img src="documentation/add_comment.jpg" height="360">
+<img src="documentation/add_comment.jpg" height="300">
 
 **Search Functionality**
 
-<img src="documentation/search_view.jpg" height="360">
+<img src="documentation/search_view.jpg" height="300">
 
 1. Users can search for keywords within the app.
 2. Posts containing the keyword in the title or content are shown.
@@ -425,7 +459,7 @@ Some changes were implemented to the database schemas.
 
 **Navigation**
 
-<img src="documentation/navbar.jpg" height="360">
+<img src="documentation/navbar.jpg" height="300">
 
 1. Users can browse posts by various categories.
 2. The default view shows the latest posts.
@@ -435,8 +469,8 @@ Some changes were implemented to the database schemas.
 
 **Log in/Log out Page**
 
-<img src="documentation/login1.jpg" height="360">
-<img src="documentation/login2.jpg" height="360">
+<img src="documentation/login1.jpg" height="300">
+<img src="documentation/login2.jpg" height="300">
 
 1. The app uses Django's built-in authentication system with required fields.
 2. The log in page offers the option to register an account if the user is not logged in.
@@ -444,14 +478,14 @@ Some changes were implemented to the database schemas.
 
 **About Page**
 
-<img src="documentation/about.jpg" height="360">
+<img src="documentation/about.jpg" height="300">
 
 1. The about page provides information about the app.
 2. The content on the about page can be updated by the admin.
 
 **Contact Page**
 
-<img src="documentation/contact.jpg" height="360">
+<img src="documentation/contact.jpg" height="300">
 
 1. Both logged-in and not logged-in users can send a request form through the contact page.
 2. The form requires a message and a subject, with the subject defaulting to "general inquiry."
@@ -462,7 +496,7 @@ Some changes were implemented to the database schemas.
 
 **Admin Controls**
 
-<img src="documentation/admin_posts.jpg" height="360">
+<img src="documentation/admin_posts.jpg" height="300">
 
 - The post model in the admin panel lets admins oversee user-generated content, including author details, titles, slugs, content, creation and update dates, status, categories, and associated images.
 - Admins can filter posts by status and categories, and search through titles and content for efficient moderation.
@@ -476,7 +510,7 @@ Some changes were implemented to the database schemas.
 
 - Comment management is facilitated with the comment model, showing the post, author, content, and timestamps for each comment.
 
-<img src="documentation/admin_about.jpg" height="360">
+<img src="documentation/admin_about.jpg" height="300">
 
 - Admins can edit and moderate About content using the Summernote editor integrated into the About model, enhancing content management capabilities.
 

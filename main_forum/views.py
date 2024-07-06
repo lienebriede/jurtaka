@@ -66,7 +66,8 @@ def post_list(request):
     queryset = Post.objects.filter(status=1)
 
     if category_id:
-        queryset = Post.objects.filter(categories__id=category_id, status=1).annotate(
+        queryset = Post.objects.filter(
+            categories__id=category_id, status=1).annotate(
             comment_count=Count('comments')).order_by('-created_on')
         view_type = None
 
@@ -253,6 +254,9 @@ def post_delete(request, slug, post_id):
 
 
 def like_post(request, slug):
+    """
+    View to like posts
+    """
     if request.method == 'POST':
         post = get_object_or_404(Post, slug=slug)
 

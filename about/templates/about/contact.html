@@ -10,19 +10,15 @@
     <a href="{% url 'home' %}" aria-label="go back home">
         <i class="fa-solid fa-xmark float-end"></i>
     </a>
-    <div class="row">
-        <div class="pt-4 pb-3">
-            <h4><strong>Contact Support</strong></h4>
-        </div>
-        <div class="row">
-            <form method="post">
-                {{ contact_form | crispy }}
-                {% csrf_token %}
-                <div class="d-grid gap-2 col-4 mx-auto pt-5 pb-3"><button class="btn btn-primary center"
-                        type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+    <div class="pt-4 pb-3">
+        <h4><strong>Contact Support</strong></h4>
     </div>
+    <form method="post">
+        {{ contact_form | crispy }}
+        {% csrf_token %}
+        <div class="d-grid gap-2 col-4 mx-auto pt-5 pb-3"><button class="btn btn-primary center"
+                        type="submit">Submit</button>
+        </div>
+    </form>
 </div>
 {% endblock content %}

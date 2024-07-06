@@ -128,8 +128,6 @@ Errors that were found, but could not be located in the templates:
 |||| The site has a favicon | PASS |
 || #10 | As a New Site User I can see a paginated list of posts so that I can navigate the site easily | I can see a list of 5 posts per page | PASS |
 |||| I can use next and previous buttons to navigate | PASS |
-|| #21 | As a New Site User I can see the posts categorised by the most popular post so that I can see most useful posts first | I can find a "top" section/button on the forum site | PASS |
-|||| I can see post list filtered by most popular posts first | PASS |
 || #22 | As a New Site User I can browse the posts by category so that I can navigate the site easier | I can find categories in navigation bar | PASS |
 |||| I can see posts for each category | PASS |
 || #24 | As a New Site User I can search the forum so that I can find posts on topics that I am interested in | I can find a search bar on the site | PASS |
@@ -303,15 +301,8 @@ PASS: after providing corect test data in all the required fields.
 
 Chrome developer tools Lighthouse was used to test the performance, accessibility, best practices and SEO of all pages within the platform. 
 
-| Page              | Mobile                                          | Desktop                                         |
-|-------------------|-------------------------------------------------|-------------------------------------------------|
-| Home              | <img src="">    | <img src="">   |
-| Post detail       | <img src="">  | <img src=""> |
-| Add a post        | <img src="">  | <img src=""> |
-| Search view       | <img src=""> | <img src=""> |
-| Browse by category| <img src=""> | <img src=""> |
-| About             | <img src="">  | <img src="">|
-| Contact           | <img src=""> | <img src=""> |
+<img src="documentation/lighthouse1.jpg"> 
+<img src="documentation/lighthouse2.jpg">
 
 [Return to contents list](#table-of-contents)
 
