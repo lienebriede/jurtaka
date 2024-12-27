@@ -47,6 +47,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-lienebriede-jurtaka-fsjtch2utun.ws.codeinstitute-ide.net',
+    '8000-lienebriede-jurtaka-pz2f873kshh.ws.codeinstitute-ide.net',
     'localhost',
     '.herokuapp.com',
 ]
@@ -178,5 +179,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-lienebriede-jurtaka-fsjtch2utun.ws.codeinstitute-ide.net'
+    'https://8000-lienebriede-jurtaka-fsjtch2utun.ws.codeinstitute-ide.net',
+    'https://8000-lienebriede-jurtaka-pz2f873kshh.ws.codeinstitute-ide.net'
     ]
